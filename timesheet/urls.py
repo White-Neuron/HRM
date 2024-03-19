@@ -9,5 +9,6 @@ urlpatterns=[
     path('timesheet/check-in', views.check_in, name='check-in'),
     path('timesheet/check-out', views.check_out, name='check-out'),
     path('timesheet/list-timesheet-raw', views.list_timesheet_raw, name='list-timesheet-raw'),   
-    path('timesheet/registed-without-attendance', views.list_registered_without_attendance, name='without-attendance'),   
+    path('timesheet/registed-without-attendance', views.list_registered_without_attendance, name='without-attendance'),
+   path('timesheet/set-ip', views.SetIPAddress.as_view(), name='set-ip'),
 ]

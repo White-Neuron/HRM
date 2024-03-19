@@ -125,16 +125,16 @@ BACKEND_URL = "https://hr.whiteneurons.com"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'wnhrm',
-        'USER': 'wn_admin',
-        'PASSWORD':'WNADMIN2024&',
-        'HOST': 'localhost',
-        'PORT': '5432', 
-        # 'NAME': 'hrm',
-        # 'USER': 'postgres',
-        # 'PASSWORD':'123456',
+        # 'NAME': 'wnhrm',
+        # 'USER': 'wn_admin',
+        # 'PASSWORD':'WNADMIN2024&',
         # 'HOST': 'localhost',
         # 'PORT': '5432', 
+        'NAME': 'hrm',
+        'USER': 'postgres',
+        'PASSWORD':'123456',
+        'HOST': 'localhost',
+        'PORT': '5432', 
     }}
 
 
