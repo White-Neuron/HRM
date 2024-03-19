@@ -1,0 +1,1681 @@
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+Performing system checks...
+
+March 19, 2024 - 11:20:03
+Django version 4.2.7, using settings 'hrmm.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+[19/Mar/2024 11:48:59] code 400, message Bad request syntax ('ðÞ¼')
+[19/Mar/2024 11:48:59] "ðÞ¼" 400 -
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 13:10:22] "GET / HTTP/1.1" 400 66713
+[19/Mar/2024 13:10:42] code 400, message Bad request version ('$A©Îß\x81\xad6tZ\x98\x87\x88¾¤\x0e\x0eK³ÎËÿT\x03\x1aüï6íTêË')
+[19/Mar/2024 13:10:42] You're accessing the development server over HTTPS, but it only supports HTTP.
+[19/Mar/2024 13:10:42] code 400, message Bad request version ('íå\x00+\x00\x07\x06úú\x03\x04\x03\x03\x00\x12\x00\x00\x00')
+[19/Mar/2024 13:10:42] You're accessing the development server over HTTPS, but it only supports HTTP.
+[19/Mar/2024 13:10:42] code 400, message Bad request version ('\x13\x8eýuüÍ´T\x94ÿªú')
+[19/Mar/2024 13:10:42] You're accessing the development server over HTTPS, but it only supports HTTP.
+[19/Mar/2024 13:10:42] code 400, message Bad request version ('µ\x96èëA\x89#\x88µÈÀÆµÛ\x90Npº\x0f´\x03ÝNÚx1\x00ðü@¼ê"ó\x06r\x92>\x1a`\x92')
+[19/Mar/2024 13:10:42] You're accessing the development server over HTTPS, but it only supports HTTP.
+[19/Mar/2024 13:10:50] code 400, message Bad request syntax ('\x16\x03\x01\x02:\x01\x00\x026\x03\x03ÌóyT%|@\x8c\x9b?\x8eò¸û9kXfì')
+[19/Mar/2024 13:10:50] You're accessing the development server over HTTPS, but it only supports HTTP.
+[19/Mar/2024 13:10:50] code 400, message Bad request version ('P`ö\xadp\x00Ð')
+[19/Mar/2024 13:10:50] You're accessing the development server over HTTPS, but it only supports HTTP.
+[19/Mar/2024 13:10:50] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01ÿ\x01\x00\x01\x00\x00#\x00\x00\x00')
+[19/Mar/2024 13:10:50] You're accessing the development server over HTTPS, but it only supports HTTP.
+[19/Mar/2024 13:10:50] code 400, message Bad request version ('úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\xad')
+[19/Mar/2024 13:10:50] You're accessing the development server over HTTPS, but it only supports HTTP.
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /docs
+[19/Mar/2024 13:10:54] "GET /docs HTTP/1.1" 400 67306
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 13:10:54] "GET /favicon.ico HTTP/1.1" 400 67322
+Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Bad Request: /http:/api.ipify.org/
+[19/Mar/2024 13:11:32] "GET http://api.ipify.org/?format=json HTTP/1.1" 400 66953
+Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Bad Request: /www.shadowserver.org:443
+[19/Mar/2024 13:11:53] "CONNECT www.shadowserver.org:443 HTTP/1.1" 400 67156
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 13:31:12] "GET /favicon.ico HTTP/1.1" 400 67322
+/var/www/HRM/hrmm/settings.py changed, reloading.
+Performing system checks...
+
+March 19, 2024 - 11:20:17
+Django version 4.2.7, using settings 'hrmm.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Traceback (most recent call last):
+  File "/var/www/HRM/manage.py", line 22, in <module>
+    main()
+  File "/var/www/HRM/manage.py", line 18, in main
+    execute_from_command_line(sys.argv)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/management/__init__.py", line 442, in execute_from_command_line
+    utility.execute()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/management/__init__.py", line 382, in execute
+    settings.INSTALLED_APPS
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/conf/__init__.py", line 102, in __getattr__
+    self._setup(name)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/conf/__init__.py", line 89, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/conf/__init__.py", line 217, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1017, in get_code
+  File "<frozen importlib._bootstrap_external>", line 947, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/var/www/HRM/hrmm/settings.py", line 116
+    "https://192.168.1.17:5173",
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 13:59:56] "GET / HTTP/1.1" 400 67452
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 13:59:57] "GET /favicon.ico HTTP/1.1" 400 67293
+Performing system checks...
+
+March 19, 2024 - 13:59:53
+Django version 4.2.7, using settings 'hrmm.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:08:45] "GET / HTTP/1.1" 400 67436
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:08:45] "GET /favicon.ico HTTP/1.1" 400 67277
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:16:40] "GET / HTTP/1.1" 400 67299
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:16:40] "GET /favicon.ico HTTP/1.1" 400 67277
+[19/Mar/2024 14:35:45] code 400, message Bad request version ('Ûóé-ò\x10Í')
+[19/Mar/2024 14:35:45] You're accessing the development server over HTTPS, but it only supports HTTP.
+[19/Mar/2024 14:35:45] code 400, message Bad request version ('|µÔeê6EÒîEþ\x02R\x83)æq')
+[19/Mar/2024 14:35:45] You're accessing the development server over HTTPS, but it only supports HTTP.
+[19/Mar/2024 14:35:45] code 400, message Bad request syntax ('\x16\x03\x01\x02\x1a\x01\x00\x02\x16\x03\x03\x90\x88;k\x9dt')
+[19/Mar/2024 14:35:45] You're accessing the development server over HTTPS, but it only supports HTTP.
+[19/Mar/2024 14:35:45] code 400, message Bad request version ('\x02h2\x08http/1.1\x00\x17\x00\x00ÿ\x01\x00\x01\x00\x00-\x00\x02\x01\x01\x00')
+[19/Mar/2024 14:35:45] You're accessing the development server over HTTPS, but it only supports HTTP.
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:35:48] "GET / HTTP/1.1" 400 67299
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:35:49] "GET /favicon.ico HTTP/1.1" 400 67277
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:39:25] "GET / HTTP/1.1" 400 67299
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:39:25] "GET /favicon.ico HTTP/1.1" 400 67277
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 14:42:39] "GET / HTTP/1.0" 500 118738
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 14:42:49] "GET / HTTP/1.0" 500 116864
+Not Found: /favicon.ico
+[19/Mar/2024 14:42:50] "GET /favicon.ico HTTP/1.0" 404 15491
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 14:42:56] "GET / HTTP/1.0" 500 118594
+Invalid HTTP_HOST header: '13.229.74.15'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:50:29] "GET / HTTP/1.0" 400 66529
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 14:53:45] "GET / HTTP/1.0" 500 116283
+Not Found: /favicon.ico
+[19/Mar/2024 14:53:46] "GET /favicon.ico HTTP/1.0" 404 15491
+[19/Mar/2024 14:55:50] "GET /docs HTTP/1.0" 301 0
+[19/Mar/2024 14:55:50] "GET /docs/ HTTP/1.0" 200 4449
+/var/www/HRM/base/views.py: Error [a]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [change_password]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [delete_account]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [reset_employee_password]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [update_account]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/department/views.py: Error [create_department]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/department/views.py: Error [delete_department]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/department/views.py: Error [list_department]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/department/views.py: Error [update_department]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [EmployeeDetail]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [get_birthday_employee]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [create_employee]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [delete_employee]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [find_employee]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [list_employee]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [list_user_password]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [update_employee]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [forgot_password_view]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [reset_password_view]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/job/views.py: Error [create_job]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/job/views.py: Error [delete_job]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/job/views.py: Error [list_job]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/job/views.py: Error [update_job]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave/views.py: Error [create_leave]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave/views.py: Error [delete_leave]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave/views.py: Error [get_leave_remainder]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave/views.py: Error [list_leave]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave/views.py: Error [list_leave_nv]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave/views.py: Error [update_leave]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave_type/views.py: Error [create_leavetype]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave_type/views.py: Error [delete_leavetype]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave_type/views.py: Error [list_leave_type]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave_type/views.py: Error [update_leavetype]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [user_login_view]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/department/views.py: Error [query_department]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/base/views.py: Error [query_employee]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/job/views.py: Error [query_job]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/leave_type/views.py: Error [query_leavetype]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/role/views.py: Error [query_role]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/role/views.py: Error [create_role]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/role/views.py: Error [delete_role]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/role/views.py: Error [list_role]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/role/views.py: Error [update_role]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/schedule/serializers.py: Warning [ScheduleListShiftAPIView > ScheduleListSerializer]: unable to resolve type hint for function "get_PhotoPath". Consider using a type hint or @extend_schema_field. Defaulting to string.
+/var/www/HRM/timesheet/views.py: Error [check_in]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/timesheet/views.py: Error [check_out]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/timesheet/views.py: Error [list_timesheet]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/timesheet/views.py: Error [list_timesheet_raw]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/timesheet/views.py: Error [list_timesheet_nv]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+/var/www/HRM/timesheet/views.py: Error [list_registered_without_attendance]: unable to guess serializer. This is graceful fallback handling for APIViews. Consider using GenericAPIView as view base class, if view is under your control. Either way you may want to add a serializer_class (or method). Ignoring view for now.
+[19/Mar/2024 14:55:51] "GET /api/schema/ HTTP/1.0" 200 92516
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 14:57:12] "GET / HTTP/1.0" 500 119040
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:17] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:17] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:19] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:19] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:20] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:20] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:21] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:21] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:21] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:21] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:22] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:22] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:22] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:22] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:22] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:22] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:22] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:23] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:23] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:23] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:24] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:25] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:25] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:25] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:57:25] "GET / HTTP/1.0" 400 70365
+Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hrm.whiteneurons.com'. You may need to add 'hrm.whiteneurons.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 14:57:25] "GET /favicon.ico HTTP/1.0" 400 70082
+Invalid HTTP_HOST header: '13.229.74.15'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 14:58:48] "GET / HTTP/1.0" 400 66806
+Invalid HTTP_HOST header: '13.229.74.15'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /.env
+[19/Mar/2024 15:02:42] "GET /.env HTTP/1.0" 400 67237
+Invalid HTTP_HOST header: '13.229.74.15'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 15:02:43] "POST / HTTP/1.0" 400 67493
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 15:06:49] "GET / HTTP/1.0" 500 119033
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 15:07:40] "GET / HTTP/1.0" 500 119040
+[19/Mar/2024 15:25:39] "GET /admin HTTP/1.0" 301 0
+[19/Mar/2024 15:25:40] "GET /admin/ HTTP/1.0" 302 0
+[19/Mar/2024 15:25:40] "GET /admin/login/?next=/admin/ HTTP/1.0" 200 15834
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/css/admin-interface-fix.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 14785
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/css/json-widget.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 993
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/css/rangefilter.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1238
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/css/language-chooser.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1734
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/css/form-controls.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 2437
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/magnific-popup/magnific-popup.css?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 6951
+[19/Mar/2024 15:25:40] "GET /static/admin/css/dark_mode.css HTTP/1.0" 200 2929
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/css/list-filter-dropdown.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 691
+Not Found: /media/logo/WN.png
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/css/modeltranslation.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 356
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/css/sorl-thumbnail.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1451
+[19/Mar/2024 15:25:40] "GET /media/logo/WN.png HTTP/1.0" 404 5793
+[19/Mar/2024 15:25:40] "GET /static/admin/css/login.css HTTP/1.0" 200 958
+[19/Mar/2024 15:25:40] "GET /static/admin/css/responsive.css?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 18533
+[19/Mar/2024 15:25:40] "GET /static/admin/css/base.css HTTP/1.0" 200 21207
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/css/ckeditor.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 2720
+[19/Mar/2024 15:25:40] "GET /static/admin_interface/related-modal/related-modal.js?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 6803
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/css/admin-interface.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 16566
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/css/related-modal.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 2867
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/css/jquery.ui.tabs.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 5558
+[19/Mar/2024 15:25:41] "GET /static/admin/css/responsive.css HTTP/1.0" 200 18533
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/foldable-apps/foldable-apps.js?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1750
+[19/Mar/2024 15:25:41] "GET /static/admin/css/responsive_rtl.css?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1785
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/magnific-popup/jquery.magnific-popup.js?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 60830
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/css/streamfield.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 5651
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/foldable-apps/foldable-apps.css?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1943
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/css/tabbed-changeform.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1895
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/css/rtl.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1016
+[19/Mar/2024 15:25:41] "GET /static/admin/css/nav_sidebar.css HTTP/1.0" 200 2694
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/css/tinymce.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 78
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/css/import-export.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 189
+[19/Mar/2024 15:25:41] "GET /static/admin_interface/favico/favico-0.3.10-patched.min.js?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 9303
+[19/Mar/2024 15:25:42] "GET /static/admin/js/nav_sidebar.js HTTP/1.0" 200 3063
+[19/Mar/2024 15:25:42] "GET /static/admin/js/theme.js HTTP/1.0" 200 1943
+Not Found: /media/favicon/WhiteNeuron.jpg
+[19/Mar/2024 15:25:42] "GET /media/favicon/WhiteNeuron.jpg HTTP/1.0" 404 5841
+Not Found: /media/favicon/WhiteNeuron.jpg
+[19/Mar/2024 15:25:42] "GET /media/favicon/WhiteNeuron.jpg HTTP/1.0" 404 5841
+Forbidden (Origin checking failed - https://api-hrm.whiteneurons.com does not match any trusted origins.): /admin/login/
+[19/Mar/2024 15:25:50] "POST /admin/login/?next=/admin/ HTTP/1.0" 403 2580
+Forbidden (Origin checking failed - https://api-hrm.whiteneurons.com does not match any trusted origins.): /admin/login/
+[19/Mar/2024 15:25:55] "POST /admin/login/?next=/admin/ HTTP/1.0" 403 2580
+[19/Mar/2024 15:25:59] "GET /admin/login/?next=/admin/ HTTP/1.0" 200 15834
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 15:40:05] "GET / HTTP/1.0" 500 115516
+/var/www/HRM/hrmm/settings.py changed, reloading.
+Performing system checks...
+
+March 19, 2024 - 14:08:28
+Django version 4.2.7, using settings 'hrmm.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+/var/www/HRM/hrmm/settings.py changed, reloading.
+Performing system checks...
+
+March 19, 2024 - 15:40:40
+Django version 4.2.7, using settings 'hrmm.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+Error: That port is already in use.
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+Error: That port is already in use.
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /admin
+[19/Mar/2024 15:59:41] "GET /admin HTTP/1.1" 400 67410
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[19/Mar/2024 15:59:41] "GET /favicon.ico HTTP/1.1" 400 67279
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 15:59:43] "GET / HTTP/1.0" 500 118600
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 15:59:44] "GET / HTTP/1.0" 500 118733
+[19/Mar/2024 15:59:51] "OPTIONS /login HTTP/1.0" 200 0
+[19/Mar/2024 15:59:52] "POST /login HTTP/1.0" 200 893
+[19/Mar/2024 15:59:52] "GET /media/default.jpg HTTP/1.0" 200 8967
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 16:01:56] "GET / HTTP/1.0" 500 118465
+[19/Mar/2024 16:02:01] "GET /admin HTTP/1.0" 301 0
+[19/Mar/2024 16:02:02] "GET /admin/ HTTP/1.0" 302 0
+[19/Mar/2024 16:02:02] "GET /admin/login/?next=/admin/ HTTP/1.0" 200 15834
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/import-export.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 189
+[19/Mar/2024 16:02:02] "GET /static/admin/css/nav_sidebar.css HTTP/1.0" 200 2694
+[19/Mar/2024 16:02:02] "GET /static/admin/css/dark_mode.css HTTP/1.0" 200 2929
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/related-modal.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 2867
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/form-controls.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 2437
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/modeltranslation.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 356
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/rangefilter.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1238
+[19/Mar/2024 16:02:02] "GET /static/admin/css/login.css HTTP/1.0" 200 958
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/magnific-popup/jquery.magnific-popup.js?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 60830
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/streamfield.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 5651
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/admin-interface-fix.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 14785
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/foldable-apps/foldable-apps.js?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1750
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/sorl-thumbnail.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1451
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/json-widget.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 993
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/jquery.ui.tabs.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 5558
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/ckeditor.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 2720
+[19/Mar/2024 16:02:02] "GET /static/admin/css/responsive.css?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 18533
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/rtl.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1016
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/related-modal/related-modal.js?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 6803
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/tinymce.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 78
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/foldable-apps/foldable-apps.css?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1943
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/list-filter-dropdown.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 691
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/language-chooser.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1734
+[19/Mar/2024 16:02:02] "GET /static/admin/css/base.css HTTP/1.0" 200 21207
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/tabbed-changeform.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1895
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/css/admin-interface.css?v=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 16566
+[19/Mar/2024 16:02:02] "GET /static/admin/css/responsive.css HTTP/1.0" 200 18533
+[19/Mar/2024 16:02:02] "GET /static/admin/css/responsive_rtl.css?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 1785
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/magnific-popup/magnific-popup.css?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 6951
+[19/Mar/2024 16:02:02] "GET /static/admin_interface/favico/favico-0.3.10-patched.min.js?nocache=09666d757b59a801494c303f4fff36bec090d0965ced83dc1921577e HTTP/1.0" 200 9303
+Not Found: /media/logo/WN.png
+[19/Mar/2024 16:02:02] "GET /media/logo/WN.png HTTP/1.0" 404 5793
+[19/Mar/2024 16:02:03] "GET /static/admin/js/theme.js HTTP/1.0" 200 1943
+[19/Mar/2024 16:02:03] "GET /static/admin/js/nav_sidebar.js HTTP/1.0" 200 3063
+Not Found: /media/favicon/WhiteNeuron.jpg
+[19/Mar/2024 16:02:03] "GET /media/favicon/WhiteNeuron.jpg HTTP/1.0" 404 5841
+Not Found: /media/favicon/WhiteNeuron.jpg
+[19/Mar/2024 16:02:03] "GET /media/favicon/WhiteNeuron.jpg HTTP/1.0" 404 5841
+Forbidden (Origin checking failed - https://api-hrm.whiteneurons.com does not match any trusted origins.): /admin/login/
+[19/Mar/2024 16:02:05] "POST /admin/login/?next=/admin/ HTTP/1.0" 403 2580
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 16:03:27] "GET / HTTP/1.0" 500 116283
+Not Found: /favicon.ico
+[19/Mar/2024 16:03:29] "GET /favicon.ico HTTP/1.0" 404 15491
+/var/www/HRM/hrmm/settings.py changed, reloading.
+Performing system checks...
+
+March 19, 2024 - 15:59:32
+Django version 4.2.7, using settings 'hrmm.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/var/www/HRM/staticfiles' in the STATICFILES_DIRS setting does not exist.
+
+System check identified 1 issue (0 silenced).
+[19/Mar/2024 16:05:26] "POST /admin/login/?next=/admin/ HTTP/1.0" 302 0
+[19/Mar/2024 16:05:26] "GET /admin/ HTTP/1.0" 200 27684
+Not Found: /media/logo/WN.png
+[19/Mar/2024 16:05:27] "GET /media/logo/WN.png HTTP/1.0" 404 5793
+[19/Mar/2024 16:05:27] "GET /static/admin/css/dashboard.css HTTP/1.0" 200 441
+Not Found: /media/favicon/WhiteNeuron.jpg
+[19/Mar/2024 16:05:27] "GET /media/favicon/WhiteNeuron.jpg HTTP/1.0" 404 5841
+[19/Mar/2024 16:05:27] "GET /static/admin/img/icon-addlink.svg HTTP/1.0" 200 331
+[19/Mar/2024 16:05:27] "GET /static/admin/img/icon-deletelink.svg HTTP/1.0" 200 392
+[19/Mar/2024 16:05:27] "GET /static/admin/img/icon-changelink.svg HTTP/1.0" 200 380
+[19/Mar/2024 16:05:45] "GET /admin/schedule/schedule/ HTTP/1.0" 200 60864
+[19/Mar/2024 16:05:45] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:05:45] "GET /static/admin/js/jquery.init.js HTTP/1.0" 200 347
+[19/Mar/2024 16:05:45] "GET /static/admin/js/urlify.js HTTP/1.0" 200 7887
+[19/Mar/2024 16:05:45] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.0" 200 292458
+[19/Mar/2024 16:05:45] "GET /static/admin/css/changelists.css HTTP/1.0" 200 6566
+[19/Mar/2024 16:05:45] "GET /static/admin/js/prepopulate.js HTTP/1.0" 200 1531
+[19/Mar/2024 16:05:45] "GET /static/admin/js/actions.js HTTP/1.0" 200 7872
+[19/Mar/2024 16:05:45] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.0" 200 232381
+[19/Mar/2024 16:05:45] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.0" 200 8943
+[19/Mar/2024 16:05:45] "GET /static/admin/js/core.js HTTP/1.0" 200 5682
+[19/Mar/2024 16:05:45] "GET /static/admin/js/filters.js HTTP/1.0" 200 978
+[19/Mar/2024 16:05:46] "GET /static/admin/img/tooltag-add.svg HTTP/1.0" 200 331
+[19/Mar/2024 16:05:58] "GET /admin/schedule/schedule/347/change/ HTTP/1.0" 200 30606
+[19/Mar/2024 16:05:59] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:05:59] "GET /static/admin/css/forms.css HTTP/1.0" 200 9047
+[19/Mar/2024 16:05:59] "GET /static/admin/js/calendar.js HTTP/1.0" 200 8466
+[19/Mar/2024 16:05:59] "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.0" 200 19319
+[19/Mar/2024 16:05:59] "GET /static/admin/img/icon-viewlink.svg HTTP/1.0" 200 581
+[19/Mar/2024 16:05:59] "GET /static/admin/js/prepopulate_init.js HTTP/1.0" 200 586
+[19/Mar/2024 16:05:59] "GET /static/admin/css/widgets.css HTTP/1.0" 200 11900
+[19/Mar/2024 16:05:59] "GET /static/admin/js/change_form.js HTTP/1.0" 200 606
+[19/Mar/2024 16:05:59] "GET /static/admin/img/icon-calendar.svg HTTP/1.0" 200 1086
+[19/Mar/2024 16:06:04] "GET /admin/schedule/schedule/ HTTP/1.0" 200 60864
+[19/Mar/2024 16:06:08] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 48750
+[19/Mar/2024 16:06:08] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:06:11] "GET /admin/timesheet/timesheet/156/change/ HTTP/1.0" 200 29026
+[19/Mar/2024 16:06:11] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:06:12] "GET /static/admin/img/search.svg HTTP/1.0" 200 458
+[19/Mar/2024 16:06:12] "GET /static/admin/img/icon-clock.svg HTTP/1.0" 200 677
+[19/Mar/2024 16:06:59] "POST /admin/timesheet/timesheet/156/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:06:59] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49002
+[19/Mar/2024 16:06:59] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:07:00] "GET /static/admin/img/icon-yes.svg HTTP/1.0" 200 436
+[19/Mar/2024 16:07:12] "GET /admin/timesheet/timesheet/158/change/ HTTP/1.0" 200 29026
+[19/Mar/2024 16:07:12] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:07:25] "POST /admin/timesheet/timesheet/158/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:07:25] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49026
+[19/Mar/2024 16:07:25] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:07:27] "GET /admin/timesheet/timesheet/157/change/ HTTP/1.0" 200 29026
+[19/Mar/2024 16:07:28] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:07:45] "POST /admin/timesheet/timesheet/157/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:07:45] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49050
+[19/Mar/2024 16:07:45] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:07:49] "GET /admin/timesheet/timesheet/160/change/ HTTP/1.0" 200 29026
+[19/Mar/2024 16:07:49] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:08:00] "POST /admin/timesheet/timesheet/160/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:08:01] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49074
+[19/Mar/2024 16:08:01] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:08:04] "GET /admin/timesheet/timesheet/159/change/ HTTP/1.0" 200 29026
+[19/Mar/2024 16:08:04] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:08:11] "POST /admin/timesheet/timesheet/159/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:08:12] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49098
+[19/Mar/2024 16:08:12] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:08:13] "GET /admin/timesheet/timesheet/161/change/ HTTP/1.0" 200 29026
+[19/Mar/2024 16:08:13] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:08:25] "POST /admin/timesheet/timesheet/161/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:08:26] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49122
+[19/Mar/2024 16:08:26] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:08:27] "GET /admin/timesheet/timesheet/162/change/ HTTP/1.0" 200 29026
+[19/Mar/2024 16:08:28] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:08:31] "OPTIONS /login HTTP/1.0" 200 0
+[19/Mar/2024 16:08:32] "POST /login HTTP/1.0" 200 893
+[19/Mar/2024 16:08:34] "OPTIONS /schedules/?month=3&year=2024&type=list HTTP/1.0" 200 0
+[19/Mar/2024 16:08:34] "OPTIONS /workshifts/ HTTP/1.0" 200 0
+[19/Mar/2024 16:08:34] "OPTIONS /configchedules/using-true/ HTTP/1.0" 200 0
+[19/Mar/2024 16:08:34] "GET /workshifts/ HTTP/1.0" 200 371
+[19/Mar/2024 16:08:34] "GET /configchedules/using-true/ HTTP/1.0" 200 58
+[19/Mar/2024 16:08:34] "GET /schedules/?month=3&year=2024&type=list HTTP/1.0" 200 21842
+[19/Mar/2024 16:08:38] "OPTIONS /schedule-list/?day=2024-03-19&workshift=all HTTP/1.0" 200 0
+[19/Mar/2024 16:08:38] "GET /schedule-list/?day=2024-03-19&workshift=all HTTP/1.0" 200 3676
+Not Found: /media/employee_photos/uploaded_image_6ta3X0m.jpg
+[19/Mar/2024 16:08:38] "GET /media/employee_photos/uploaded_image_6ta3X0m.jpg HTTP/1.0" 404 5917
+Not Found: /media/employee_photos/uploaded_image_R3sLYXv.jpg
+[19/Mar/2024 16:08:38] "GET /media/employee_photos/uploaded_image_R3sLYXv.jpg HTTP/1.0" 404 5917
+Not Found: /media/employee_photos/uploaded_image_FG9sBT6.jpg
+[19/Mar/2024 16:08:38] "GET /media/employee_photos/uploaded_image_FG9sBT6.jpg HTTP/1.0" 404 5917
+Not Found: /media/employee_photos/uploaded_image_d9H59b0.jpg
+[19/Mar/2024 16:08:38] "GET /media/employee_photos/uploaded_image_d9H59b0.jpg HTTP/1.0" 404 5917
+Not Found: /media/employee_photos/uploaded_image_re6ytMs.jpg
+[19/Mar/2024 16:08:38] "GET /media/employee_photos/uploaded_image_re6ytMs.jpg HTTP/1.0" 404 5917
+Not Found: /media/employee_photos/uploaded_image_tAWyD2m.jpg
+[19/Mar/2024 16:08:38] "GET /media/employee_photos/uploaded_image_tAWyD2m.jpg HTTP/1.0" 404 5917
+Not Found: /media/employee_photos/uploaded_image_mJ4Ypp0.jpg
+Not Found: /media/employee_photos/uploaded_image_ve5wGxs.jpg
+[19/Mar/2024 16:08:38] "GET /media/employee_photos/uploaded_image_mJ4Ypp0.jpg HTTP/1.0" 404 5917
+[19/Mar/2024 16:08:38] "GET /media/employee_photos/uploaded_image_ve5wGxs.jpg HTTP/1.0" 404 5917
+[19/Mar/2024 16:08:51] "OPTIONS /schedule-list/?day=2024-03-19&workshift=C%E1%BA%A3%20ng%C3%A0y HTTP/1.0" 200 0
+[19/Mar/2024 16:08:51] "GET /schedule-list/?day=2024-03-19&workshift=C%E1%BA%A3%20ng%C3%A0y HTTP/1.0" 200 2212
+[19/Mar/2024 16:09:00] "GET /schedule-list/?day=2024-03-19&workshift=all HTTP/1.0" 200 3676
+[19/Mar/2024 16:09:49] "POST /admin/timesheet/timesheet/162/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:09:49] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49146
+[19/Mar/2024 16:09:49] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:09:50] "GET /admin/timesheet/timesheet/161/change/ HTTP/1.0" 200 29063
+[19/Mar/2024 16:09:50] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:09:52] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 48918
+[19/Mar/2024 16:10:21] "GET /admin/timesheet/timesheet/add/ HTTP/1.0" 200 28654
+[19/Mar/2024 16:10:21] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:10:39] "GET /admin/base/employee/ HTTP/1.0" 200 30721
+[19/Mar/2024 16:10:39] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:10:58] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 48918
+[19/Mar/2024 16:10:59] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:11:00] "GET /admin/timesheet/timesheet/add/ HTTP/1.0" 200 28654
+[19/Mar/2024 16:11:01] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:11:56] "POST /admin/timesheet/timesheet/add/ HTTP/1.0" 302 0
+[19/Mar/2024 16:11:57] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49474
+[19/Mar/2024 16:11:57] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:12:02] "GET /admin/timesheet/timesheet/163/change/ HTTP/1.0" 200 29026
+[19/Mar/2024 16:12:02] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:12:15] "POST /admin/timesheet/timesheet/163/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:12:15] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49495
+[19/Mar/2024 16:12:15] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:12:17] "GET /admin/timesheet/timesheet/163/change/ HTTP/1.0" 200 29062
+[19/Mar/2024 16:12:17] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:12:23] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49267
+[19/Mar/2024 16:12:25] "GET /admin/timesheet/timesheet/add/ HTTP/1.0" 200 28654
+[19/Mar/2024 16:12:25] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:12:41] "POST /admin/timesheet/timesheet/add/ HTTP/1.0" 302 0
+[19/Mar/2024 16:12:41] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 49820
+[19/Mar/2024 16:12:41] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:12:42] "GET /admin/timesheet/timesheet/add/ HTTP/1.0" 200 28654
+[19/Mar/2024 16:12:43] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:12:57] "POST /admin/timesheet/timesheet/add/ HTTP/1.0" 302 0
+[19/Mar/2024 16:12:57] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 50151
+[19/Mar/2024 16:12:57] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:13:01] "GET /admin/timesheet/timesheet/add/ HTTP/1.0" 200 28654
+[19/Mar/2024 16:13:01] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:13:15] "POST /admin/timesheet/timesheet/add/ HTTP/1.0" 302 0
+[19/Mar/2024 16:13:15] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 50482
+[19/Mar/2024 16:13:15] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:13:16] "GET /admin/timesheet/timesheet/add/ HTTP/1.0" 200 28654
+[19/Mar/2024 16:13:17] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:13:35] "POST /admin/timesheet/timesheet/add/ HTTP/1.0" 302 0
+[19/Mar/2024 16:13:36] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 50811
+[19/Mar/2024 16:13:36] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:13:37] "GET /admin/timesheet/timesheet/add/ HTTP/1.0" 200 28654
+[19/Mar/2024 16:13:37] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:14:02] "POST /admin/timesheet/timesheet/add/ HTTP/1.0" 302 0
+[19/Mar/2024 16:14:02] "GET /admin/timesheet/timesheet/add/ HTTP/1.0" 200 28918
+[19/Mar/2024 16:14:02] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:14:21] "POST /admin/timesheet/timesheet/add/ HTTP/1.0" 302 0
+[19/Mar/2024 16:14:22] "GET /admin/timesheet/timesheet/add/ HTTP/1.0" 200 28918
+[19/Mar/2024 16:14:22] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:14:43] "POST /admin/timesheet/timesheet/add/ HTTP/1.0" 302 0
+[19/Mar/2024 16:14:43] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 51808
+[19/Mar/2024 16:14:44] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:14:52] "GET /admin/timesheet/timesheet/155/change/ HTTP/1.0" 200 29062
+[19/Mar/2024 16:14:52] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:15:01] "POST /admin/timesheet/timesheet/155/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:15:02] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 51804
+[19/Mar/2024 16:15:02] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:15:12] "GET /admin/timesheet/timesheet/156/change/ HTTP/1.0" 200 29062
+[19/Mar/2024 16:15:13] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:15:17] "POST /admin/timesheet/timesheet/156/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:15:18] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 51804
+[19/Mar/2024 16:15:18] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:15:22] "GET /admin/timesheet/timesheet/155/change/ HTTP/1.0" 200 29062
+[19/Mar/2024 16:15:22] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:15:26] "POST /admin/timesheet/timesheet/155/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:15:26] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 51804
+[19/Mar/2024 16:15:26] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:15:32] "GET /admin/timesheet/timesheet/154/change/ HTTP/1.0" 200 29062
+[19/Mar/2024 16:15:32] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:15:37] "POST /admin/timesheet/timesheet/154/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:15:37] "GET /admin/timesheet/timesheet/154/change/ HTTP/1.0" 200 29319
+[19/Mar/2024 16:15:37] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:15:41] "GET /admin/timesheet/timesheet/154/change/ HTTP/1.0" 200 29062
+[19/Mar/2024 16:15:43] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 51570
+[19/Mar/2024 16:15:49] "GET /admin/timesheet/timesheet/153/change/ HTTP/1.0" 200 29063
+[19/Mar/2024 16:15:49] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "/var/www/HRM/base/views.py", line 73, in a
+    birthday_response = get_birthday_employee(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 492, in dispatch
+    request = self.initialize_request(request, *args, **kwargs)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/views.py", line 391, in initialize_request
+    return Request(
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/rest_framework/request.py", line 154, in __init__
+    assert isinstance(request, HttpRequest), (
+AssertionError: The `request` argument must be an instance of `django.http.HttpRequest`, not `rest_framework.request.Request`.
+[19/Mar/2024 16:15:55] "GET / HTTP/1.0" 500 117082
+[19/Mar/2024 16:16:04] "POST /admin/timesheet/timesheet/153/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:16:04] "GET /admin/timesheet/timesheet/153/change/ HTTP/1.0" 200 29320
+[19/Mar/2024 16:16:04] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:16:09] "POST /admin/timesheet/timesheet/153/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:16:09] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 51792
+[19/Mar/2024 16:16:10] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:16:17] "GET /admin/timesheet/timesheet/147/change/ HTTP/1.0" 200 29062
+[19/Mar/2024 16:16:17] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:16:23] "POST /admin/timesheet/timesheet/147/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:16:24] "GET /admin/timesheet/timesheet/147/change/ HTTP/1.0" 200 29319
+[19/Mar/2024 16:16:24] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:16:26] "POST /admin/timesheet/timesheet/147/change/ HTTP/1.0" 302 0
+[19/Mar/2024 16:16:27] "GET /admin/timesheet/timesheet/ HTTP/1.0" 200 51786
+[19/Mar/2024 16:16:27] "GET /admin/jsi18n/ HTTP/1.0" 200 3343
+[19/Mar/2024 16:16:59] "OPTIONS /employee/list-employee?asc=true&pageIndex=1&pageSize=10&query=&sort_by=EmpID HTTP/1.0" 200 0
+[19/Mar/2024 16:16:59] "OPTIONS /query/department?query= HTTP/1.0" 200 0
+[19/Mar/2024 16:17:00] "OPTIONS /query/job?query= HTTP/1.0" 200 0
+[19/Mar/2024 16:17:00] "GET /query/department?query= HTTP/1.0" 200 233
+[19/Mar/2024 16:17:00] "GET /employee/list-employee?asc=true&pageIndex=1&pageSize=10&query=&sort_by=EmpID HTTP/1.0" 200 8214
+[19/Mar/2024 16:17:00] "GET /query/job?query= HTTP/1.0" 200 312
+[19/Mar/2024 16:17:02] "OPTIONS /timesheet/list-timesheet?asc=false&pageIndex=1&pageSize=10&query=&sort_by=id HTTP/1.0" 200 0
+[19/Mar/2024 16:17:02] "GET /timesheet/list-timesheet?asc=false&pageIndex=1&pageSize=10&query=&sort_by=id HTTP/1.0" 200 6739
+[19/Mar/2024 16:17:02] "GET /workshifts/ HTTP/1.0" 200 371
+[19/Mar/2024 16:17:02] "GET /configchedules/using-true/ HTTP/1.0" 200 58
+[19/Mar/2024 16:17:02] "GET /schedules/?month=3&year=2024&type=list HTTP/1.0" 200 21842
+[19/Mar/2024 16:17:05] "OPTIONS /schedule-list/?day=2024-03-20&workshift=all HTTP/1.0" 200 0
+[19/Mar/2024 16:17:05] "GET /schedule-list/?day=2024-03-20&workshift=all HTTP/1.0" 200 4409
+Not Found: /media/employee_photos/uploaded_image_oXIgpPA.jpg
+[19/Mar/2024 16:17:05] "GET /media/employee_photos/uploaded_image_oXIgpPA.jpg HTTP/1.0" 404 5917
+Not Found: /media/employee_photos/uploaded_image_ve5wGxs.jpg
+Not Found: /media/employee_photos/uploaded_image_IwkAmIo.jpg
+Not Found: /media/employee_photos/uploaded_image_mJ4Ypp0.jpg
+Not Found: /media/employee_photos/uploaded_image_R3sLYXv.jpg
+[19/Mar/2024 16:17:05] "GET /media/employee_photos/uploaded_image_ve5wGxs.jpg HTTP/1.0" 404 5917
+Not Found: /media/employee_photos/uploaded_image_FG9sBT6.jpg
+Not Found: /media/employee_photos/uploaded_image_d9H59b0.jpg
+Not Found: /media/employee_photos/uploaded_image_re6ytMs.jpg
+[19/Mar/2024 16:17:05] "GET /media/employee_photos/uploaded_image_mJ4Ypp0.jpg HTTP/1.0" 404 5917
+Not Found: /media/employee_photos/uploaded_image_tAWyD2m.jpg
+[19/Mar/2024 16:17:05] "GET /media/employee_photos/uploaded_image_IwkAmIo.jpg HTTP/1.0" 404 5917
+[19/Mar/2024 16:17:05] "GET /media/employee_photos/uploaded_image_R3sLYXv.jpg HTTP/1.0" 404 5917
+[19/Mar/2024 16:17:05] "GET /media/employee_photos/uploaded_image_FG9sBT6.jpg HTTP/1.0" 404 5917
+[19/Mar/2024 16:17:05] "GET /media/employee_photos/uploaded_image_re6ytMs.jpg HTTP/1.0" 404 5917
+[19/Mar/2024 16:17:05] "GET /media/employee_photos/uploaded_image_d9H59b0.jpg HTTP/1.0" 404 5917
+[19/Mar/2024 16:17:05] "GET /media/employee_photos/uploaded_image_tAWyD2m.jpg HTTP/1.0" 404 5917
+Not Found: /media/employee_photos/uploaded_image_6ta3X0m.jpg
+[19/Mar/2024 16:17:05] "GET /media/employee_photos/uploaded_image_6ta3X0m.jpg HTTP/1.0" 404 5917
+[19/Mar/2024 16:17:11] "OPTIONS /schedule-list/?day=2024-03-20&workshift=Ca%20s%C3%A1ng HTTP/1.0" 200 0
+[19/Mar/2024 16:17:11] "GET /schedule-list/?day=2024-03-20&workshift=Ca%20s%C3%A1ng HTTP/1.0" 200 371
+[19/Mar/2024 16:17:14] "GET /schedule-list/?day=2024-03-20&workshift=all HTTP/1.0" 200 4409
+[19/Mar/2024 16:17:29] "OPTIONS /employee/list-username?asc=true&pageIndex=1&pageSize=10&query=&sort_by=UserID HTTP/1.0" 200 0
+[19/Mar/2024 16:17:29] "GET /employee/list-username?asc=true&pageIndex=1&pageSize=10&query=&sort_by=UserID HTTP/1.0" 200 1059
+[19/Mar/2024 16:17:29] "GET /query/department?query= HTTP/1.0" 200 233
+[19/Mar/2024 16:17:29] "GET /query/job?query= HTTP/1.0" 200 312
+[19/Mar/2024 16:17:29] "GET /employee/list-employee?asc=true&pageIndex=1&pageSize=10&query=&sort_by=EmpID HTTP/1.0" 200 8214
+[19/Mar/2024 16:17:39] "GET /timesheet/list-timesheet?asc=false&pageIndex=1&pageSize=10&query=&sort_by=id HTTP/1.0" 200 6739
+[19/Mar/2024 16:17:40] "GET /configchedules/using-true/ HTTP/1.0" 200 58
+[19/Mar/2024 16:17:40] "GET /workshifts/ HTTP/1.0" 200 371
+[19/Mar/2024 16:17:40] "GET /schedules/?month=3&year=2024&type=list HTTP/1.0" 200 21842
+[19/Mar/2024 16:17:53] "OPTIONS /query/leavetype?query= HTTP/1.0" 200 0
+[19/Mar/2024 16:17:53] "OPTIONS /leave/list-leave?asc=true&pageIndex=1&pageSize=10&query=&sort_by=LeaveRequestID HTTP/1.0" 200 0
+[19/Mar/2024 16:17:53] "GET /query/leavetype?query= HTTP/1.0" 200 55
+[19/Mar/2024 16:17:53] "GET /leave/list-leave?asc=true&pageIndex=1&pageSize=10&query=&sort_by=LeaveRequestID HTTP/1.0" 200 1401
+[19/Mar/2024 16:17:59] "GET /workshifts/ HTTP/1.0" 200 371
+[19/Mar/2024 16:17:59] "GET /configchedules/using-true/ HTTP/1.0" 200 58
+[19/Mar/2024 16:17:59] "GET /schedules/?month=3&year=2024&type=list HTTP/1.0" 200 21842
+[19/Mar/2024 16:18:00] "GET /timesheet/list-timesheet?asc=false&pageIndex=1&pageSize=10&query=&sort_by=id HTTP/1.0" 200 6739
+[19/Mar/2024 16:18:04] "GET /configchedules/using-true/ HTTP/1.0" 200 58
+[19/Mar/2024 16:18:04] "GET /workshifts/ HTTP/1.0" 200 371
+[19/Mar/2024 16:18:04] "GET /schedules/?month=3&year=2024&type=list HTTP/1.0" 200 21842
+[19/Mar/2024 16:19:32] "OPTIONS /schedule-list/?day=2024-03-21&workshift=all HTTP/1.0" 200 0
+[19/Mar/2024 16:19:33] "GET /schedule-list/?day=2024-03-21&workshift=all HTTP/1.0" 200 3657
+[19/Mar/2024 16:24:40] "OPTIONS /schedules/?month=3&year=2024&type=list HTTP/1.0" 200 0
+[19/Mar/2024 16:24:40] "OPTIONS /configchedules/using-true/ HTTP/1.0" 200 0
+[19/Mar/2024 16:24:40] "GET /configchedules/using-true/ HTTP/1.0" 200 58
+[19/Mar/2024 16:24:40] "OPTIONS /workshifts/ HTTP/1.0" 200 0
+[19/Mar/2024 16:24:40] "GET /schedules/?month=3&year=2024&type=list HTTP/1.0" 200 21842
+[19/Mar/2024 16:24:40] "GET /workshifts/ HTTP/1.0" 200 371
+Invalid HTTP_HOST header: '13.229.74.15'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /actuator/health
+[19/Mar/2024 16:30:19] "GET /actuator/health HTTP/1.0" 400 67093
+Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/var/www/HRM/venv/lib/python3.10/site-packages/django/http/request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '13.229.74.15:8000'. You may need to add '13.229.74.15' to ALLOWED_HOSTS.
+Bad Request: /
+[19/Mar/2024 16:42:28] "GET / HTTP/1.1" 400 66725

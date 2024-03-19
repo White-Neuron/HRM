@@ -24,4 +24,4 @@ admin_user = UserAccount.objects.get(UserID='admin')
 admin_user.EmpID.RoleID = admin_role
 
 # Save the admin user
-admin_user.EmpID.save()
+admin_user.EmpID.save() 

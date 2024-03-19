@@ -34,8 +34,7 @@ ALLOWED_HOSTS = [
     '192.168.1.17',
     # ".vercel.app",
     'localhost',
-    'hrmbe.onrender.com',
-    'www.hrmbe.onrender.com',
+    'api-hrm.whiteneurons.com',
 ]
 
 
@@ -90,6 +89,7 @@ MIDDLEWARE = [
 ]
 CSRF_TRUSTED_ORIGINS = [' https://hrmbe.onrender.com',
                         'https://www.hrmbe.onrender.com',
+                        "https://api-hrm.whiteneurons.com",
                         ]
 
 ROOT_URLCONF = 'hrmm.urls'
@@ -113,12 +113,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'hrmm.wsgi.application'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://192.168.1.17:5173",
-    "http://192.168.1.17:5173",
-    "https://hrmbe.onrender.com",
+    "http://13.229.74.15:5000",
+    "https://hr.whiteneurons.com",
 ]
 SECURITY_PASSWORD_SALT = "abcd"
-BACKEND_URL = "http://192.168.1.17:5173"
+BACKEND_URL = "https://hr.whiteneurons.com"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -127,8 +126,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'wnhrm',
-        'USER': 'wnhr',
-        'PASSWORD':'hrm@psql',
+        'USER': 'wn_admin',
+        'PASSWORD':'WNADMIN2024&',
         'HOST': 'localhost',
         'PORT': '5432', 
         # 'NAME': 'hrm',
