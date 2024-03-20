@@ -21,7 +21,22 @@ from django.db.models.functions import Coalesce
 import hashlib
 from rest_framework.views import APIView
 
+import hashlib
 
+def hash_string(input_string):
+    # Create a hash object using SHA256 algorithm
+    sha256 = hashlib.sha256()
+
+    # Encode the input string to bytes
+    input_bytes = input_string.encode('utf-8')
+
+    # Update the hash object with the input bytes
+    sha256.update(input_bytes)
+
+    # Get the hashed value in hexadecimal representation
+    hashed_value = sha256.hexdigest()
+
+    return hashed_value
 class SetIPAddress(APIView):
     permission_classes=[IsHrAdmin]
     def post(self, request):
@@ -182,11 +197,11 @@ def get_existing_timesheet_first(emp_id, date):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_in(request):
-    client_ip = request.GET.get('ip')
-    print(client_ip)
+    client_ip = request.META.get('HTTP_X_FORWARDED_FOR')
+    print(hash_string(client_ip))
     with open("hash_key.txt", "r") as file:
         hashed_value_old = file.read()
-    if client_ip == hashed_value_old:
+    if hash_string(client_ip) == hashed_value_old:
         print("Hashes match: The values are identical.")
     else:
         print("Hashes do not match: The values are different.")

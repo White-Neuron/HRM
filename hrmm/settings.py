@@ -77,9 +77,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    # 'coreheaders.middleware.CorsMiddleware'
     'corsheaders.middleware.CorsMiddleware',
-
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -94,6 +92,13 @@ CSRF_TRUSTED_ORIGINS = [' https://hrmbe.onrender.com',
 
 ROOT_URLCONF = 'hrmm.urls'
 ASGI_APPLICATION = "hrmm.asgi.application"
+CORS_ALLOW_HEADERS = [
+    'X-Forwarded-For',  # Thêm 'X-Forwarded-For' vào danh sách các headers được phép
+    'X-Requested-With',
+    'Content-Type',
+    'Authorization',
+    # Thêm các header khác nếu cần
+]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -136,7 +141,6 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432', 
     }}
-
 
 
 # Password validation
