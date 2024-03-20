@@ -50,12 +50,12 @@ class SetIPAddress(APIView):
         except FileNotFoundError:
             saved_hashed_ip = None
         # So sánh giá trị băm mới với giá trị băm đã lưu
-        if ip == saved_hashed_ip:
+        if hash_string(ip) == saved_hashed_ip:
             return Response({'message': 'Địa chỉ IP không đổi'}, status=status.HTTP_400_BAD_REQUEST)
 
         # Nếu giá trị băm mới khác với giá trị băm đã lưu, lưu giá trị mới vào tệp
         with open("hash_key.txt", "w") as file:
-            file.write(ip)
+            file.write(hash_string(ip))
 
         return Response({'message': 'Địa chỉ IP đã được lưu mới'}, status=status.HTTP_201_CREATED)
 @api_view(["GET"])
@@ -198,7 +198,6 @@ def get_existing_timesheet_first(emp_id, date):
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_in(request):
     client_ip = request.META.get('HTTP_X_FORWARDED_FOR')
-    print(hash_string(client_ip))
     with open("hash_key.txt", "r") as file:
         hashed_value_old = file.read()
     if hash_string(client_ip) == hashed_value_old:
