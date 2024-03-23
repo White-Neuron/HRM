@@ -41,8 +41,7 @@ class SetIPAddress(APIView):
     permission_classes=[IsHrAdmin]
     def post(self, request):
         # Lấy địa chỉ IP từ request
-        ip = request.GET.get("crypto")
-        print(ip)
+        ip = request.META.get("HTTP_X_FORWARDED_FOR").split(',')[0]
         # Đọc giá trị băm đã lưu từ tệp
         try:
             with open("hash_key.txt", "r") as file:
@@ -197,9 +196,10 @@ def get_existing_timesheet_first(emp_id, date):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_in(request):
-    client_ip = request.META.get('HTTP_X_FORWARDED_FOR')
+    client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
     with open("hash_key.txt", "r") as file:
         hashed_value_old = file.read()
+    print(client_ip)
     if hash_string(client_ip) == hashed_value_old:
         print("Hashes match: The values are identical.")
     else:
@@ -232,16 +232,17 @@ def check_in(request):
     if not existing_timesheet_first:
         if time1 > starttime.hour + 1 or (time1 == starttime.hour + 1 and timenow.minute >= starttime.minute):
             if time1>12 and starttime.hour<12:
-                late_seconds = (time1 - 13 ) * 3600 + (timenow.minute - 30) * 60
+                late_seconds = (time1 - 14 ) * 3600 + (timenow.minute - 0) * 60
             else:
                 late_seconds = (time1 - starttime.hour ) * 3600 + (timenow.minute - starttime.minute) * 60
             late_hours = late_seconds / 3600
             late = math.floor(late_hours)
             current_time = timenow
-            if current_time.hour < 8 or (current_time.hour == 8 and current_time.minute < 15):
-                current_time = current_time.replace(hour=8, minute=0, second=0)
-            if current_time.hour >= 12 and (current_time.hour < 13 or (current_time.hour == 13 and current_time.minute < 45)):
-                current_time = current_time.replace(hour=13, minute=30, second=0)
+            # Tú Anh xóa điều kiện checkin
+            # if current_time.hour < 8 or (current_time.hour == 8 and current_time.minute < 15):
+            #     current_time = current_time.replace(hour=8, minute=0, second=0)
+            # if current_time.hour >= 12 and (current_time.hour < 14):
+            #     current_time = current_time.replace(hour=14, minute=0, second=0)
             timesheet = TimeSheet.objects.create(EmpID=emp_id, TimeIn=current_time, Late=late)
             serializer = TimeSheetSerializer(timesheet)
             return Response({"message": "Checked in successfully", "data": serializer.data, "status": status.HTTP_200_OK},status=status.HTTP_200_OK)
@@ -252,10 +253,11 @@ def check_in(request):
     current_time = timenow
     if current_time.hour >17 or (current_time.hour == 17 and current_time.minute >29):
         return Response({"message": "Cannot check in. Go home now.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    if current_time.hour < 8 or (current_time.hour == 8 and current_time.minute < 15):
-        current_time = current_time.replace(hour=8, minute=0, second=0)
-    if current_time.hour >= 12 and (current_time.hour < 13 or (current_time.hour == 13 and current_time.minute < 45)):
-        current_time = current_time.replace(hour=13, minute=30, second=0)
+    # Tú Anh xóa điều kiện checkin
+    # if current_time.hour < 8 or (current_time.hour == 8 and current_time.minute < 15):
+    #     current_time = current_time.replace(hour=8, minute=0, second=0)
+    # if current_time.hour >= 12 and (current_time.hour < 13 or (current_time.hour == 13 and current_time.minute < 45)):
+    #     current_time = current_time.replace(hour=13, minute=30, second=0)
     timesheet = TimeSheet.objects.create(EmpID=emp_id, TimeIn=current_time)
     serializer = TimeSheetSerializer(timesheet)
     return Response({"message": "Checked in successfully", "data": serializer.data, "status": status.HTTP_200_OK})
@@ -264,7 +266,7 @@ def check_in(request):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_out(request):
-    client_ip = request.META.get('REMOTE_ADDR')
+    client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
     hash_ip=hash_string(client_ip)
     with open("hash_key.txt", "r") as file:
         hashed_value_old = file.read()
@@ -286,10 +288,11 @@ def check_out(request):
     checkout_time = timezone.localtime(timezone.now())
     if checkout_time < existing_timesheet.TimeIn:
         return Response({"message": "Can not check out before check in time", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    if checkout_time.hour > 17 or (checkout_time.hour == 17 and checkout_time.minute > 29):
-        checkout_time = checkout_time.replace(hour=17, minute=30, second=0)
-    if checkout_time.hour >= 12 and (checkout_time.hour < 13 or (checkout_time.hour == 13 and checkout_time.minute < 45)):
-        checkout_time = checkout_time.replace(hour=12, minute=00, second=0)
+    # Tú Anh xóa điều kiện checkin
+    # if checkout_time.hour > 17 or (checkout_time.hour == 17 and checkout_time.minute > 29):
+    #     checkout_time = checkout_time.replace(hour=17, minute=30, second=0)
+    # if checkout_time.hour >= 12 and (checkout_time.hour < 14 ):
+    #     checkout_time = checkout_time.replace(hour=12, minute=00, second=0)
 
     # checkout_time_data=  timezone.now() + timedelta(hours=7)  
     existing_timesheet.TimeOut = checkout_time
