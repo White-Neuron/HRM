@@ -236,7 +236,11 @@ def check_in(request):
             else:
                 late_seconds = (time1 - starttime.hour ) * 3600 + (timenow.minute - starttime.minute) * 60
             late_hours = late_seconds / 3600
-            late = math.floor(late_hours)
+
+            # Tú Anh xóa dòng này
+            # late = math.floor(late_hours)
+            late= late_hours # Không làm tròn số
+
             current_time = timenow
             # Tú Anh xóa điều kiện checkin
             # if current_time.hour < 8 or (current_time.hour == 8 and current_time.minute < 15):
