@@ -15,7 +15,10 @@ class WorkShift(models.Model):
     StartTime=models.TimeField()
     EndTime=models.TimeField()
     Color=models.CharField(max_length=20,default="#ccc")
-    Coefficient = models.PositiveSmallIntegerField(choices=COEFFICIENT_CHOICES)    
+    Coefficient = models.PositiveSmallIntegerField(choices=COEFFICIENT_CHOICES)  
+
+    def __str__(self):
+        return self.WorkShiftName  
     
 class Schedule(models.Model):
     EmpID=models.ForeignKey(Employee,on_delete=models.CASCADE)
