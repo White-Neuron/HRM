@@ -29,6 +29,9 @@ class Employee(models.Model):
 
     objects = ModelManager()
 
+    def __str__(self):
+        return self.EmpName
+
 
 class UserAccountManager(BaseUserManager):
     def create_user(self, email=None, password=None, **extra_fields):
