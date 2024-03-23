@@ -24,12 +24,12 @@ class TimeSheet(models.Model):
 
     
     def getTimeOut(self):
-        current_time = self.TimeOut
+        checkout_time = self.TimeOut
         if checkout_time.hour > 17 or (checkout_time.hour == 17 and checkout_time.minute > 29):
             checkout_time = checkout_time.replace(hour=17, minute=30, second=0)
         if checkout_time.hour >= 12 and (checkout_time.hour < 14 ):
             checkout_time = checkout_time.replace(hour=12, minute=00, second=0)
-        return current_time
+        return checkout_time
 
     def save(self, *args, **kwargs):
         if self.TimeIn and self.TimeOut:
