@@ -289,7 +289,7 @@ def check_out(request):
     current_date = timezone.now().date()
 
     existing_timesheet = get_existing_timesheet(emp_id, current_date)
-    timein = existing_timesheet.TimeIn + timedelta(hours=7)
+    timein = existing_timesheet.TimeIn 
     if timein.hour < 8 or (timein.hour == 8 and timein.minute < 15):
             timein = timein.replace(hour=8, minute=0, second=0)
     if timein.hour >= 12 and (timein.hour < 14):
@@ -317,15 +317,15 @@ def check_out(request):
     if timeout.hour >= 12 and (timeout.hour < 14 ):
         timeout = timeout.replace(hour=12, minute=00, second=0)
     if timein.time() < time(12, 0) and timeout.time() > time(14,0):
-        work_hours =(timeout - timein).total_seconds() / 3600- 2 
+        work_hours =(timeout+7 - timein).total_seconds() / 3600- 2 
         print("a")
     else:
-        work_hours =(timeout - timein).total_seconds() / 3600
+        work_hours =(timeout+7 - timein).total_seconds() / 3600
         print("b")
     existing_timesheet.save() 
     print(timein, timeout)
     print(work_hours)
-    serializer = TimeSheetSerializer(existing_timesheet,context={"work_hours": round(work_hours, 2)})
+    serializer = TimeSheetSerializer(existing_timesheet)
     print(serializer.data)
     
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
