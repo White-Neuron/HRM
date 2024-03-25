@@ -318,9 +318,10 @@ def check_out(request):
         timeout = timeout.replace(hour=12, minute=00, second=0)
     if timein.time() < time(12, 0) and timeout.time() > time(14,0):
         work_hours =(timeout - timein).total_seconds() / 3600- 2 
+        print("a")
     else:
         work_hours =(timeout - timein).total_seconds() / 3600
-    existing_timesheet.WorkHour = round(work_hours, 2)
+        print("b")
     existing_timesheet.save() 
     print(timein, timeout)
     print(work_hours)
