@@ -324,6 +324,7 @@ def check_out(request):
     existing_timesheet.save() 
     print(timein, timeout)
     serializer = TimeSheetSerializer(existing_timesheet)
+    print(serializer)
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
 
 @api_view(["GET"])
