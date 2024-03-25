@@ -232,7 +232,10 @@ def check_in(request):
     if not existing_timesheet_first:
         if time1 > starttime.hour + 1 or (time1 == starttime.hour + 1 and timenow.minute >= starttime.minute):
             if time1>12 and starttime.hour<12:
-                late_seconds = (time1 - 14 ) * 3600 + (timenow.minute - 0) * 60
+                if time1.hour<=2:
+                    late_seconds=0
+                else:
+                    late_seconds = (time1 - 14 ) * 3600 + (timenow.minute - 0) * 60
             else:
                 late_seconds = (time1 - starttime.hour ) * 3600 + (timenow.minute - starttime.minute) * 60
             late_hours = late_seconds / 3600
