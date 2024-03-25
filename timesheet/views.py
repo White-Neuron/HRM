@@ -311,7 +311,7 @@ def check_out(request):
     # existing_timesheet.data_dict.setdefault("checkout", []).append(checkout_time_data.strftime("%Y-%m-%d %H:%M:%S"))
     
     existing_timesheet.save()
-    timeout=existing_timesheet.TimeOut
+    timeout=checkout_time
     if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
         timeout = timeout.replace(hour=17, minute=30, second=0)
     if timeout.hour >= 12 and (timeout.hour < 14 ):
@@ -324,6 +324,7 @@ def check_out(request):
     existing_timesheet.save() 
     print(timein, timeout)
     serializer = TimeSheetSerializer(existing_timesheet)
+    serializer.WorkHour= round(work_hours, 2)
     print(serializer.data)
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
 
