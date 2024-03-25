@@ -289,7 +289,7 @@ def check_out(request):
     current_date = timezone.now().date()
 
     existing_timesheet = get_existing_timesheet(emp_id, current_date)
-    timein=existing_timesheet.TimeIn
+    timein = existing_timesheet.TimeIn + timedelta(hours=7)
     if timein.hour < 8 or (timein.hour == 8 and timein.minute < 15):
             timein = timein.replace(hour=8, minute=0, second=0)
     if timein.hour >= 12 and (timein.hour < 14):
