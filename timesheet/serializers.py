@@ -6,6 +6,11 @@ class TimeSheetSerializer(serializers.ModelSerializer):
     class Meta:
         model = TimeSheet
         fields = "__all__"
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        if 'work_hours' in self.context:
+            data['WorkHour'] = self.context['work_hours']
+        return data
         
 class UserAccountWithTimeSheetSerializer(serializers.ModelSerializer):
     
