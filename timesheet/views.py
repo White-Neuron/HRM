@@ -20,6 +20,7 @@ from django.db.models import Sum, F, Value as V
 from django.db.models.functions import Coalesce
 import hashlib
 from rest_framework.views import APIView
+from datetime import time
 
 import hashlib
 
@@ -288,7 +289,11 @@ def check_out(request):
     current_date = timezone.now().date()
 
     existing_timesheet = get_existing_timesheet(emp_id, current_date)
-
+    timein=existing_timesheet.TimeIn
+    if timein.hour < 8 or (timein.hour == 8 and timein.minute < 15):
+            timein = timein.replace(hour=8, minute=0, second=0)
+    if timein.hour >= 12 and (timein.hour < 14):
+            timein = timein.replace(hour=14, minute=0, second=0)
     if not existing_timesheet or not existing_timesheet.TimeIn:
         return Response({"message": "Cannot check out. Not checked in today.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
    
@@ -304,8 +309,17 @@ def check_out(request):
     # checkout_time_data=  timezone.now() + timedelta(hours=7)  
     existing_timesheet.TimeOut = checkout_time
     # existing_timesheet.data_dict.setdefault("checkout", []).append(checkout_time_data.strftime("%Y-%m-%d %H:%M:%S"))
+    timeout=existing_timesheet.TimeOut
+    if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
+        timeout = timeout.replace(hour=17, minute=30, second=0)
+    if timeout.hour >= 12 and (timeout.hour < 14 ):
+        timeout = timeout.replace(hour=12, minute=00, second=0)
+    if timein.time() < time(12, 0) and timeout.time() > time(14,0):
+        work_hours =(timeout - timein).total_seconds() / 3600- 2 
+    else:
+        work_hours =(timeout - timein).total_seconds() / 3600
+    existing_timesheet.WorkHour = round(work_hours, 2)
     existing_timesheet.save()
-
     serializer = TimeSheetSerializer(existing_timesheet)
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
 
@@ -452,3 +466,4 @@ def list_registered_without_attendance(request):
         "data": serialized_data,
         "status": status.HTTP_200_OK
     }, status=status.HTTP_200_OK)
+
