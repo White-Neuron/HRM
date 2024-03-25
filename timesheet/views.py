@@ -323,8 +323,7 @@ def check_out(request):
     existing_timesheet.WorkHour = round(work_hours, 2)
     existing_timesheet.save() 
     print(timein, timeout)
-    serializer = TimeSheetSerializer(existing_timesheet)
-    serializer['WorkHour']= round(work_hours, 2)
+    serializer = TimeSheetSerializer(existing_timesheet,context={"work_hours": round(work_hours, 2)})
     print(serializer.data)
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
 
