@@ -271,64 +271,67 @@ def check_in(request):
     return Response({"message": "Checked in successfully", "data": serializer.data, "status": status.HTTP_200_OK})
 
 
+from datetime import time, timedelta
+from django.utils import timezone
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework import permissions
+from rest_framework.response import Response
+from .models import get_existing_timesheet
+from .serializers import TimeSheetSerializer
+
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_out(request):
     client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
-    hash_ip=hash_string(client_ip)
+    hash_ip = hash_string(client_ip)
+    
     with open("hash_key.txt", "r") as file:
         hashed_value_old = file.read()
-    if hash_ip == hashed_value_old:
-        print("Hashes match: The values are identical.")
-    else:
-        print("Hashes do not match: The values are different.")
-        return Response({"error": "Không ở công ty mà đòi check out",
-                         "status": status.HTTP_404_NOT_FOUND},
-                        status=status.HTTP_404_NOT_FOUND)
+    
+    if hash_ip != hashed_value_old:
+        return Response({"error": "Không ở công ty mà đòi check out", "status": status.HTTP_404_NOT_FOUND}, status=status.HTTP_404_NOT_FOUND)
+    
     emp_id = request.user.EmpID
     current_date = timezone.now().date()
-
     existing_timesheet = get_existing_timesheet(emp_id, current_date)
-    timein = existing_timesheet.TimeIn 
-    if timein.hour < 8 or (timein.hour == 8 and timein.minute < 15):
-            timein = timein.replace(hour=8, minute=0, second=0)
-    if timein.hour >= 12 and (timein.hour < 14):
-            timein = timein.replace(hour=14, minute=0, second=0)
+    
     if not existing_timesheet or not existing_timesheet.TimeIn:
         return Response({"message": "Cannot check out. Not checked in today.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    timein=timein
-    checkout_time = timezone.localtime(timezone.now())
-    if checkout_time < existing_timesheet.TimeIn:
-        return Response({"message": "Can not check out before check in time", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    # Tú Anh xóa điều kiện checkin
-    # if checkout_time.hour > 17 or (checkout_time.hour == 17 and checkout_time.minute > 29):
-    #     checkout_time = checkout_time.replace(hour=17, minute=30, second=0)
-    # if checkout_time.hour >= 12 and (checkout_time.hour < 14 ):
-    #     checkout_time = checkout_time.replace(hour=12, minute=00, second=0)
-
-    # checkout_time_data=  timezone.now() + timedelta(hours=7)  
-    existing_timesheet.TimeOut = checkout_time
-    # existing_timesheet.data_dict.setdefault("checkout", []).append(checkout_time_data.strftime("%Y-%m-%d %H:%M:%S"))
     
+    timein = existing_timesheet.TimeIn
+    if timein.hour < 8 or (timein.hour == 8 and timein.minute < 15):
+        timein = timein.replace(hour=8, minute=0, second=0)
+    
+    if timein.hour >= 12 and timein.hour < 14:
+        timein = timein.replace(hour=14, minute=0, second=0)
+    
+    checkout_time = timezone.localtime(timezone.now())
+    
+    if checkout_time < existing_timesheet.TimeIn:
+        return Response({"message": "Cannot check out before check in time", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
+    
+    existing_timesheet.TimeOut = checkout_time
     existing_timesheet.save()
-    timeout=checkout_time +timedelta(hours=7)
+    
+    timeout = checkout_time + timedelta(hours=7)
+    
     if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
         timeout = timeout.replace(hour=17, minute=30, second=0)
-    if timeout.hour >= 12 and (timeout.hour < 14 ):
-        timeout = timeout.replace(hour=12, minute=00, second=0)
-    if timein.time() < time(12, 0) and timeout.time() > time(14,0):
-        work_hours =(timeout - timein).total_seconds() / 3600- 2 
-        print("a")
+    
+    if timeout.hour >= 12 and timeout.hour < 14:
+        timeout = timeout.replace(hour=12, minute=0, second=0)
+    
+    if timein.time() < time(12, 0) and timeout.time() > time(14, 0):
+        work_hours = (timeout - timein).total_seconds() / 3600 - 2
     else:
-        work_hours =(timeout - timein).total_seconds() / 3600 
-        print("b")
-    existing_timesheet.save() 
-    print(timein, timeout)
-    print(work_hours)
+        work_hours = (timeout - timein).total_seconds() / 3600
+    
+    existing_timesheet.save()
+    
     serializer = TimeSheetSerializer(existing_timesheet)
-    print(serializer.data)
     
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
+
 
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
