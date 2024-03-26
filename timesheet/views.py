@@ -307,7 +307,7 @@ def check_out(request):
     existing_timesheet.TimeOut = checkout_time
     existing_timesheet.save()
     
-    timeout = checkout_time + timedelta(hours=7)
+    timeout = checkout_time 
     
     if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
         timeout = timeout.replace(hour=17, minute=30, second=0)
