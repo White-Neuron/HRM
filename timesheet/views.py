@@ -269,8 +269,6 @@ def check_in(request):
     timesheet = TimeSheet.objects.create(EmpID=emp_id, TimeIn=current_time)
     serializer = TimeSheetSerializer(timesheet)
     return Response({"message": "Checked in successfully", "data": serializer.data, "status": status.HTTP_200_OK})
-
-from datetime import datetime, time
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_out(request):
@@ -318,10 +316,13 @@ def check_out(request):
         if timeout.hour >= 12 and timeout.hour < 14:
             timeout = timeout.replace(hour=12, minute=0, second=0)
         
-    if timein.time() < time(timein.hour, 0) and timeout.time() > time(14, 0):  # Extract the hour component from timein
-        work_hours = (timeout - timein).total_seconds() / 3600 - 2
+    # Convert timein to datetime.datetime for proper subtraction
+    timein_datetime = datetime.combine(datetime.now(), timein)
+    
+    if timein_datetime.time() < time(timein.hour, 0) and timeout.time() > time(14, 0):  # Extract the hour component from timein
+        work_hours = (datetime.combine(datetime.now(), timeout) - timein_datetime).total_seconds() / 3600 - 2
     else:
-        work_hours = (timeout - timein).total_seconds() / 3600
+        work_hours = (datetime.combine(datetime.now(), timeout) - timein_datetime).total_seconds() / 3600
     
     existing_timesheet.WorkHour = round(work_hours + 7, 2)
     
