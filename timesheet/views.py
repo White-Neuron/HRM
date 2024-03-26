@@ -316,20 +316,16 @@ def check_out(request):
     endtime = check.WorkShift.EndTime
     
     existing_timesheet.TimeOut = checkout_time
-    if endtime <checkout_time.time():
-        if endtime.hour<=12:
-            timeout = datetime.now().replace(hour=12, minute=0, second=0)
-        else:
-            timeout = checkout_time 
-    else:
-        timeout = checkout_time 
-        
-        if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
-            timeout = timeout.replace(hour=17, minute=30, second=0)
-        
-        if timeout.hour >= 12 and timeout.hour < 14:
-            timeout = timeout.replace(hour=12, minute=0, second=0)
-        
+    
+    timeout = checkout_time 
+    
+    if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
+        timeout = timeout.replace(hour=17, minute=30, second=0)
+    
+    if timeout.hour >= 12 and timeout.hour < 14:
+        timeout = timeout.replace(hour=12, minute=0, second=0)
+    if endtime.hour<=timeout.hour:
+        timeout = timeout.replace(hour=12, minute=0, second=0)
     if timein.time() < time(12, 0) and timeout.time() > time(14, 0):
         work_hours = (timeout - timein).total_seconds() / 3600 - 2
     else:
