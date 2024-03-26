@@ -302,17 +302,19 @@ def check_out(request):
     
     if checkout_time < existing_timesheet.TimeIn:
         return Response({"message": "Cannot check out before check in time", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    
+    check = Schedule.objects.get(EmpID=emp_id, Date=current_date)
+    endtime = check.WorkShift.EndTime
     existing_timesheet.TimeOut = checkout_time
-    
-    timeout = checkout_time 
-    
-    if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
-        timeout = timeout.replace(hour=17, minute=30, second=0)
-    
-    if timeout.hour >= 12 and timeout.hour < 14:
-        timeout = timeout.replace(hour=12, minute=0, second=0)
-    
+    if endtime<checkout_time:
+        timeout=endtime
+    else:
+        timeout = checkout_time 
+        if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
+            timeout = timeout.replace(hour=17, minute=30, second=0)
+        
+        if timeout.hour >= 12 and timeout.hour < 14:
+            timeout = timeout.replace(hour=12, minute=0, second=0)
+        
     if timein.time() < time(12, 0) and timeout.time() > time(14, 0):
         work_hours = (timeout - timein).total_seconds() / 3600 - 2
     else:
