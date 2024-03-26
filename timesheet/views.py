@@ -296,7 +296,7 @@ def check_out(request):
             timein = timein.replace(hour=14, minute=0, second=0)
     if not existing_timesheet or not existing_timesheet.TimeIn:
         return Response({"message": "Cannot check out. Not checked in today.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    timein=timein- timedelta(hours=7)
+    timein=timein
     checkout_time = timezone.localtime(timezone.now())
     if checkout_time < existing_timesheet.TimeIn:
         return Response({"message": "Can not check out before check in time", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
@@ -311,16 +311,16 @@ def check_out(request):
     # existing_timesheet.data_dict.setdefault("checkout", []).append(checkout_time_data.strftime("%Y-%m-%d %H:%M:%S"))
     
     existing_timesheet.save()
-    timeout=checkout_time
+    timeout=checkout_time +timedelta(hours=7)
     if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
         timeout = timeout.replace(hour=17, minute=30, second=0)
     if timeout.hour >= 12 and (timeout.hour < 14 ):
         timeout = timeout.replace(hour=12, minute=00, second=0)
     if timein.time() < time(12, 0) and timeout.time() > time(14,0):
-        work_hours =(timeout - timein).total_seconds() / 3600- 2 +7
+        work_hours =(timeout - timein).total_seconds() / 3600- 2 
         print("a")
     else:
-        work_hours =(timeout - timein).total_seconds() / 3600 +7
+        work_hours =(timeout - timein).total_seconds() / 3600 
         print("b")
     existing_timesheet.save() 
     print(timein, timeout)
