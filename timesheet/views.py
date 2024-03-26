@@ -318,7 +318,7 @@ def check_out(request):
     existing_timesheet.TimeOut = checkout_time
     if endtime <checkout_time.time():
         if endtime.hour<=12:
-            timeout = timeout.replace(hour=12, minute=0, second=0)
+            timeout = datetime.now().replace(hour=12, minute=0, second=0)
         else:
             timeout = checkout_time 
     else:
