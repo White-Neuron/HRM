@@ -272,6 +272,7 @@ def check_in(request):
 from datetime import datetime, time
 from datetime import datetime, time
 
+
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_out(request):
@@ -302,38 +303,49 @@ def check_out(request):
     
     if checkout_time < existing_timesheet.TimeIn:
         return Response({"message": "Cannot check out before check in time", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    
-    check = Schedule.objects.get(EmpID=emp_id, Date=current_date)
+    emp_id = request.user.EmpID
+    current_date = timezone.localtime(timezone.now()).date()  
+    try:
+        check = Schedule.objects.get(EmpID=emp_id, Date=current_date)
+    except Schedule.DoesNotExist:
+        return Response({"error": "You are not subscribed to your calendar today",
+                         "status": status.HTTP_404_NOT_FOUND},
+                        status=status.HTTP_404_NOT_FOUND)
+
+    starttime = check.WorkShift.StartTime
     endtime = check.WorkShift.EndTime
     
     existing_timesheet.TimeOut = checkout_time
-    
-    if endtime < checkout_time.time():  # Compare only the time part
-        timeout = endtime
+    if endtime <checkout_time.time():
+        if endtime.hour<=12:
+            timeout = timeout.replace(hour=12, minute=0, second=0)
+        else:
+            timeout = checkout_time 
     else:
         timeout = checkout_time 
-    
+        
         if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
             timeout = timeout.replace(hour=17, minute=30, second=0)
         
         if timeout.hour >= 12 and timeout.hour < 14:
             timeout = timeout.replace(hour=12, minute=0, second=0)
         
-    if timein.time() < time(12, 0) and timeout.time() > time(14, 0):  # Compare time components directly
-        work_hours = (timeout.hour - timein.hour) + (timeout.minute - timein.minute) / 60 - 2
+    if timein.time() < time(12, 0) and timeout.time() > time(14, 0):
+        work_hours = (timeout - timein).total_seconds() / 3600 - 2
     else:
-        work_hours = (timeout.hour - timein.hour) + (timeout.minute - timein.minute) / 60
+        work_hours = (timeout - timein).total_seconds() / 3600
     
-    existing_timesheet.WorkHour = round(work_hours + 7, 2)
+    existing_timesheet.WorkHour = round(work_hours + 7,2)  # 
     
     try:
-        existing_timesheet.save()
+        existing_timesheet.save()  # Attempt to save the changes
     except Exception as e:
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)  # Return any error that occurs
     
     serializer = TimeSheetSerializer(existing_timesheet)
     
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
+
 
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
