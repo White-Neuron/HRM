@@ -319,7 +319,7 @@ def check_out(request):
         work_hours = (timeout - timein).total_seconds() / 3600 - 2
     else:
         work_hours = (timeout - timein).total_seconds() / 3600
-    
+    existing_timesheet.WorkHour=work_hours+7
     existing_timesheet.save()
     
     serializer = TimeSheetSerializer(existing_timesheet)
