@@ -271,13 +271,7 @@ def check_in(request):
     return Response({"message": "Checked in successfully", "data": serializer.data, "status": status.HTTP_200_OK})
 
 
-from datetime import time, timedelta
-from django.utils import timezone
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework import permissions
-from rest_framework.response import Response
-from .models import get_existing_timesheet
-from .serializers import TimeSheetSerializer
+
 
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
