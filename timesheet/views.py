@@ -272,7 +272,6 @@ def check_in(request):
 
 
 
-
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_out(request):
@@ -305,7 +304,6 @@ def check_out(request):
         return Response({"message": "Cannot check out before check in time", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
     
     existing_timesheet.TimeOut = checkout_time
-    existing_timesheet.save()
     
     timeout = checkout_time 
     
@@ -319,13 +317,17 @@ def check_out(request):
         work_hours = (timeout - timein).total_seconds() / 3600 - 2
     else:
         work_hours = (timeout - timein).total_seconds() / 3600
-    existing_timesheet.WorkHour=work_hours+7
-    existing_timesheet.save()
+    
+    existing_timesheet.WorkHour = work_hours + 7  # Adding 7 hours to work_hours
+    
+    try:
+        existing_timesheet.save()  # Attempt to save the changes
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)  # Return any error that occurs
     
     serializer = TimeSheetSerializer(existing_timesheet)
     
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
-
 
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
