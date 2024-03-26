@@ -305,7 +305,7 @@ def check_out(request):
     check = Schedule.objects.get(EmpID=emp_id, Date=current_date)
     endtime = check.WorkShift.EndTime
     existing_timesheet.TimeOut = checkout_time
-    if endtime<checkout_time:
+    if endtime<checkout_time.time():
         timeout=endtime
     else:
         timeout = checkout_time 
