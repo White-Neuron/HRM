@@ -293,7 +293,7 @@ def check_out(request):
         return Response({"message": "Cannot check out. Not checked in today.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
     
     timein = existing_timesheet.TimeIn
-    
+    print(timein,"aaaaaa")
     if timein.hour < 8 or (timein.hour == 8 and timein.minute < 15):
         timein = timein.replace(hour=8, minute=0, second=0)
     
