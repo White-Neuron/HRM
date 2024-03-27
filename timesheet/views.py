@@ -293,9 +293,7 @@ def check_out(request):
         return Response({"message": "Cannot check out. Not checked in today.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
     
     timein = existing_timesheet.TimeIn
-    if timein.hour <starttime.hour:
-        if starttime.hour==2:
-            timein = timein.replace(hour=14, minute=0, second=0)
+    
     if timein.hour < 8 or (timein.hour == 8 and timein.minute < 15):
         timein = timein.replace(hour=8, minute=0, second=0)
     
@@ -317,7 +315,9 @@ def check_out(request):
 
     starttime = check.WorkShift.StartTime
     endtime = check.WorkShift.EndTime
-    
+    if timein.hour <starttime.hour:
+        if starttime.hour==2:
+            timein = timein.replace(hour=14, minute=0, second=0)
     existing_timesheet.TimeOut = checkout_time
     timeout = checkout_time 
     
