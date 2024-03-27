@@ -247,7 +247,7 @@ def check_in(request):
 
             current_time = timenow
             # Tú Anh xóa điều kiện checkin
-            # if current_time.hour < 8 or (current_time.hour == 8 and current_time.minute < 15):
+            # if current_time.hour < 1 or (current_time.hour == 1 and current_time.minute < 15):
             #     current_time = current_time.replace(hour=8, minute=0, second=0)
             # if current_time.hour >= 12 and (current_time.hour < 14):
             #     current_time = current_time.replace(hour=14, minute=0, second=0)
