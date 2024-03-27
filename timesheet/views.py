@@ -297,7 +297,7 @@ def check_out(request):
     if timein.hour < 1 or (timein.hour == 1 and timein.minute < 15):
         timein = timein.replace(hour=8, minute=0, second=0)
     
-    if timein.hour >= 12 and timein.hour < 14:
+    if timein.hour >= 5 and timein.hour < 7:
         timein = timein.replace(hour=14, minute=0, second=0)
     
     checkout_time = timezone.localtime(timezone.now())
@@ -336,7 +336,7 @@ def check_out(request):
     else:
         work_hours = (timeout - timein).total_seconds() / 3600
     
-    existing_timesheet.WorkHour = round(work_hours + 7,2)  
+    existing_timesheet.WorkHour = round(work_hours ,2)  
     
     try:
         existing_timesheet.save() 
