@@ -342,7 +342,7 @@ def check_out(request):
         existing_timesheet.save() 
     except Exception as e:
         return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)  
-    print(timein,"timein,timeout,"timeout", work_hours,"workhour")
+    print(timein,"timein",timeout,"timeout", work_hours,"workhour")
     serializer = TimeSheetSerializer(existing_timesheet)
     
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
