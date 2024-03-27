@@ -325,7 +325,10 @@ def check_out(request):
     if timeout.hour >= 12 and timeout.hour < 14:
         timeout = timeout.replace(hour=12, minute=0, second=0)
     if endtime.hour<=timeout.hour:
-        timeout = timeout.replace(hour=12, minute=0, second=0)
+        if endtime.hour<=12:
+            timeout = timeout.replace(hour=12, minute=0, second=0)
+        if endtime.hour==17:
+            timeout = timeout.replace(hour=17, minute=30, second=0)
     if timein.time() < time(12, 0) and timeout.time() > time(14, 0):
         work_hours = (timeout - timein).total_seconds() / 3600 - 2
     else:
