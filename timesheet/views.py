@@ -229,7 +229,7 @@ def check_in(request):
     
     existing_timesheet = get_existing_timesheet(emp_id, current_date)
     existing_timesheet_first = get_existing_timesheet_first(emp_id, current_date)
-
+    
     if not existing_timesheet_first:
         if time1 > starttime.hour + 1 or (time1 == starttime.hour + 1 and timenow.minute >= starttime.minute):
             if time1>12 and starttime.hour<12:
@@ -293,6 +293,9 @@ def check_out(request):
         return Response({"message": "Cannot check out. Not checked in today.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
     
     timein = existing_timesheet.TimeIn
+    if timein.hour <starttime.hour:
+        if starttime.hour==2:
+            timein = timein.replace(hour=14, minute=0, second=0)
     if timein.hour < 8 or (timein.hour == 8 and timein.minute < 15):
         timein = timein.replace(hour=8, minute=0, second=0)
     
@@ -316,7 +319,6 @@ def check_out(request):
     endtime = check.WorkShift.EndTime
     
     existing_timesheet.TimeOut = checkout_time
-    
     timeout = checkout_time 
     
     if timeout.hour > 17 or (timeout.hour == 17 and timeout.minute > 29):
@@ -334,13 +336,13 @@ def check_out(request):
     else:
         work_hours = (timeout - timein).total_seconds() / 3600
     
-    existing_timesheet.WorkHour = round(work_hours + 7,2)  # 
+    existing_timesheet.WorkHour = round(work_hours + 7,2)  
     
     try:
-        existing_timesheet.save()  # Attempt to save the changes
+        existing_timesheet.save() 
     except Exception as e:
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)  # Return any error that occurs
-    
+        return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)  
+    print(timein,"timein,timeout,"timeout", work_hours,"workhour")
     serializer = TimeSheetSerializer(existing_timesheet)
     
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
