@@ -341,8 +341,6 @@ def check_out(request):
         existing_timesheet.WorkHour = round(work_hours, 2) +7
     else:
         existing_timesheet.WorkHour = round(work_hours, 2) 
-    existing_timesheet.WorkHour = round(work_hours, 2) 
-    
     try:
         existing_timesheet.save() 
     except Exception as e:
