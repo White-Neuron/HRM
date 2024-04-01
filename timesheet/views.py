@@ -335,7 +335,12 @@ def check_out(request):
         work_hours = (timeout - timein).total_seconds() / 3600 - 2
     else:
         work_hours = (timeout - timein).total_seconds() / 3600
-    
+    if timein.hour==8 and timein.minute==0 and timein.second==0:
+        existing_timesheet.WorkHour = round(work_hours, 2) +7
+    elif timein.hour==14 and timein.minute==0 and timein.second==0:
+        existing_timesheet.WorkHour = round(work_hours, 2) +7
+    else:
+        existing_timesheet.WorkHour = round(work_hours, 2) 
     existing_timesheet.WorkHour = round(work_hours, 2) 
     
     try:
