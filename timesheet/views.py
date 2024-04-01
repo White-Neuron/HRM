@@ -336,7 +336,7 @@ def check_out(request):
     else:
         work_hours = (timeout - timein).total_seconds() / 3600
     
-    existing_timesheet.WorkHour = round(work_hours + timedelta(hours=7), 2)
+    existing_timesheet.WorkHour = round(work_hours + 2) +7
     
     try:
         existing_timesheet.save() 
