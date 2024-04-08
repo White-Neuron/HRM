@@ -37,7 +37,7 @@ class TimeSheet(models.Model):
     #         timeout = self.getTimeOut()
     #         print(timein,timeout)
     #         if timein.time() < time(12, 0) and timeout.time() > time(14,0):
-    #             work_hours =(timeout - timein).total_seconds() / 3600- 1.5  
+    #             work_hours =(timeout - timein).total_seconds() / 3600- 2 
     #         else:
     #             work_hours =(timeout - timein).total_seconds() / 3600
            
