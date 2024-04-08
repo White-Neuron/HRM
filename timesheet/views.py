@@ -473,4 +473,44 @@ def list_registered_without_attendance(request):
         "data": serialized_data,
         "status": status.HTTP_200_OK
     }, status=status.HTTP_200_OK)
+    
+
+from collections import defaultdict
+from django.db.models import Min, Max
+
+@api_view(["GET"])
+@permission_classes([IsAdminOrReadOnly])
+def timesheet_info(request):
+    from_date = request.GET.get('from')
+    to_date = request.GET.get('to')
+    emp_name = request.GET.get('EmpName')
+
+    if from_date and to_date:
+        from_date = datetime.strptime(from_date, '%Y-%m-%d')
+        to_date = datetime.strptime(to_date, '%Y-%m-%d')
+        if emp_name:
+            timesheets = TimeSheet.objects.filter(EmpID__EmpName=emp_name, TimeIn__date__range=[from_date, to_date])
+        else:
+            timesheets = TimeSheet.objects.filter(TimeIn__date__range=[from_date, to_date])
+    else:
+        if emp_name:
+            timesheets = TimeSheet.objects.filter(EmpID__EmpName=emp_name)
+        else:
+            timesheets = TimeSheet.objects.all()
+
+    timesheet_data = defaultdict(list)
+    for item in timesheets.values('EmpID__EmpName', 'TimeIn__date').annotate(
+        first_checkin=Min('TimeIn'), last_checkout=Max('TimeOut')
+    ).order_by('TimeIn__date'):
+        timesheet_data[item['EmpID__EmpName']].append({
+            'date': item['TimeIn__date'],
+            'first_checkin': (item['first_checkin'] + timedelta(hours=7)).strftime('%H:%M:%S'),
+            'last_checkout': (item['last_checkout'] + timedelta(hours=7)).strftime('%H:%M:%S')
+        })
+
+    return Response({
+        'status': status.HTTP_200_OK,
+        'message': 'Data retrieved successfully',
+        'data': [{'employee': key, 'timesheet value': value} for key, value in timesheet_data.items()]
+    })
 

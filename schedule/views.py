@@ -171,4 +171,39 @@ class ScheduleListShiftAPIView(generics.ListAPIView):
         if workshift=="all":
             return Schedule.objects.filter(Date=day)
         return Schedule.objects.filter(WorkShift__WorkShiftName=workshift,Date=day)
-    
+
+from collections import defaultdict
+from rest_framework.decorators import api_view, permission_classes
+
+@api_view(["GET"])
+@permission_classes([IsAdminOrReadOnly])
+def schedule_info(request):
+    from_date = request.GET.get('from')
+    to_date = request.GET.get('to')
+    emp_name = request.GET.get('EmpName')
+
+    if from_date and to_date:
+        from_date = datetime.strptime(from_date, '%Y-%m-%d')
+        to_date = datetime.strptime(to_date, '%Y-%m-%d')
+        if emp_name:
+            schedules = Schedule.objects.filter(EmpID__EmpName=emp_name, Date__date__range=[from_date, to_date])
+        else:
+            schedules = Schedule.objects.filter(Date__date__range=[from_date, to_date])
+    else:
+        if emp_name:
+            schedules = Schedule.objects.filter(EmpID__EmpName=emp_name)
+        else:
+            schedules = Schedule.objects.all()
+
+    schedule_data = defaultdict(list)
+    for schedule in schedules:
+        schedule_data[schedule.EmpID.EmpName].append({
+            'date': schedule.Date,
+            'ca': schedule.WorkShift.WorkShiftName
+        })
+
+    return Response({
+        'status': status.HTTP_200_OK,
+        'message': 'Data retrieved successfully',
+        'data': [{'employee': key, 'datet value': value} for key, value in schedule_data.items()]
+    })
