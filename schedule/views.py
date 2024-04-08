@@ -172,8 +172,48 @@ class ScheduleListShiftAPIView(generics.ListAPIView):
             return Schedule.objects.filter(Date=day)
         return Schedule.objects.filter(WorkShift__WorkShiftName=workshift,Date=day)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 from collections import defaultdict
 from rest_framework.decorators import api_view, permission_classes
+
 
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
