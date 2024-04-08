@@ -496,49 +496,6 @@ def list_registered_without_attendance(request):
     }, status=status.HTTP_200_OK)
     
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 from collections import defaultdict
 from django.db.models import Min, Max
 
