@@ -186,23 +186,20 @@ def schedule_info(request):
     to_date = request.GET.get('to')
     emp_name = request.GET.get('EmpName')
 
-    if from_date and to_date:
-        from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
-        to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
-        if emp_name:
-            schedules = Schedule.objects.filter(EmpID__EmpName=emp_name, Date__range=[from_date, to_date])
-        else:
-            schedules = Schedule.objects.filter(Date__range=[from_date, to_date])
-    else:
-        if emp_name:
-            schedules = Schedule.objects.filter(EmpID__EmpName=emp_name)
-        else:
-            schedules = Schedule.objects.all()
     now = datetime.now()
     if not from_date and not to_date:
         _, last_day = calendar.monthrange(now.year, now.month)
-        from_date = datetime(now.year, now.month, 1)
-        to_date = datetime(now.year, now.month, last_day)
+        from_date = datetime(now.year, now.month, 1).date()
+        to_date = datetime(now.year, now.month, last_day).date()
+    else:
+        from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
+        to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
+
+    if emp_name:
+        schedules = Schedule.objects.filter(EmpID__EmpName=emp_name, Date__range=[from_date, to_date])
+    else:
+        schedules = Schedule.objects.filter(Date__range=[from_date, to_date])
+
     schedule_data = defaultdict(list)
     for schedule in schedules:
         schedule_data[schedule.EmpID.EmpName].append({
