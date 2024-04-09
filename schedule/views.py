@@ -180,7 +180,7 @@ from django.http import FileResponse
 from calendar import monthrange
 import calendar
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsAuthenticated])
 def schedule_info(request):
     from_date = request.GET.get('from')
     to_date = request.GET.get('to')
