@@ -396,18 +396,19 @@ def leave_infor(request):
     to_date = request.GET.get('to')
     emp_name = request.GET.get('EmpName')
 
-    if from_date and to_date:
+    now = datetime.now()
+    if not from_date and not to_date:
+        _, last_day = calendar.monthrange(now.year, now.month)
+        from_date = datetime(now.year, now.month, 1).date()
+        to_date = datetime(now.year, now.month, last_day).date()
+    else:
         from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
         to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
-        if emp_name:
-            leaves = LeaveRequest.objects.filter(EmpID__EmpName=emp_name, LeaveStartDate__range=[from_date, to_date])
-        else:
-            leaves = LeaveRequest.objects.filter(LeaveStartDate__range=[from_date, to_date])
+
+    if emp_name:
+        leaves = LeaveRequest.objects.filter(EmpID__EmpName=emp_name, LeaveStartDate__range=[from_date, to_date])
     else:
-        if emp_name:
-            leaves = LeaveRequest.objects.filter(EmpID__EmpName=emp_name)
-        else:
-            leaves = LeaveRequest.objects.all()
+        leaves = LeaveRequest.objects.filter(LeaveStartDate__range=[from_date, to_date])
 
     leave_data = []
     for leave in leaves:
@@ -415,9 +416,8 @@ def leave_infor(request):
             'Employee': leave.EmpID.EmpName,
             'LeaveStartDate': leave.LeaveStartDate,
             'LeaveEndDate': leave.LeaveEndDate,
-            'LeaveStatus': leave.LeaveStatus,
+            'Status': leave.LeaveStatus,
             'Duration': leave.Duration,
-            "Status":leave.LeaveStatus
         })
 
     # Create a DataFrame from the leave data
