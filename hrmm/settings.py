@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
     # ".vercel.app",
     'localhost',
     'api-hrm.whiteneurons.com',
+    '192.168.50.197',
 ]
 
 

@@ -12,5 +12,5 @@ urlpatterns = [
          name='configschedule-using-true'),
     path('schedule-list/',views.ScheduleListShiftAPIView.as_view(),name="Schedule-list"),
     *router.urls,
-    path("schedule_infor",views.schedule_info,name="schedule_infor"),
+    path("schedule/schedule-infor",views.schedule_info,name="schedule_infor"),
 ]

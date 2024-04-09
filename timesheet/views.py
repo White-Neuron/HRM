@@ -565,18 +565,12 @@ def timesheet_info(request):
         employee_data = pd.DataFrame(columns=date_columns)
         for date in date_range:
             date_str = date.strftime('%Y-%m-%d')
-            records = [f"{value['checkin']} - {value['checkout']}" for value in values if value['date'].strftime('%Y-%m-%d') == date_str]
+            records = "; ".join([f"{value['checkin']} - {value['checkout']}" for value in values if value['date'].strftime('%Y-%m-%d') == date_str])
             if records:
                 max_rows = max(max_rows, len(records))
-                for i in range(len(records)):
-                    employee_data.at[i, date_str] = records[i]
-        employee_data.insert(0, 'Employee', [key] + [''] * (len(employee_data) - 1))
+                employee_data.at[0, date_str] = records
+        employee_data.insert(0, 'Employee', key)
         frames.append(employee_data)
-
-    # Ensure all frames have the same number of rows
-    for frame in frames:
-        while len(frame) < max_rows:
-            frame = frame.append(pd.Series(), ignore_index=True)
 
     df = pd.concat(frames, ignore_index=True)
 

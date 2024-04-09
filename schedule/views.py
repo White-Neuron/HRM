@@ -179,7 +179,6 @@ import pandas as pd
 from django.http import FileResponse
 from calendar import monthrange
 import calendar
-
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
 def schedule_info(request):
@@ -188,12 +187,12 @@ def schedule_info(request):
     emp_name = request.GET.get('EmpName')
 
     if from_date and to_date:
-        from_date = datetime.strptime(from_date, '%Y-%m-%d')
-        to_date = datetime.strptime(to_date, '%Y-%m-%d')
+        from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
+        to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
         if emp_name:
-            schedules = Schedule.objects.filter(EmpID__EmpName=emp_name, Date__date__range=[from_date, to_date])
+            schedules = Schedule.objects.filter(EmpID__EmpName=emp_name, Date__range=[from_date, to_date])
         else:
-            schedules = Schedule.objects.filter(Date__date__range=[from_date, to_date])
+            schedules = Schedule.objects.filter(Date__range=[from_date, to_date])
     else:
         if emp_name:
             schedules = Schedule.objects.filter(EmpID__EmpName=emp_name)
@@ -211,12 +210,6 @@ def schedule_info(request):
             'ca': schedule.WorkShift.WorkShiftName
         })
 
-    # return Response({
-    #     'status': status.HTTP_200_OK,
-    #     'message': 'Data retrieved successfully',
-    #     'data': [{'employee': key, 'date value': value} for key, value in schedule_data.items()]
-    # })
-    
     date_range = pd.date_range(start=from_date, end=to_date)
     columns = ['Employee'] + [date.strftime('%Y-%m-%d') for date in date_range]
     df = pd.DataFrame(columns=columns)
