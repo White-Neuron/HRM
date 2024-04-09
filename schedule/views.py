@@ -208,22 +208,24 @@ def schedule_info(request):
         })
 
     date_range = pd.date_range(start=from_date, end=to_date)
-    columns = ['Employee'] + [date.strftime('%Y-%m-%d') for date in date_range]
-    df = pd.DataFrame(columns=columns)
-
+    date_columns = [date.strftime('%Y-%m-%d') for date in date_range]
+    frames = []
     for key, values in schedule_data.items():
-        employee_data = {'Employee': key}
-        for value in values:
-            date = value['date'].strftime('%Y-%m-%d')
-            if date in df.columns:
-                employee_data[date] = value['ca']
-        df = df.append(employee_data, ignore_index=True)
+        employee_data = pd.DataFrame(columns=date_columns)
+        for date in date_range:
+            date_str = date.strftime('%Y-%m-%d')
+            records = "; ".join([f"{value['ca']}" for value in values if value['date'].strftime('%Y-%m-%d') == date_str])
+            if records:
+                employee_data.at[0, date_str] = records
+        employee_data.insert(0, 'Employee', key)
+        frames.append(employee_data)
 
-    df = df.fillna('')
+    df = pd.concat(frames, ignore_index=True)
 
     excel_file = 'schedule_info.xlsx'
     df.to_excel(excel_file, index=False)
 
+    # Create a FileResponse
     response = FileResponse(open(excel_file, 'rb'), content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename=%s' % excel_file
     return response
