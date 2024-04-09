@@ -383,3 +383,5 @@ def create_leave(request):
     }
     return Response(data, status=status.HTTP_201_CREATED)
 
+# def leave_infor(request):
+    

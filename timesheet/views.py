@@ -498,6 +498,9 @@ def list_registered_without_attendance(request):
 
 from collections import defaultdict
 from django.db.models import Min, Max
+import pandas as pd
+import calendar
+from django.http import FileResponse
 
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
@@ -518,20 +521,70 @@ def timesheet_info(request):
             timesheets = TimeSheet.objects.filter(EmpID__EmpName=emp_name)
         else:
             timesheets = TimeSheet.objects.all()
-
+    now = datetime.now()
+    if not from_date and not to_date:
+        _, last_day = calendar.monthrange(now.year, now.month)
+        from_date = datetime(now.year, now.month, 1)
+        to_date = datetime(now.year, now.month, last_day)
     timesheet_data = defaultdict(list)
-    for item in timesheets.values('EmpID__EmpName', 'TimeIn__date').annotate(
-        first_checkin=Min('TimeIn'), last_checkout=Max('TimeOut')
-    ).order_by('TimeIn__date'):
+    for item in timesheets.values('EmpID__EmpName', 'TimeIn', 'TimeOut').order_by('TimeIn'):
         timesheet_data[item['EmpID__EmpName']].append({
-            'date': item['TimeIn__date'],
-            'first_checkin': (item['first_checkin'] + timedelta(hours=7)).strftime('%H:%M:%S'),
-            'last_checkout': (item['last_checkout'] + timedelta(hours=7)).strftime('%H:%M:%S')
+            'date': item['TimeIn'].date(),
+            'checkin': (item['TimeIn'] + timedelta(hours=7)).strftime('%H:%M:%S'),
+            'checkout': (item['TimeOut'] + timedelta(hours=7)).strftime('%H:%M:%S')
         })
+    
+    # Create a DataFrame with columns for each day in the date range
+    # date_range = pd.date_range(start=from_date, end=to_date)
+    # columns = ['Employee'] + [date.strftime('%Y-%m-%d') for date in date_range]
+    # df = pd.DataFrame(columns=columns)
 
-    return Response({
-        'status': status.HTTP_200_OK,
-        'message': 'Data retrieved successfully',
-        'data': [{'employee': key, 'timesheet value': value} for key, value in timesheet_data.items()]
-    })
+    # # Fill in the DataFrame with the timesheet data
+    # for key, values in timesheet_data.items():
+    #     employee_data = {'employee': key}
+    #     for value in values:
+    #         date = value['date'].strftime('%Y-%m-%d')
+    #         if date in df.columns:
+    #             employee_data[date] = f"{value['first_checkin']} - {value['last_checkout']}"
+    #     df = df.append(employee_data, ignore_index=True)
 
+    # # Write the DataFrame to an Excel file
+    # excel_file = 'timesheet_info.xlsx'
+    # df.to_excel(excel_file, index=False)
+
+    # # Create a FileResponse
+    # response = FileResponse(open(excel_file, 'rb'), content_type='application/vnd.ms-excel')
+    # response['Content-Disposition'] = 'attachment; filename=%s' % excel_file
+    # return response
+    
+    date_range = pd.date_range(start=from_date, end=to_date)
+    date_columns = [date.strftime('%Y-%m-%d') for date in date_range]
+    frames = []
+    max_rows = 0
+    for key, values in timesheet_data.items():
+        employee_data = pd.DataFrame(columns=date_columns)
+        for date in date_range:
+            date_str = date.strftime('%Y-%m-%d')
+            records = [f"{value['checkin']} - {value['checkout']}" for value in values if value['date'].strftime('%Y-%m-%d') == date_str]
+            if records:
+                max_rows = max(max_rows, len(records))
+                for i in range(len(records)):
+                    employee_data.at[i, date_str] = records[i]
+        employee_data.insert(0, 'Employee', [key] + [''] * (len(employee_data) - 1))
+        frames.append(employee_data)
+
+    # Ensure all frames have the same number of rows
+    for frame in frames:
+        while len(frame) < max_rows:
+            frame = frame.append(pd.Series(), ignore_index=True)
+
+    df = pd.concat(frames, ignore_index=True)
+
+    # Write the DataFrame to an Excel file
+    excel_file = 'timesheet_info.xlsx'
+    df.to_excel(excel_file, index=False)
+
+    # Create a FileResponse
+    response = FileResponse(open(excel_file, 'rb'), content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=%s' % excel_file
+    return response
