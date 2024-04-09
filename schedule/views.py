@@ -219,6 +219,8 @@ def schedule_info(request):
                 employee_data[date] = value['ca']
         df = df.append(employee_data, ignore_index=True)
 
+    df = df.fillna('')
+
     excel_file = 'schedule_info.xlsx'
     df.to_excel(excel_file, index=False)
 
