@@ -389,7 +389,6 @@ import pandas as pd
 from django.http import FileResponse
 from calendar import monthrange
 import calendar
-
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
 def leave_infor(request):
@@ -401,19 +400,15 @@ def leave_infor(request):
         from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
         to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
         if emp_name:
-            leaves = LeaveRequest.objects.filter(EmpID__EmpName=emp_name, LeaveStartDate__date__range=[from_date, to_date])
+            leaves = LeaveRequest.objects.filter(EmpID__EmpName=emp_name, LeaveStartDate__range=[from_date, to_date])
         else:
-            leaves = LeaveRequest.objects.filter(LeaveStartDate__date__range=[from_date, to_date])
+            leaves = LeaveRequest.objects.filter(LeaveStartDate__range=[from_date, to_date])
     else:
         if emp_name:
             leaves = LeaveRequest.objects.filter(EmpID__EmpName=emp_name)
         else:
             leaves = LeaveRequest.objects.all()
-    now = datetime.now()
-    if not from_date and not to_date:
-        _, last_day = calendar.monthrange(now.year, now.month)
-        from_date = datetime(now.year, now.month, 1)
-        to_date = datetime(now.year, now.month, last_day)
+
     leave_data = []
     for leave in leaves:
         leave_data.append({
