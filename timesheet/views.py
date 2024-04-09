@@ -531,7 +531,7 @@ def timesheet_info(request):
         timesheet_data[item['EmpID__EmpName']].append({
             'date': item['TimeIn'].date(),
             'checkin': (item['TimeIn'] + timedelta(hours=7)).strftime('%H:%M:%S'),
-            'checkout': (item['TimeOut'] + timedelta(hours=7)).strftime('%H:%M:%S')
+            'checkout': (item['TimeOut'] + timedelta(hours=7)).strftime('%H:%M:%S') if item['TimeOut'] else '0'
         })
     
     # Create a DataFrame with columns for each day in the date range

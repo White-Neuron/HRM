@@ -8,5 +8,5 @@ urlpatterns=[
     path('leave/delete-leave/<int:pk>', views.delete_leave, name='delete-leave'),
     path('leave/list-leave-staff', views.list_leave_nv, name='list-leave-nv'),
     path('leave/leave-remainder/<int:pk>', views.get_leave_remainder, name='leave-remainder'),
-
+    path('leave/leave-infor', views.leave_infor, name='leave-infor')
 ]

@@ -175,7 +175,10 @@ class ScheduleListShiftAPIView(generics.ListAPIView):
 
 from collections import defaultdict
 from rest_framework.decorators import api_view, permission_classes
-
+import pandas as pd
+from django.http import FileResponse
+from calendar import monthrange
+import calendar
 
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
@@ -196,7 +199,11 @@ def schedule_info(request):
             schedules = Schedule.objects.filter(EmpID__EmpName=emp_name)
         else:
             schedules = Schedule.objects.all()
-
+    now = datetime.now()
+    if not from_date and not to_date:
+        _, last_day = calendar.monthrange(now.year, now.month)
+        from_date = datetime(now.year, now.month, 1)
+        to_date = datetime(now.year, now.month, last_day)
     schedule_data = defaultdict(list)
     for schedule in schedules:
         schedule_data[schedule.EmpID.EmpName].append({
@@ -204,8 +211,27 @@ def schedule_info(request):
             'ca': schedule.WorkShift.WorkShiftName
         })
 
-    return Response({
-        'status': status.HTTP_200_OK,
-        'message': 'Data retrieved successfully',
-        'data': [{'employee': key, 'datet value': value} for key, value in schedule_data.items()]
-    })
+    # return Response({
+    #     'status': status.HTTP_200_OK,
+    #     'message': 'Data retrieved successfully',
+    #     'data': [{'employee': key, 'date value': value} for key, value in schedule_data.items()]
+    # })
+    
+    date_range = pd.date_range(start=from_date, end=to_date)
+    columns = ['Employee'] + [date.strftime('%Y-%m-%d') for date in date_range]
+    df = pd.DataFrame(columns=columns)
+
+    for key, values in schedule_data.items():
+        employee_data = {'Employee': key}
+        for value in values:
+            date = value['date'].strftime('%Y-%m-%d')
+            if date in df.columns:
+                employee_data[date] = value['ca']
+        df = df.append(employee_data, ignore_index=True)
+
+    excel_file = 'schedule_info.xlsx'
+    df.to_excel(excel_file, index=False)
+
+    response = FileResponse(open(excel_file, 'rb'), content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=%s' % excel_file
+    return response

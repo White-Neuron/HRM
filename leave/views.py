@@ -383,5 +383,56 @@ def create_leave(request):
     }
     return Response(data, status=status.HTTP_201_CREATED)
 
-# def leave_infor(request):
-    
+from collections import defaultdict
+from rest_framework.decorators import api_view, permission_classes
+import pandas as pd
+from django.http import FileResponse
+from calendar import monthrange
+import calendar
+
+@api_view(["GET"])
+@permission_classes([IsAdminOrReadOnly])
+def leave_infor(request):
+    from_date = request.GET.get('from')
+    to_date = request.GET.get('to')
+    emp_name = request.GET.get('EmpName')
+
+    if from_date and to_date:
+        from_date = datetime.strptime(from_date, '%Y-%m-%d')
+        to_date = datetime.strptime(to_date, '%Y-%m-%d')
+        if emp_name:
+            leaves = LeaveRequest.objects.filter(EmpID__EmpName=emp_name, LeaveStartDate__date__range=[from_date, to_date])
+        else:
+            leaves = LeaveRequest.objects.filter(LeaveStartDate__date__range=[from_date, to_date])
+    else:
+        if emp_name:
+            leaves = LeaveRequest.objects.filter(EmpID__EmpName=emp_name)
+        else:
+            leaves = LeaveRequest.objects.all()
+    now = datetime.now()
+    if not from_date and not to_date:
+        _, last_day = calendar.monthrange(now.year, now.month)
+        from_date = datetime(now.year, now.month, 1)
+        to_date = datetime(now.year, now.month, last_day)
+    leave_data = []
+    for leave in leaves:
+        leave_data.append({
+            'Employee': leave.EmpID.EmpName,
+            'LeaveStartDate': leave.LeaveStartDate,
+            'LeaveEndDate': leave.LeaveEndDate,
+            'LeaveStatus': leave.LeaveStatus,
+            'Duration': leave.Duration,
+            "Status":leave.LeaveStatus
+        })
+
+    # Create a DataFrame from the leave data
+    df = pd.DataFrame(leave_data)
+
+    # Write the DataFrame to an Excel file
+    excel_file = 'leave_info.xlsx'
+    df.to_excel(excel_file, index=False)
+
+    # Create a FileResponse
+    response = FileResponse(open(excel_file, 'rb'), content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=%s' % excel_file
+    return response
