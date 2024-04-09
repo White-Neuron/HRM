@@ -118,8 +118,8 @@ TEMPLATES = [
 # CSRF_COOKIE_SECURE = True  # Nếu sử dụng HTTPS
 WSGI_APPLICATION = 'hrmm.wsgi.application'
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://13.229.74.15:5000",
+    # "http://localhost:5173",
+    # "http://13.229.74.15:5000",
     "https://hr.whiteneurons.com",
 ]
 SECURITY_PASSWORD_SALT = "abcd"
@@ -131,16 +131,16 @@ BACKEND_URL = "https://hr.whiteneurons.com"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'wnhrm',
-#         'USER': 'wn_admin',
-#         'PASSWORD':'WNADMIN2024&',
-#         'HOST': 'localhost',
-#         'PORT': '5432', 
-        'NAME': 'hrm',
-        'USER': 'postgres',
-        'PASSWORD':'123456',
+        'NAME': 'wnhrm',
+        'USER': 'wn_admin',
+        'PASSWORD':'WNADMIN2024&',
         'HOST': 'localhost',
         'PORT': '5432', 
+        # 'NAME': 'hrm',
+        # 'USER': 'postgres',
+        # 'PASSWORD':'123456',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432', 
     }}
 
 #database sqlite3
