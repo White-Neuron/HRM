@@ -398,8 +398,8 @@ def leave_infor(request):
     emp_name = request.GET.get('EmpName')
 
     if from_date and to_date:
-        from_date = datetime.strptime(from_date, '%Y-%m-%d')
-        to_date = datetime.strptime(to_date, '%Y-%m-%d')
+        from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
+        to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
         if emp_name:
             leaves = LeaveRequest.objects.filter(EmpID__EmpName=emp_name, LeaveStartDate__date__range=[from_date, to_date])
         else:
