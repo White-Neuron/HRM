@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.http import HttpResponse
 from django.conf import settings
-from timesheet.models import TimeSheet
+from timesheet.models import TimeSheet,TimesheetTask
 from leave.models import LeaveRequest
 from leave_type.models import LeaveType
 from department.models import Department
@@ -103,3 +103,4 @@ admin.site.register(Schedule, ScheduleAdmin)
 admin.site.register(LeaveRequest, LeaveAdmin)
 admin.site.register(TimeSheet, TimeAdmin)
 admin.site.register(WorkShift)
+admin.site.register(TimesheetTask)

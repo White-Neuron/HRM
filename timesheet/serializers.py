@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from base.models import Employee
-from .models import TimeSheet
+from .models import TimeSheet, TimesheetTask
 
 class TimeSheetSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,5 +24,8 @@ class TimeSheetWithUserAccountSerializer(serializers.ModelSerializer):
         model = TimeSheet
         fields = "__all__"
 
-        
+class TimesheetTaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TimesheetTask
+        fields = "__all__"
 
