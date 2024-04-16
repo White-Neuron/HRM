@@ -235,7 +235,7 @@ def check_in(request):
     
     existing_timesheet = get_existing_timesheet(emp_id, current_date)
     existing_timesheet_first = get_existing_timesheet_first(emp_id, current_date)
-    
+    timesheet= None
     if not existing_timesheet_first:
         if time1 > starttime.hour + 1 or (time1 == starttime.hour + 1 and timenow.minute >= starttime.minute):
             if time1>12 and starttime.hour<12:
@@ -258,28 +258,35 @@ def check_in(request):
             # if current_time.hour >= 12 and (current_time.hour < 14):
             #     current_time = current_time.replace(hour=14, minute=0, second=0)
             timesheet = TimeSheet.objects.create(EmpID=emp_id, TimeIn=current_time, Late=late)
-            serializer = TimeSheetSerializer(timesheet)
-            return Response({"message": "Checked in successfully", "data": serializer.data, "status": status.HTTP_200_OK},status=status.HTTP_200_OK)
+            # serializer = TimeSheetSerializer(timesheet)
+            # return Response({"message": "Checked in successfully", "data": serializer.data, "status": status.HTTP_200_OK},status=status.HTTP_200_OK)
+    else:
+        if existing_timesheet and not existing_timesheet.TimeOut:
+            return Response({"error": "You have already checked in for today", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
+        
+        current_time = timenow
+        if current_time.hour >17 or (current_time.hour == 17 and current_time.minute >29):
+            return Response({"message": "Cannot check in. Go home now.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
+        # Tú Anh xóa điều kiện checkin
+        # if current_time.hour < 8 or (current_time.hour == 8 and current_time.minute < 15):
+        #     current_time = current_time.replace(hour=8, minute=0, second=0)
+        # if current_time.hour >= 12 and (current_time.hour < 13 or (current_time.hour == 13 and current_time.minute < 45)):
+        #     current_time = current_time.replace(hour=13, minute=30, second=0)
     
-    if existing_timesheet and not existing_timesheet.TimeOut:
-        return Response({"error": "You have already checked in for today", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    
-    current_time = timenow
-    if current_time.hour >17 or (current_time.hour == 17 and current_time.minute >29):
-        return Response({"message": "Cannot check in. Go home now.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    # Tú Anh xóa điều kiện checkin
-    # if current_time.hour < 8 or (current_time.hour == 8 and current_time.minute < 15):
-    #     current_time = current_time.replace(hour=8, minute=0, second=0)
-    # if current_time.hour >= 12 and (current_time.hour < 13 or (current_time.hour == 13 and current_time.minute < 45)):
-    #     current_time = current_time.replace(hour=13, minute=30, second=0)
     
     work_plans = request.data.get('work_plans',[])
+    print(work_plans)
     if not work_plans or not isinstance(work_plans, list):
         return Response({"error": "Work plans are required", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    timesheet = TimeSheet.objects.create(EmpID=emp_id, TimeIn=current_time)
+    
+    # Tu Anh sửa
+    # Khong late
+    if timesheet is None: 
+        timesheet = TimeSheet.objects.create(EmpID=emp_id, TimeIn=current_time) 
+    serializer = TimeSheetSerializer(timesheet)
+    
     for work_plan in work_plans:
         TimesheetTask.objects.create(TimeSheetID=timesheet, WorkPlan=work_plan, Date=current_date)
-    serializer = TimeSheetSerializer(timesheet)
     return Response({"message": "Checked in successfully", "data": serializer.data, 'work plans': work_plans, "status": status.HTTP_200_OK})
 from datetime import datetime, time
 

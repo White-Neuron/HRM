@@ -30,10 +30,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     # '192.168.1.18',
-    # '127.0.0.1',
+    '127.0.0.1',
     # '192.168.1.17',
     # ".vercel.app",
-    # 'localhost',
+    'localhost',
     'api-hrm.whiteneurons.com',
     # '192.168.50.197',
 ]
@@ -118,7 +118,7 @@ TEMPLATES = [
 # CSRF_COOKIE_SECURE = True  # Nếu sử dụng HTTPS
 WSGI_APPLICATION = 'hrmm.wsgi.application'
 CORS_ALLOWED_ORIGINS = [
-    # "http://localhost:5173",
+    "http://localhost:5173",
     "http://13.229.74.15:5000",
     # "http://13.229.74.15:5000",
     "https://hr.whiteneurons.com",
