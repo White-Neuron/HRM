@@ -10,6 +10,11 @@ class TimeSheet(models.Model):
     Late = models.FloatField(default=0,null=True,blank=True)
     WorkHour = models.FloatField(default=0,null=True,blank=True)
 
+class TimesheetTask(models.Model):
+    TimeSheetID = models.ForeignKey(TimeSheet, on_delete=models.CASCADE, related_name='tasks')
+    WorkPlan = models.TextField()
+    IsComplete = models.BooleanField(default=False)
+    Date= models.DateField()
     # # Tú Anh viết
     # def getTimeIn(self):
     #     current_time = self.TimeIn

@@ -2,8 +2,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
 from base.models import Employee,UserAccount
-from .models import TimeSheet
-from .serializers import TimeSheetWithUserAccountSerializer, UserAccountWithTimeSheetSerializer,TimeSheetSerializer
+from .models import TimeSheet,TimesheetTask
+from .serializers import TimeSheetWithUserAccountSerializer, UserAccountWithTimeSheetSerializer,TimeSheetSerializer,TimesheetTaskSerializer
 from base.permissions import IsAdminOrReadOnly,IsOwnerOrReadonly,IsHrAdminManager,IsHrAdmin
 from rest_framework import permissions
 from django.core.paginator import Paginator,EmptyPage
@@ -197,17 +197,20 @@ def get_existing_timesheet_first(emp_id, date):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_in(request):
-    client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
-    with open("hash_key.txt", "r") as file:
-        hashed_value_old = file.read()
-    print(client_ip)
-    if hash_string(client_ip) == hashed_value_old:
-        print("Hashes match: The values are identical.")
-    else:
-        print("Hashes do not match: The values are different.")
-        return Response({"error": "Không ở công ty mà đòi check in",
-                         "status": status.HTTP_404_NOT_FOUND},
-                        status=status.HTTP_404_NOT_FOUND)
+    # try:
+    #     client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
+    # except AttributeError:
+    #     return Response({"error": "No IP address found", "status": status.HTTP_404_NOT_FOUND}, status=status.HTTP_404_NOT_FOUND)
+    # with open("hash_key.txt", "r") as file:
+    #     hashed_value_old = file.read()
+    # print(client_ip)
+    # if hash_string(client_ip) == hashed_value_old:
+    #     print("Hashes match: The values are identical.")
+    # else:
+    #     print("Hashes do not match: The values are different.")
+    #     return Response({"error": "Không ở công ty mà đòi check in",
+    #                      "status": status.HTTP_404_NOT_FOUND},
+    #                     status=status.HTTP_404_NOT_FOUND)
     emp_id = request.user.EmpID
     current_date = timezone.localtime(timezone.now()).date()  
     try:
@@ -223,7 +226,10 @@ def check_in(request):
     timenow = timezone.localtime(timezone.now())
     time1 = timenow.hour
 
-    if time1 > endtime.hour or (time1 < 12 and time1 < starttime.hour):
+    if time1 > endtime.hour:
+        return Response({"message": "You did not sign up for this shift", "status": status.HTTP_404_NOT_FOUND},
+                        status=status.HTTP_404_NOT_FOUND)
+    if time1 < 12 and time1 < starttime.hour and starttime.hour >12:
         return Response({"message": "You did not sign up for this shift", "status": status.HTTP_404_NOT_FOUND},
                         status=status.HTTP_404_NOT_FOUND)
     
@@ -266,24 +272,29 @@ def check_in(request):
     #     current_time = current_time.replace(hour=8, minute=0, second=0)
     # if current_time.hour >= 12 and (current_time.hour < 13 or (current_time.hour == 13 and current_time.minute < 45)):
     #     current_time = current_time.replace(hour=13, minute=30, second=0)
+    
+    work_plans = request.data.get('work_plans',[])
+    if not work_plans or not isinstance(work_plans, list):
+        return Response({"error": "Work plans are required", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
     timesheet = TimeSheet.objects.create(EmpID=emp_id, TimeIn=current_time)
+    for work_plan in work_plans:
+        TimesheetTask.objects.create(TimeSheetID=timesheet, WorkPlan=work_plan, Date=current_date)
     serializer = TimeSheetSerializer(timesheet)
-    return Response({"message": "Checked in successfully", "data": serializer.data, "status": status.HTTP_200_OK})
-from datetime import datetime, time
+    return Response({"message": "Checked in successfully", "data": serializer.data, 'work plans': work_plans, "status": status.HTTP_200_OK})
 from datetime import datetime, time
 
 
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_out(request):
-    client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
-    hash_ip = hash_string(client_ip)
+    # client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
+    # hash_ip = hash_string(client_ip)
     
-    with open("hash_key.txt", "r") as file:
-        hashed_value_old = file.read()
+    # with open("hash_key.txt", "r") as file:
+    #     hashed_value_old = file.read()
     
-    if hash_ip != hashed_value_old:
-        return Response({"error": "Không ở công ty mà đòi check out", "status": status.HTTP_404_NOT_FOUND}, status=status.HTTP_404_NOT_FOUND)
+    # if hash_ip != hashed_value_old:
+    #     return Response({"error": "Không ở công ty mà đòi check out", "status": status.HTTP_404_NOT_FOUND}, status=status.HTTP_404_NOT_FOUND)
     
     emp_id = request.user.EmpID
     current_date = timezone.now().date()
@@ -345,7 +356,24 @@ def check_out(request):
         existing_timesheet.save() 
     except Exception as e:
         return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)  
-    print(timein,"timein",timeout,"timeout", work_hours,"workhour")
+    task_updates = request.data.get('task_updates', '')
+
+    for task_update in task_updates:
+        task_id = task_update.get('id')
+        is_complete = task_update.get('is_complete')
+        task = TimesheetTask.objects.filter(id=task_id, TimeSheetID=existing_timesheet).first()
+        if task:
+            task.IsComplete = is_complete
+            task.save()
+
+    new_tasks = request.data.get('new_tasks', '')
+    if not new_tasks:
+        pass
+    else:
+        for new_task in new_tasks:
+            TimesheetTask.objects.create(TimeSheetID=existing_timesheet, WorkPlan=new_task, IsComplete=True,Date=current_date)
+    if not TimesheetTask.objects.filter(TimeSheetID=existing_timesheet).exists():
+        return Response({"error": "Cannot check out. No task today", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
     serializer = TimeSheetSerializer(existing_timesheet)
     
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
@@ -377,7 +405,8 @@ def list_timesheet_raw(request):
                 "DepName": depname,
                 "RoleName": rolename,
                 "JobName": jobname,
-                "DateValue": defaultdict(lambda: {'total_late': 0, 'total_workhour': 0})
+                "DateValue": defaultdict(lambda: {'total_late': 0, 'total_workhour': 0,'tasks': []}),
+
             }
 
             timesheets = TimeSheet.objects.filter(EmpID=attendance_instance.EmpID)
@@ -387,7 +416,12 @@ def list_timesheet_raw(request):
 
                 serialized_data[attendance_instance.EmpID]["DateValue"][date_str]['total_late'] += timesheet_data.get('Late', 0)
                 serialized_data[attendance_instance.EmpID]["DateValue"][date_str]['total_workhour'] += timesheet_data.get('WorkHour', 0)
-
+                tasks = TimesheetTask.objects.filter(TimeSheetID=timesheet)
+                task_data = TimesheetTaskSerializer(tasks, many=True).data
+                for task in task_data:
+                    task.pop('Date', None)
+                    task.pop('TimeSheetID', None)
+                serialized_data[attendance_instance.EmpID]["DateValue"][date_str]['tasks'].extend(task_data)
             serialized_data[attendance_instance.EmpID]["DateValue"] = dict(sorted(serialized_data[attendance_instance.EmpID]["DateValue"].items()))
 
     serialized_data = list(serialized_data.values())
