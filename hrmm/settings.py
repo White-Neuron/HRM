@@ -29,13 +29,13 @@ SECRET_KEY = 'django-insecure-jdpf2v1-4x!m&v)f!x%2z0u22)^si=i4h7t21vivl^^2%3#w0%
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.1.18',
-    '127.0.0.1',
-    '192.168.1.17',
+    # '192.168.1.18',
+    # '127.0.0.1',
+    # '192.168.1.17',
     # ".vercel.app",
-    'localhost',
+    # 'localhost',
     'api-hrm.whiteneurons.com',
-    '192.168.50.197',
+    # '192.168.50.197',
 ]
 
 
@@ -118,7 +118,7 @@ TEMPLATES = [
 # CSRF_COOKIE_SECURE = True  # Nếu sử dụng HTTPS
 WSGI_APPLICATION = 'hrmm.wsgi.application'
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+    # "http://localhost:5173",
     "http://13.229.74.15:5000",
     "https://hr.whiteneurons.com",
 ]
@@ -131,16 +131,16 @@ BACKEND_URL = "https://hr.whiteneurons.com"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'wnhrm',
-#         'USER': 'wn_admin',
-#         'PASSWORD':'WNADMIN2024&',
-#         'HOST': 'localhost',
-#         'PORT': '5432', 
-        'NAME': 'hrm',
-        'USER': 'postgres',
-        'PASSWORD':'123456',
+        'NAME': 'wnhrm',
+        'USER': 'wn_admin',
+        'PASSWORD':'WNADMIN2024&',
         'HOST': 'localhost',
         'PORT': '5432', 
+        # 'NAME': 'hrm',
+        # 'USER': 'postgres',
+        # 'PASSWORD':'123456',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432', 
     }}
 
 #database sqlite3
