@@ -25,6 +25,7 @@ class TimeSheetWithUserAccountSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class TimesheetTaskSerializer(serializers.ModelSerializer):
+    TimeSheetID = TimeSheetSerializer(read_only=True)
     class Meta:
         model = TimesheetTask
         fields = "__all__"

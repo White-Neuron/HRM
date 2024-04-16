@@ -119,8 +119,11 @@ def list_timesheet(request):
         depname=Department.objects.get(DepID=user_account_data['DepID']).DepName
         rolename=Role.objects.get(RoleID=user_account_data['RoleID']).RoleName
         jobname=Job.objects.get(JobID=user_account_data['JobID']).JobName
-
-        combined_data = {**user_account_data, **attendance_data,"UserID":userid,"DepName":depname,"RoleName":rolename,"JobName":jobname}
+        tasks = TimesheetTask.objects.filter(TimeSheetID=attendance_instance)
+        tasks_data = TimesheetTaskSerializer(tasks, many=True).data
+        for task in tasks_data:
+            task.pop('TimeSheetID', None)
+        combined_data = {**user_account_data, **attendance_data,"UserID":userid,"DepName":depname,"RoleName":rolename,"JobName":jobname,"Tasks": tasks_data}
         serialized_data.append(combined_data)
     return Response({
         "total_rows": total_attendance,
@@ -177,7 +180,11 @@ def list_timesheet_nv(request):
     for attendance_instance in current_page_data.object_list:
         user_account_data = UserAccountWithTimeSheetSerializer(attendance_instance.EmpID).data
         attendance_data = TimeSheetWithUserAccountSerializer(attendance_instance).data
-        combined_data = {"EmpID":current_employee_a.EmpID,"EmpName":current_employee_a.EmpName, **attendance_data}
+        tasks = TimesheetTask.objects.filter(TimeSheetID=attendance_instance)
+        tasks_data = TimesheetTaskSerializer(tasks, many=True).data
+        for task in tasks_data:
+            task.pop('TimeSheetID', None)
+        combined_data = {"EmpID":current_employee_a.EmpID,"EmpName":current_employee_a.EmpName, **attendance_data, "Tasks": tasks_data}
         serialized_data.append(combined_data)
 
     return Response({
@@ -624,3 +631,68 @@ def timesheet_info(request):
     response = FileResponse(open(excel_file, 'rb'), content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename=%s' % excel_file
     return response
+
+
+@api_view(['GET'])
+@permission_classes([IsAdminOrReadOnly])
+def list_timesheettask_manage(request):
+    from_date = request.query_params.get('from', datetime.now().date())
+    to_date = request.query_params.get('to', datetime.now().date())
+
+    if isinstance(from_date, str):
+        from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
+    if isinstance(to_date, str):
+        to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
+
+    queryset = TimesheetTask.objects.filter(Date__range=[from_date, to_date])
+    serializer = TimesheetTaskSerializer(queryset, many=True)
+    
+
+    grouped_data = []
+    for task in serializer.data:
+        emp_id = task.pop('TimeSheetID')['EmpID']
+        emp_name = Employee.objects.get(EmpID=emp_id).EmpName
+        emp_data = next((item for item in grouped_data if item["EmpName"] == emp_name), None)
+        if emp_data is None:
+            emp_data = {
+                "EmpName": emp_name,
+                "data": []
+            }
+            grouped_data.append(emp_data)
+        emp_data["data"].append(task)
+
+    return Response({
+        "data": grouped_data,
+        "status": status.HTTP_200_OK,
+        "message": "Successfully retrieved timesheet tasks."
+    }, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+@permission_classes([IsOwnerOrReadonly])
+def user_timesheet_tasks(request):
+    emp_id = request.user.EmpID.EmpID
+    emp_name = request.user.EmpID.EmpName
+
+    from_date = request.query_params.get('from', datetime.now().date())
+    to_date = request.query_params.get('to', datetime.now().date())
+
+    if isinstance(from_date, str):
+        from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
+    if isinstance(to_date, str):
+        to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
+
+    queryset = TimesheetTask.objects.filter(Date__range=[from_date, to_date], TimeSheetID__EmpID=emp_id)
+    serializer = TimesheetTaskSerializer(queryset, many=True)
+    tasks = []
+    for task in serializer.data:
+        task.pop('TimeSheetID', None)
+        tasks.append(task)
+    grouped_data = {
+        "EmpName": emp_name,
+        "data": tasks
+    }
+    return Response({
+        "data": grouped_data,
+        "status": status.HTTP_200_OK,
+        "message": "Successfully retrieved timesheet tasks."
+    }, status=status.HTTP_200_OK)
