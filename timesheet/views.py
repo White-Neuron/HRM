@@ -364,7 +364,8 @@ def check_out(request):
     except Exception as e:
         return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)  
     task_updates = request.data.get('task_updates', '')
-
+    if not task_updates:
+        pass
     for task_update in task_updates:
         task_id = task_update.get('id')
         is_complete = task_update.get('is_complete')
