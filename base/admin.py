@@ -9,6 +9,7 @@ from job.models import Job
 from role.models import Role
 from schedule.models import Schedule,WorkShift
 from .models import Employee,UserAccount
+from rest_framework.authtoken.models import Token
 # Custom actions
 def not_allow_edit(modeladmin, request, queryset):
     settings.ALLOW_EDIT_BY_ADMIN_ONLY = True
