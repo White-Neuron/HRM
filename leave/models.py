@@ -7,10 +7,10 @@ from datetime import time
 class LeaveRequest(models.Model):
     LeaveRequestID = models.AutoField(primary_key=True)
     EmpID = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    LeaveStartDate = models.DateField()
-    LeaveEndDate = models.DateField()
-    LeaveStartHour = models.TimeField(default=time(8, 0))
-    LeaveEndHour = models.TimeField(default=time(17, 30))
+    LeaveStartDate = models.DateTimeField()
+    LeaveEndDate = models.DateTimeField()
+    # LeaveStartHour = models.TimeField(default=time(8, 0))
+    # LeaveEndHour = models.TimeField(default=time(17, 30))
     LeaveTypeID = models.ForeignKey(LeaveType, on_delete=models.CASCADE)
     Reason = models.CharField(max_length=500)
     STATUS_CHOICES = [

@@ -10,7 +10,7 @@ from base.views import obj_update
 from django.core.paginator import Paginator,EmptyPage
 from leave_type.models import LeaveType
 from django.db.models import Sum
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta,date
 
 
 @api_view(["GET"])
@@ -334,20 +334,22 @@ def create_leave(request):
 
     leave_start_date_str = data['LeaveStartDate']
     leave_end_date_str = data['LeaveEndDate']
-    leave_end_hour_str = data.get('LeaveEndHour', '17:30')
-    leave_start_hour_str = data.get('LeaveStartHour', '08:00')
     
-    try:
+    if isinstance(leave_start_date_str, str):
         leave_start_date = datetime.strptime(leave_start_date_str, '%d/%m/%Y')
-        leave_end_date = datetime.strptime(leave_end_date_str, '%d/%m/%Y')
-    except ValueError:
-        return Response({"error": "Invalid date format. It must be in dd/mm/yyyy format."},
+    else:
+        return Response({"error": "Invalid format for leave start date. It must be a string in dd/mm/yyyy format."},
                         status=status.HTTP_400_BAD_REQUEST)
-    try:
-        leave_end_hour_str= datetime.strptime(leave_end_hour_str, '%H:%M')
-        leave_start_hour_str= datetime.strptime(leave_start_hour_str, '%H:%M')
-    except ValueError:
-        return Response({"error": "Invalid hour format. It must be in HH:MM format."},
+    if isinstance(leave_end_date_str, str):
+        leave_end_date = datetime.strptime(leave_end_date_str, '%d/%m/%Y')
+    else:
+        return Response({"error": "Invalid format for leave end date. It must be a string in dd/mm/yyyy format."},
+                    status=status.HTTP_400_BAD_REQUEST)
+    if leave_start_date < date.today():
+        return Response({"error": "Leave start date cannot be in the past."},
+                        status=status.HTTP_400_BAD_REQUEST)
+    if leave_end_date < leave_start_date:
+        return Response({"error": "Leave end date cannot be before leave start date."},
                         status=status.HTTP_400_BAD_REQUEST)
     current_year = timezone.now().year
     remaining_leave_days = get_remaining_leave_days_for_year(employee_id, leave_type, current_year)
@@ -425,8 +427,6 @@ def leave_infor(request):
             'LeaveEndDate': leave.LeaveEndDate,
             'Status': leave.LeaveStatus,
             'Duration': leave.Duration,
-            "LeaveStartHour": leave.LeaveStartHour,
-            "LeaveEndHour": leave.LeaveEndHour,
         })
 
     # Create a DataFrame from the leave data
