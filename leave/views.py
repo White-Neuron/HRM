@@ -423,20 +423,20 @@ def leave_infor(request):
     leave_data = []
     for leave in leaves:
         leave_data.append({
-        'Employee': leave.EmpID.EmpName,
-        'LeaveStartDate': leave.LeaveStartDate.tz_localize(None).strftime('%Y-%m-%d %H:%M:%S'),
-        'LeaveEndDate': leave.LeaveEndDate.tz_localize(None).strftime('%Y-%m-%d %H:%M:%S'),
-        'Status': leave.LeaveStatus,
-        'Duration': str(leave.Duration),
-    })
-
+            'Employee': leave.EmpID.EmpName,
+            'LeaveStartDate': leave.LeaveStartDate.replace(tzinfo=None).strftime('%Y-%m-%d %H:%M:%S'),
+            'LeaveEndDate': leave.LeaveEndDate.replace(tzinfo=None).strftime('%Y-%m-%d %H:%M:%S'),
+            'Status': leave.LeaveStatus,
+            'Duration': str(leave.Duration),
+        })
+    
     # Create a DataFrame from the leave data
     df = pd.DataFrame(leave_data)
-
+    
     # Write the DataFrame to an Excel file
     excel_file = 'leave_info.xlsx'
     df.to_excel(excel_file, index=False)
-
+    
     # Create a FileResponse
     response = FileResponse(open(excel_file, 'rb'), content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename=%s' % excel_file
