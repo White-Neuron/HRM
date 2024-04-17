@@ -425,6 +425,8 @@ def leave_infor(request):
             'LeaveEndDate': leave.LeaveEndDate,
             'Status': leave.LeaveStatus,
             'Duration': leave.Duration,
+            "LeaveStartHour": leave.LeaveStartHour,
+            "LeaveEndHour": leave.LeaveEndHour,
         })
 
     # Create a DataFrame from the leave data
