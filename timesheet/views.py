@@ -690,7 +690,7 @@ def user_timesheet_tasks(request):
         to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
 
     queryset = TimesheetTask.objects.filter(Date__range=[from_date, to_date], TimeSheetID__EmpID=emp_id)
-    if queryset is None:
+    if not queryset.exists():
         timein=get_existing_timesheet(emp_id,datetime.now().date()).TimeIn
         return Response({
             "data": {
