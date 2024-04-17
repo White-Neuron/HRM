@@ -284,7 +284,8 @@ def check_in(request):
     work_plans = request.data.get('work_plans',[])
     print(work_plans)
     if not work_plans or not isinstance(work_plans, list):
-        return Response({"error": "Work plans are required", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
+        pass
+        # return Response({"error": "Work plans are required", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
     
     # Tu Anh sửa
     # Khong late
@@ -316,7 +317,8 @@ def check_out(request):
     
     if not existing_timesheet or not existing_timesheet.TimeIn:
         return Response({"message": "Cannot check out. Not checked in today.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
-    
+    if existing_timesheet.TimeOut:
+        return Response({"message": "Cannot check out. Already checked out today.", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
     timein = existing_timesheet.TimeIn
     print(timein,"aaaaaa")
     if timein.hour < 1 or (timein.hour == 1 and timein.minute < 15):
@@ -650,7 +652,10 @@ def list_timesheettask_manage(request):
 
     grouped_data = []
     for task in serializer.data:
-        emp_id = task.pop('TimeSheetID')['EmpID']
+        timesheet_data = task.pop('TimeSheetID', {})
+        task['TimeIn'] = timesheet_data.get('TimeIn')
+        task['TimeOut'] = timesheet_data.get('TimeOut')
+        emp_id = timesheet_data.get('EmpID')
         emp_name = Employee.objects.get(EmpID=emp_id).EmpName
         emp_data = next((item for item in grouped_data if item["EmpName"] == emp_name), None)
         if emp_data is None:
@@ -685,7 +690,9 @@ def user_timesheet_tasks(request):
     serializer = TimesheetTaskSerializer(queryset, many=True)
     tasks = []
     for task in serializer.data:
-        task.pop('TimeSheetID', None)
+        timesheet_data = task.pop('TimeSheetID', {})
+        task['TimeIn'] = timesheet_data.get('TimeIn')
+        task['TimeOut'] = timesheet_data.get('TimeOut')
         tasks.append(task)
     grouped_data = {
         "EmpName": emp_name,
