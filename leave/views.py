@@ -201,20 +201,20 @@ from django.db import models
 
 def validate_to_update(obj, data):
     errors = {}
-    allowed_fields = ['LeaveRequestID', 'EmpID']
-    date_fields = ['LeaveStartDate', 'LeaveEndDate']
+    allowed_fields = ["LeaveStatus"]
+    # date_fields = ['LeaveStartDate', 'LeaveEndDate']
 
     for key in data:
-        value = data[key]
+        # value = data[key]
 
-        if key in date_fields:
-            try:
-                day, month, year, hour, minute, second = map(int, value.split('/'))
-                data[key] = f"{year:04d}-{month:02d}-{day:02d}T{hour:02d}:{minute:02d}:{second:02d}"
-            except (ValueError, IndexError):
-                errors[key] = f"Invalid datetime format for {key}. It must be in dd/mm/yyyy/hh/mm/ss format."
-
-        if key in allowed_fields:
+        # if key in date_fields:
+        #     try:
+        #         day, month, year, hour, minute, second = map(int, value.split('/'))
+        #         data[key] = f"{year:04d}-{month:02d}-{day:02d}T{hour:02d}:{minute:02d}:{second:02d}"
+        #     except (ValueError, IndexError):
+        #         errors[key] = f"Invalid datetime format for {key}. It must be in dd/mm/yyyy/hh/mm/ss format."
+        #         continue
+        if key not in allowed_fields:
             errors[key] = f"{key} not allowed to change"
 
     return errors
