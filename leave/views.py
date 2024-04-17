@@ -209,10 +209,10 @@ def validate_to_update(obj, data):
 
         if key in date_fields:
             try:
-                day, month, year = map(int, value.split('/'))
-                data[key] = f"{year:04d}-{month:02d}-{day:02d}"
+                day, month, year, hour, minute, second = map(int, value.split('/'))
+                data[key] = f"{year:04d}-{month:02d}-{day:02d}T{hour:02d}:{minute:02d}:{second:02d}"
             except (ValueError, IndexError):
-                errors[key] = f"Invalid date format for {key}. It must be in dd/mm/yyyy format."
+                errors[key] = f"Invalid datetime format for {key}. It must be in dd/mm/yyyy/hh/mm/ss format."
 
         if key in allowed_fields:
             errors[key] = f"{key} not allowed to change"
@@ -336,16 +336,17 @@ def create_leave(request):
     leave_end_date_str = data['LeaveEndDate']
     
     if isinstance(leave_start_date_str, str):
-        leave_start_date = datetime.strptime(leave_start_date_str, '%d/%m/%Y')
+        leave_start_date = datetime.strptime(leave_start_date_str, '%d/%m/%Y %H:%M:%S')
     else:
-        return Response({"error": "Invalid format for leave start date. It must be a string in dd/mm/yyyy format."},
+        return Response({"error": "Invalid format for leave start date. It must be a string in dd/mm/yyyy HH:MM:SS format."},
                         status=status.HTTP_400_BAD_REQUEST)
+
     if isinstance(leave_end_date_str, str):
-        leave_end_date = datetime.strptime(leave_end_date_str, '%d/%m/%Y')
+        leave_end_date = datetime.strptime(leave_end_date_str, '%d/%m/%Y %H:%M:%S')
     else:
-        return Response({"error": "Invalid format for leave end date. It must be a string in dd/mm/yyyy format."},
-                    status=status.HTTP_400_BAD_REQUEST)
-    if leave_start_date < date.today():
+        return Response({"error": "Invalid format for leave end date. It must be a string in dd/mm/yyyy HH:MM:SS format."},
+                        status=status.HTTP_400_BAD_REQUEST)
+    if leave_start_date.date() < date.today():
         return Response({"error": "Leave start date cannot be in the past."},
                         status=status.HTTP_400_BAD_REQUEST)
     if leave_end_date < leave_start_date:
