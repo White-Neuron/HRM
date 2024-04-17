@@ -5,7 +5,7 @@ from base.models import Employee
 from .models import LeaveRequest
 from .serializers import LeaveSerializer,EmployeeWithLeaveSerializer,LeaveWithEmployeeSerializer
 from rest_framework import permissions
-from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly
+from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly,IsHrAdminManager
 from base.views import obj_update
 from django.core.paginator import Paginator,EmptyPage
 from leave_type.models import LeaveType
@@ -233,7 +233,7 @@ def obj_update(obj, validated_data):
     obj.save()
 
 @api_view(['PATCH'])
-@permission_classes([permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadonly])
+@permission_classes([permissions.IsAuthenticatedOrReadOnly, IsAdminOrReadOnly,IsHrAdminManager])
 def update_leave(request, pk):
     try:
         leave = LeaveRequest.objects.get(LeaveRequestID=pk)
