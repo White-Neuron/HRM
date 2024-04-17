@@ -2,12 +2,15 @@ from django.db import models
 from base.models import Employee
 from datetime import datetime
 from leave_type.models import LeaveType
+from datetime import time
 # Create your models here.
 class LeaveRequest(models.Model):
     LeaveRequestID = models.AutoField(primary_key=True)
     EmpID = models.ForeignKey(Employee, on_delete=models.CASCADE)
     LeaveStartDate = models.DateField()
     LeaveEndDate = models.DateField()
+    LeaveStartHour = models.TimeField(default=time(8, 0))
+    LeaveEndHour = models.TimeField(default=time(17, 30))
     LeaveTypeID = models.ForeignKey(LeaveType, on_delete=models.CASCADE)
     Reason = models.CharField(max_length=500)
     STATUS_CHOICES = [
