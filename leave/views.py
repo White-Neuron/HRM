@@ -334,14 +334,21 @@ def create_leave(request):
 
     leave_start_date_str = data['LeaveStartDate']
     leave_end_date_str = data['LeaveEndDate']
-
+    leave_end_hour_str = data.get('LeaveEndHour', '17:30')
+    leave_start_hour_str = data.get('LeaveStartHour', '08:00')
+    
     try:
         leave_start_date = datetime.strptime(leave_start_date_str, '%d/%m/%Y')
         leave_end_date = datetime.strptime(leave_end_date_str, '%d/%m/%Y')
     except ValueError:
         return Response({"error": "Invalid date format. It must be in dd/mm/yyyy format."},
                         status=status.HTTP_400_BAD_REQUEST)
-
+    try:
+        leave_end_hour_str= datetime.strptime(leave_end_hour_str, '%H:%M')
+        leave_start_hour_str= datetime.strptime(leave_start_hour_str, '%H:%M')
+    except ValueError:
+        return Response({"error": "Invalid hour format. It must be in HH:MM format."},
+                        status=status.HTTP_400_BAD_REQUEST)
     current_year = timezone.now().year
     remaining_leave_days = get_remaining_leave_days_for_year(employee_id, leave_type, current_year)
 
