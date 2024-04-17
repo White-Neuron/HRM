@@ -674,7 +674,7 @@ def list_timesheettask_manage(request):
         "status": status.HTTP_200_OK,
         "message": "Successfully retrieved timesheet tasks."
     }, status=status.HTTP_200_OK)
-from django.db.models import Q
+
 @api_view(['GET'])
 @permission_classes([IsOwnerOrReadonly])
 def user_timesheet_tasks(request):
@@ -690,30 +690,39 @@ def user_timesheet_tasks(request):
         to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
 
     queryset = TimesheetTask.objects.filter(Date__range=[from_date, to_date], TimeSheetID__EmpID=emp_id)
-
-    if not queryset.exists():
-        queryset = TimesheetTask.objects.filter(Q(TimeOut__isnull=True) | Q(TimeOut__exact=''), TimeSheetID__EmpID=emp_id).order_by('-TimeIn')[:1]
-
-    serializer = TimesheetTaskSerializer(queryset, many=True)
-    grouped_tasks = {}
-    for task in serializer.data:
-        timesheet_data = task.pop('TimeSheetID', {})
-        task_data = task
-        timesheet_id = timesheet_data.get('id')
-        if timesheet_id not in grouped_tasks:
-            grouped_tasks[timesheet_id] = {
-                "TimeIn": timesheet_data.get('TimeIn'),
-                "TimeOut": timesheet_data.get('TimeOut'),
+    if queryset is None:
+        timein=get_existing_timesheet(emp_id,datetime.now().date()).TimeIn
+        return Response({
+            "data": {
+                "EmpName": emp_name,
+                "TimeIn":timein,
+                "TimeOut":None,
                 "Tasks": []
-            }
-        grouped_tasks[timesheet_id]["Tasks"].append(task_data)
+            },
+            "status": status.HTTP_200_OK,
+            "message": "No timesheet tasks found."
+        }, status=status.HTTP_200_OK)
+    else:
+        serializer = TimesheetTaskSerializer(queryset, many=True)
+        grouped_tasks = {}
+        for task in serializer.data:
+            timesheet_data = task.pop('TimeSheetID', {})
+            task_data = task
+            timesheet_id = timesheet_data.get('id')
+            if timesheet_id not in grouped_tasks:
+                grouped_tasks[timesheet_id] = {
+                    "TimeIn": timesheet_data.get('TimeIn'),
+                    "TimeOut": timesheet_data.get('TimeOut'),
+                    "Tasks": []
+                }
+            grouped_tasks[timesheet_id]["Tasks"].append(task_data)
 
-    grouped_data = {
-        "EmpName": emp_name,
-        "data": list(grouped_tasks.values())
-    }
-    return Response({
-        "data": grouped_data,
-        "status": status.HTTP_200_OK,
-        "message": "Successfully retrieved timesheet tasks."
-    }, status=status.HTTP_200_OK)
+        grouped_data = {
+            "EmpName": emp_name,
+            "data": list(grouped_tasks.values())
+        }
+        return Response({
+            "data": grouped_data,
+            "status": status.HTTP_200_OK,
+            "message": "Successfully retrieved timesheet tasks."
+        }, status=status.HTTP_200_OK)
