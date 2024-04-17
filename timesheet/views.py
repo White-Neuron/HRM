@@ -695,11 +695,11 @@ def user_timesheet_tasks(request):
         return Response({
             "data": {
                 "EmpName": emp_name,
-                "data":{
+                "data":[{
                     "TimeIn":timein,
                     "TimeOut":None,
                     "Tasks": []
-                }
+                }]
             },
             "status": status.HTTP_200_OK,
             "message": "No timesheet tasks found."
