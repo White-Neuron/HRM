@@ -423,12 +423,12 @@ def leave_infor(request):
     leave_data = []
     for leave in leaves:
         leave_data.append({
-            'Employee': leave.EmpID.EmpName,
-            'LeaveStartDate': str(leave.LeaveStartDate),
-            'LeaveEndDate': str(leave.LeaveEndDate),
-            'Status': leave.LeaveStatus,
-            'Duration': str(leave.Duration),
-        })
+        'Employee': leave.EmpID.EmpName,
+        'LeaveStartDate': leave.LeaveStartDate.tz_localize(None).strftime('%Y-%m-%d %H:%M:%S'),
+        'LeaveEndDate': leave.LeaveEndDate.tz_localize(None).strftime('%Y-%m-%d %H:%M:%S'),
+        'Status': leave.LeaveStatus,
+        'Duration': str(leave.Duration),
+    })
 
     # Create a DataFrame from the leave data
     df = pd.DataFrame(leave_data)
