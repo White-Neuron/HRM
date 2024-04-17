@@ -674,7 +674,7 @@ def list_timesheettask_manage(request):
         "status": status.HTTP_200_OK,
         "message": "Successfully retrieved timesheet tasks."
     }, status=status.HTTP_200_OK)
-
+from django.db.models import Q
 @api_view(['GET'])
 @permission_classes([IsOwnerOrReadonly])
 def user_timesheet_tasks(request):
@@ -690,6 +690,10 @@ def user_timesheet_tasks(request):
         to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
 
     queryset = TimesheetTask.objects.filter(Date__range=[from_date, to_date], TimeSheetID__EmpID=emp_id)
+
+    if not queryset.exists():
+        queryset = TimesheetTask.objects.filter(Q(TimeOut__isnull=True) | Q(TimeOut__exact=''), TimeSheetID__EmpID=emp_id).order_by('-TimeIn')[:1]
+
     serializer = TimesheetTaskSerializer(queryset, many=True)
     grouped_tasks = {}
     for task in serializer.data:
