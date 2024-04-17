@@ -368,10 +368,7 @@ def check_out(request):
         existing_timesheet.WorkHour = round(work_hours, 2) +7
     else:
         existing_timesheet.WorkHour = round(work_hours, 2) 
-    try:
-        existing_timesheet.save() 
-    except Exception as e:
-        return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)  
+    
     task_updates = request.data.get('task_updates', '')
     if not task_updates:
         pass
@@ -391,8 +388,12 @@ def check_out(request):
             TimesheetTask.objects.create(TimeSheetID=existing_timesheet, WorkPlan=new_task, IsComplete=True,Date=current_date)
     if not TimesheetTask.objects.filter(TimeSheetID=existing_timesheet).exists():
         return Response({"error": "Cannot check out. No task today", "status": status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
+    try:
+        existing_timesheet.save() 
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)  
     serializer = TimeSheetSerializer(existing_timesheet)
-    
+
     return Response({"message": "Checked out successfully", "data": serializer.data, "status": status.HTTP_200_OK})
 
 
