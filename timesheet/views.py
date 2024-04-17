@@ -650,21 +650,24 @@ def list_timesheettask_manage(request):
     serializer = TimesheetTaskSerializer(queryset, many=True)
     
 
-    grouped_data = []
+    grouped_tasks = {}
     for task in serializer.data:
         timesheet_data = task.pop('TimeSheetID', {})
-        task['TimeIn'] = timesheet_data.get('TimeIn')
-        task['TimeOut'] = timesheet_data.get('TimeOut')
+        task_data = task
         emp_id = timesheet_data.get('EmpID')
         emp_name = Employee.objects.get(EmpID=emp_id).EmpName
-        emp_data = next((item for item in grouped_data if item["EmpName"] == emp_name), None)
-        if emp_data is None:
-            emp_data = {
+        timesheet_id = timesheet_data.get('id')
+        if timesheet_id not in grouped_tasks:
+            grouped_tasks[timesheet_id] = {
                 "EmpName": emp_name,
-                "data": []
+                "TimeIn": timesheet_data.get('TimeIn'),
+                "TimeOut": timesheet_data.get('TimeOut'),
+                "Tasks": []
             }
-            grouped_data.append(emp_data)
-        emp_data["data"].append(task)
+        grouped_tasks[timesheet_id]["Tasks"].append(task_data)
+
+    grouped_data = list(grouped_tasks.values())
+
 
     return Response({
         "data": grouped_data,
@@ -688,15 +691,22 @@ def user_timesheet_tasks(request):
 
     queryset = TimesheetTask.objects.filter(Date__range=[from_date, to_date], TimeSheetID__EmpID=emp_id)
     serializer = TimesheetTaskSerializer(queryset, many=True)
-    tasks = []
+    grouped_tasks = {}
     for task in serializer.data:
         timesheet_data = task.pop('TimeSheetID', {})
-        task['TimeIn'] = timesheet_data.get('TimeIn')
-        task['TimeOut'] = timesheet_data.get('TimeOut')
-        tasks.append(task)
+        task_data = task
+        timesheet_id = timesheet_data.get('id')
+        if timesheet_id not in grouped_tasks:
+            grouped_tasks[timesheet_id] = {
+                "TimeIn": timesheet_data.get('TimeIn'),
+                "TimeOut": timesheet_data.get('TimeOut'),
+                "Tasks": []
+            }
+        grouped_tasks[timesheet_id]["Tasks"].append(task_data)
+
     grouped_data = {
         "EmpName": emp_name,
-        "data": tasks
+        "data": list(grouped_tasks.values())
     }
     return Response({
         "data": grouped_data,
