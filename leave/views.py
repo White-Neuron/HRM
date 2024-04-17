@@ -10,7 +10,7 @@ from base.views import obj_update
 from django.core.paginator import Paginator,EmptyPage
 from leave_type.models import LeaveType
 from django.db.models import Sum
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta,date
 
 
 @api_view(["GET"])
@@ -348,6 +348,12 @@ def create_leave(request):
         leave_start_hour_str= datetime.strptime(leave_start_hour_str, '%H:%M')
     except ValueError:
         return Response({"error": "Invalid hour format. It must be in HH:MM format."},
+                        status=status.HTTP_400_BAD_REQUEST)
+    if leave_start_date < date.today():
+        return Response({"error": "Leave start date cannot be in the past."},
+                        status=status.HTTP_400_BAD_REQUEST)
+    if leave_end_date < leave_start_date:
+        return Response({"error": "Leave end date cannot be before leave start date."},
                         status=status.HTTP_400_BAD_REQUEST)
     current_year = timezone.now().year
     remaining_leave_days = get_remaining_leave_days_for_year(employee_id, leave_type, current_year)
