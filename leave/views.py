@@ -424,8 +424,8 @@ def leave_infor(request):
     for leave in leaves:
         leave_data.append({
             'Employee': leave.EmpID.EmpName,
-            'LeaveStartDate': leave.LeaveStartDate.replace(tzinfo=None).strftime('%Y-%m-%d %H:%M:%S'),
-            'LeaveEndDate': leave.LeaveEndDate.replace(tzinfo=None).strftime('%Y-%m-%d %H:%M:%S'),
+            'LeaveStartDate': (leave.LeaveStartDate.replace(tzinfo=None) + timedelta(hours=7)).strftime('%Y-%m-%d %H:%M:%S'),
+            'LeaveEndDate': (leave.LeaveEndDate.replace(tzinfo=None) + timedelta(hours=7)).strftime('%Y-%m-%d %H:%M:%S'),
             'Status': leave.LeaveStatus,
             'Duration': str(leave.Duration),
         })
