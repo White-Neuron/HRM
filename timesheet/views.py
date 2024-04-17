@@ -204,20 +204,20 @@ def get_existing_timesheet_first(emp_id, date):
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_in(request):
-    # try:
-    #     client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
-    # except AttributeError:
-    #     return Response({"error": "No IP address found", "status": status.HTTP_404_NOT_FOUND}, status=status.HTTP_404_NOT_FOUND)
-    # with open("hash_key.txt", "r") as file:
-    #     hashed_value_old = file.read()
-    # print(client_ip)
-    # if hash_string(client_ip) == hashed_value_old:
-    #     print("Hashes match: The values are identical.")
-    # else:
-    #     print("Hashes do not match: The values are different.")
-    #     return Response({"error": "Không ở công ty mà đòi check in",
-    #                      "status": status.HTTP_404_NOT_FOUND},
-    #                     status=status.HTTP_404_NOT_FOUND)
+    try:
+        client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
+    except AttributeError:
+        return Response({"error": "No IP address found", "status": status.HTTP_404_NOT_FOUND}, status=status.HTTP_404_NOT_FOUND)
+    with open("hash_key.txt", "r") as file:
+        hashed_value_old = file.read()
+    print(client_ip)
+    if hash_string(client_ip) == hashed_value_old:
+        print("Hashes match: The values are identical.")
+    else:
+        print("Hashes do not match: The values are different.")
+        return Response({"error": "Không ở công ty mà đòi check in",
+                         "status": status.HTTP_404_NOT_FOUND},
+                        status=status.HTTP_404_NOT_FOUND)
     emp_id = request.user.EmpID
     current_date = timezone.localtime(timezone.now()).date()  
     try:
@@ -302,14 +302,14 @@ from datetime import datetime, time
 @api_view(['POST'])
 @permission_classes([permissions.IsAuthenticatedOrReadOnly])
 def check_out(request):
-    # client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
-    # hash_ip = hash_string(client_ip)
+    client_ip = request.META.get('HTTP_X_FORWARDED_FOR').split(',')[0]
+    hash_ip = hash_string(client_ip)
     
-    # with open("hash_key.txt", "r") as file:
-    #     hashed_value_old = file.read()
+    with open("hash_key.txt", "r") as file:
+        hashed_value_old = file.read()
     
-    # if hash_ip != hashed_value_old:
-    #     return Response({"error": "Không ở công ty mà đòi check out", "status": status.HTTP_404_NOT_FOUND}, status=status.HTTP_404_NOT_FOUND)
+    if hash_ip != hashed_value_old:
+        return Response({"error": "Không ở công ty mà đòi check out", "status": status.HTTP_404_NOT_FOUND}, status=status.HTTP_404_NOT_FOUND)
     
     emp_id = request.user.EmpID
     current_date = timezone.now().date()
