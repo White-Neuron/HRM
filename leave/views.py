@@ -334,21 +334,17 @@ def create_leave(request):
 
     leave_start_date_str = data['LeaveStartDate']
     leave_end_date_str = data['LeaveEndDate']
-    leave_end_hour_str = data.get('LeaveEndHour', '17:30')
-    leave_start_hour_str = data.get('LeaveStartHour', '08:00')
     
-    try:
+    if isinstance(leave_start_date_str, str):
         leave_start_date = datetime.strptime(leave_start_date_str, '%d/%m/%Y')
+    else:
+        return Response({"error": "Invalid format for leave start date. It must be a string in dd/mm/yyyy format."},
+                        status=status.HTTP_400_BAD_REQUEST)
+    if isinstance(leave_end_date_str, str):
         leave_end_date = datetime.strptime(leave_end_date_str, '%d/%m/%Y')
-    except ValueError:
-        return Response({"error": "Invalid date format. It must be in dd/mm/yyyy format."},
-                        status=status.HTTP_400_BAD_REQUEST)
-    try:
-        leave_end_hour_str= datetime.strptime(leave_end_hour_str, '%H:%M')
-        leave_start_hour_str= datetime.strptime(leave_start_hour_str, '%H:%M')
-    except ValueError:
-        return Response({"error": "Invalid hour format. It must be in HH:MM format."},
-                        status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response({"error": "Invalid format for leave end date. It must be a string in dd/mm/yyyy format."},
+                    status=status.HTTP_400_BAD_REQUEST)
     if leave_start_date < date.today():
         return Response({"error": "Leave start date cannot be in the past."},
                         status=status.HTTP_400_BAD_REQUEST)
@@ -431,8 +427,6 @@ def leave_infor(request):
             'LeaveEndDate': leave.LeaveEndDate,
             'Status': leave.LeaveStatus,
             'Duration': leave.Duration,
-            "LeaveStartHour": leave.LeaveStartHour,
-            "LeaveEndHour": leave.LeaveEndHour,
         })
 
     # Create a DataFrame from the leave data
