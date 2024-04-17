@@ -424,10 +424,10 @@ def leave_infor(request):
     for leave in leaves:
         leave_data.append({
             'Employee': leave.EmpID.EmpName,
-            'LeaveStartDate': leave.LeaveStartDate,
-            'LeaveEndDate': leave.LeaveEndDate,
+            'LeaveStartDate': str(leave.LeaveStartDate),
+            'LeaveEndDate': str(leave.LeaveEndDate),
             'Status': leave.LeaveStatus,
-            'Duration': leave.Duration,
+            'Duration': str(leave.Duration),
         })
 
     # Create a DataFrame from the leave data
