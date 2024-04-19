@@ -236,9 +236,9 @@ def check_in(request):
     if time1 > endtime.hour:
         return Response({"message": "You did not sign up for this shift", "status": status.HTTP_404_NOT_FOUND},
                         status=status.HTTP_404_NOT_FOUND)
-    if time1 < 12 and time1 < starttime.hour and starttime.hour >12:
+    if time1 < starttime.hour - 1:
         return Response({"message": "You did not sign up for this shift", "status": status.HTTP_404_NOT_FOUND},
-                        status=status.HTTP_404_NOT_FOUND)
+                    status=status.HTTP_404_NOT_FOUND)
     
     existing_timesheet = get_existing_timesheet(emp_id, current_date)
     existing_timesheet_first = get_existing_timesheet_first(emp_id, current_date)
