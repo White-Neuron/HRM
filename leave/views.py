@@ -404,7 +404,7 @@ import calendar
 def leave_infor(request):
     from_date = request.GET.get('from')
     to_date = request.GET.get('to')
-    emp_name = request.GET.get('EmpName')
+    emp_id = request.GET.get('EmpID')
 
     now = datetime.now()
     if not from_date and not to_date:
@@ -415,15 +415,15 @@ def leave_infor(request):
         from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
         to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
 
-    if emp_name:
-        leaves = LeaveRequest.objects.filter(EmpID__EmpName=emp_name, LeaveStartDate__range=[from_date, to_date])
+    if emp_id:
+        leaves = LeaveRequest.objects.filter(EmpID__id=emp_id, LeaveStartDate__range=[from_date, to_date])
     else:
         leaves = LeaveRequest.objects.filter(LeaveStartDate__range=[from_date, to_date])
 
     leave_data = []
     for leave in leaves:
         leave_data.append({
-            'Employee': leave.EmpID.EmpName,
+            'Employee ID': leave.EmpID,
             'LeaveStartDate': (leave.LeaveStartDate.replace(tzinfo=None) + timedelta(hours=7)).strftime('%Y-%m-%d %H:%M:%S'),
             'LeaveEndDate': (leave.LeaveEndDate.replace(tzinfo=None) + timedelta(hours=7)).strftime('%Y-%m-%d %H:%M:%S'),
             'Status': leave.LeaveStatus,

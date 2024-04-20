@@ -943,15 +943,10 @@ def list_user_password(request):
         "status": status.HTTP_200_OK,
     }, status=status.HTTP_200_OK)
 
-
-
 def count_employee_department(department_name):
     department = Department.objects.get(DepName=department_name)
     employee_count = Employee.objects.filter(DepID=department).count()
     return employee_count
-
-
-
 
 @api_view(["GET"])
 def get_birthday_employee(request):
@@ -981,3 +976,27 @@ class EmployeeDetail(APIView):
             return Response(serializer.data)
         except Employee.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+        
+# mã, tên, email, hình thức, số tài khoản, ngân hàng xuất excel
+import pandas as pd
+from django.http import HttpResponse
+@api_view(["GET"])
+@permission_classes([IsAdminOrReadOnly])
+def export_employee(request):
+    employees = Employee.objects.all()
+    data = []
+    for employee in employees:
+        data.append({
+            "EmpID": employee.EmpID,
+            "EmpName": employee.EmpName,
+            "Email": employee.Email,
+            "BankAccountNumber": employee.BankAccountNumber,
+            "BankName": employee.BankName,
+            "Gender": employee.Gender,
+            "EmpStatus": employee.EmpStatus
+        })
+    df = pd.DataFrame(data)
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="employees.xlsx"'
+    df.to_excel(response, index=False)
+    return response

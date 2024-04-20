@@ -184,7 +184,7 @@ import calendar
 def schedule_info(request):
     from_date = request.GET.get('from')
     to_date = request.GET.get('to')
-    emp_name = request.GET.get('EmpName')
+    emp_id = request.GET.get('EmpID')
 
     now = datetime.now()
     if not from_date and not to_date:
@@ -195,14 +195,14 @@ def schedule_info(request):
         from_date = datetime.strptime(from_date, '%Y-%m-%d').date()
         to_date = datetime.strptime(to_date, '%Y-%m-%d').date()
 
-    if emp_name:
-        schedules = Schedule.objects.filter(EmpID__EmpName=emp_name, Date__range=[from_date, to_date])
+    if emp_id:
+        schedules = Schedule.objects.filter(EmpID=emp_id, Date__range=[from_date, to_date])
     else:
         schedules = Schedule.objects.filter(Date__range=[from_date, to_date])
 
     schedule_data = defaultdict(list)
     for schedule in schedules:
-        schedule_data[schedule.EmpID.EmpName].append({
+        schedule_data[schedule.EmpID].append({
             'date': schedule.Date,
             'ca': schedule.WorkShift.WorkShiftName
         })

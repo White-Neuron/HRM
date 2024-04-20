@@ -23,6 +23,7 @@ urlpatterns = [
     path("employee/birthday", views.get_birthday_employee, name="get-birthday"),
     path("query/employee", views.query_employee, name="query-employee"),
     path("employee/<int:id>", views.EmployeeDetail.as_view(), name="detail-emp-id"),
+    path("employee/export-employee", views.export_employee, name="export-employee"),
 ]
 
 if settings.DEBUG:

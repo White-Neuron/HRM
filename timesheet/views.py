@@ -656,11 +656,11 @@ def list_timesheettask_manage(request):
         timesheet_data = task.pop('TimeSheetID', {})
         task_data = task
         emp_id = timesheet_data.get('EmpID')
-        emp_name = Employee.objects.get(EmpID=emp_id).EmpName
+        # emp_name = Employee.objects.get(EmpID=emp_id).EmpID
         timesheet_id = timesheet_data.get('id')
         if timesheet_id not in grouped_tasks:
             grouped_tasks[timesheet_id] = {
-                "EmpName": emp_name,
+                "EmployeeID": emp_id,
                 "TimeIn": timesheet_data.get('TimeIn'),
                 "TimeOut": timesheet_data.get('TimeOut'),
                 "Tasks": []
@@ -680,7 +680,7 @@ def list_timesheettask_manage(request):
 @permission_classes([IsOwnerOrReadonly])
 def user_timesheet_tasks(request):
     emp_id = request.user.EmpID.EmpID
-    emp_name = request.user.EmpID.EmpName
+    # emp_name = request.user.EmpID.EmpName
 
     from_date = request.query_params.get('from', datetime.now().date())
     to_date = request.query_params.get('to', datetime.now().date())
@@ -695,7 +695,7 @@ def user_timesheet_tasks(request):
         timein=get_existing_timesheet(emp_id,datetime.now().date()).TimeIn
         return Response({
             "data": {
-                "EmpName": emp_name,
+                "EmployeeID": emp_id,
                 "data":[{
                     "TimeIn":timein,
                     "TimeOut":None,
@@ -721,7 +721,7 @@ def user_timesheet_tasks(request):
             grouped_tasks[timesheet_id]["Tasks"].append(task_data)
 
         grouped_data = {
-            "EmpName": emp_name,
+            "EmployeeID": emp_id,
             "data": list(grouped_tasks.values())
         }
         return Response({
