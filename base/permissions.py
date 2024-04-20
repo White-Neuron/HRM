@@ -1,10 +1,10 @@
 from rest_framework import permissions
 class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
-        return request.user and request.user.EmpID.RoleID.RoleName == 'CEO'
+        return request.user and request.user.has_permission(request)
 
     def has_object_permission(self, request, view, obj):
-        return request.user and request.user.EmpID.RoleID.RoleName == 'CEO'
+        return request.user and request.user.has_permission()
 class IsHrAdminManager(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user and request.user.is_hr_admin_manager(request)

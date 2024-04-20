@@ -75,9 +75,9 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     def get_password(self):
         return self.password[21:30]
     def has_permission(self, request):
-        if request.method in permissions.SAFE_METHODS:
-            # Cho phép tất cả các request GET, HEAD, hoặc OPTIONS
-            return request.user and request.user.is_staff
+        # if request.method in permissions.SAFE_METHODS:
+        #     # Cho phép tất cả các request GET, HEAD, hoặc OPTIONS
+        #     return request.user and request.user.is_staff
         # Kiểm tra nếu user có quyền là admin
         return self.EmpID.RoleID.RoleName== 'Admin'
     def is_admin(self,request):
