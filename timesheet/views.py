@@ -280,7 +280,7 @@ def check_in(request):
         # if current_time.hour >= 12 and (current_time.hour < 13 or (current_time.hour == 13 and current_time.minute < 45)):
         #     current_time = current_time.replace(hour=13, minute=30, second=0)
     
-    
+    current_time = timenow
     work_plans = request.data.get('work_plans',[])
     print(work_plans)
     if not work_plans or not isinstance(work_plans, list):

@@ -86,6 +86,8 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         return self.EmpID.RoleID.RoleName== 'Admin' or self.EmpID.RoleID.RoleName== 'Hr' or self.EmpID.RoleID.RoleName== 'Manager'
     def is_hr_or_admin(self,request):
         return self.EmpID.RoleID.RoleName== 'Admin' or self.EmpID.RoleID.RoleName== 'Hr' 
+    def is_system_admin(self,request):
+        return self.EmpID.RoleID.RoleName== 'CEO'
 
 class Project(models.Model): 
     proj_id = models.AutoField(primary_key=True)
