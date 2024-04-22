@@ -4,7 +4,7 @@ from rest_framework import status, permissions
 from base.models import Employee
 from .models import Department
 from .serializers import DepartmentSerializer
-from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly
+from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly,IsHrAdmin
 from django.core.paginator import Paginator, EmptyPage
 from django.db.models import Q
 @api_view(["GET"])
@@ -73,7 +73,7 @@ def list_department(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def query_department(request):
     search_query = request.GET.get('query', '')
     departments = Department.objects.filter(

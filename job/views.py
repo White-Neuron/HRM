@@ -5,14 +5,14 @@ from base.models import Employee
 from .models import Job
 from department.models import Department
 from .serializers import JobSerializer,EmployeeWithJobSerializer,JobWithEmployeeSerializer,TotalEmployeeWithJobSerializer
-from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly
+from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly,IsHrAdmin
 from django.http import Http404
 from base.views import is_valid_type,obj_update
 from django.core.paginator import Paginator,EmptyPage
 from django.db.models import Q
 
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def list_job(request):
     page_index = request.GET.get('pageIndex', 1)
     page_size = request.GET.get('pageSize', 10)
@@ -88,7 +88,7 @@ def list_job(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def query_job(request):
     search_query = request.GET.get('query', '')
     dep_name = request.GET.get('DepName', '')  
