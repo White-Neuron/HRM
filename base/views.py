@@ -981,7 +981,7 @@ class EmployeeDetail(APIView):
 import pandas as pd
 from django.http import HttpResponse
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([AllowAny])
 def export_employee(request):
     employees = Employee.objects.all()
     data = []
