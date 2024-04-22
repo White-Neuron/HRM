@@ -10,11 +10,12 @@ from django.http import Http404
 from base.views import is_valid_type,obj_update
 from django.core.paginator import Paginator,EmptyPage
 from django.db.models import Q
+from rest_framework.permissions import  IsAuthenticated
 import re
 
 
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsAuthenticated])
 def list_leave_type(request):
     page_index = request.GET.get('pageIndex', 1)
     page_size = request.GET.get('pageSize', 10)
@@ -57,7 +58,7 @@ def list_leave_type(request):
 
 
 @api_view(['DELETE'])
-@permission_classes([permissions.IsAuthenticatedOrReadOnly, IsAdminOrReadOnly])
+@permission_classes([IsAdminOrReadOnly])
 def delete_leavetype(request, pk):
     try:
         leavetype = LeaveType.objects.get(LeaveTypeID=pk)
@@ -78,7 +79,7 @@ def delete_leavetype(request, pk):
 
 
 @api_view(['POST'])
-@permission_classes([permissions.IsAuthenticatedOrReadOnly, IsAdminOrReadOnly])
+@permission_classes([IsAdminOrReadOnly])
 def create_leavetype(request):
     serializer = LeaveTypeSerializer(data=request.data)
     required_fields = ["LeaveTypeName","LeaveTypeDescription","LimitedDuration"]
@@ -121,7 +122,7 @@ def validate_to_update(obj, data):
 
 
 @api_view(['PATCH'])
-@permission_classes([permissions.IsAuthenticatedOrReadOnly, IsAdminOrReadOnly])
+@permission_classes([IsAdminOrReadOnly])
 def update_leavetype(request, pk):
     try:
         leavetype = LeaveType.objects.get(LeaveTypeID=pk)
@@ -138,7 +139,7 @@ def update_leavetype(request, pk):
     
     
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsAuthenticated])
 def query_leavetype(request):
     search_query = request.GET.get('query', '')
     leavetypes = LeaveType.objects.filter(
