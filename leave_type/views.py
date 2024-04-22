@@ -5,7 +5,7 @@ from base.models import Employee
 from leave_type.models import LeaveType
 from leave.models import LeaveRequest
 from .serializers import LeaveTypeSerializer
-from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly
+from base.permissions import IsAdminOrReadOnly, IsHrAdmin
 from django.http import Http404
 from base.views import is_valid_type,obj_update
 from django.core.paginator import Paginator,EmptyPage
@@ -58,7 +58,7 @@ def list_leave_type(request):
 
 
 @api_view(['DELETE'])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def delete_leavetype(request, pk):
     try:
         leavetype = LeaveType.objects.get(LeaveTypeID=pk)
@@ -79,7 +79,7 @@ def delete_leavetype(request, pk):
 
 
 @api_view(['POST'])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsAuthenticated])
 def create_leavetype(request):
     serializer = LeaveTypeSerializer(data=request.data)
     required_fields = ["LeaveTypeName","LeaveTypeDescription","LimitedDuration"]
@@ -122,7 +122,7 @@ def validate_to_update(obj, data):
 
 
 @api_view(['PATCH'])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def update_leavetype(request, pk):
     try:
         leavetype = LeaveType.objects.get(LeaveTypeID=pk)
