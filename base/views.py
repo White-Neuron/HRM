@@ -990,6 +990,8 @@ def export_employee(request):
             "EmpID": employee.EmpID,
             "EmpName": employee.EmpName,
             "Email": employee.Email,
+            'Role':employee.RoleID.RoleName,
+            'Department':employee.DepID.DepName,
             "BankAccountNumber": employee.BankAccountNumber,
             "BankName": employee.BankName,
             "Gender": employee.Gender,
