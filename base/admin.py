@@ -31,7 +31,9 @@ import pandas as pd
 def export_employee(modeladmin, request, queryset):
     data = []
     for employee in queryset:
+        user_account = UserAccount.objects.get(EmpID=employee.EmpID)
         data.append({
+            "UserID": user_account.UserID,
             "EmpID": employee.EmpID,
             "EmpName": employee.EmpName,
             "Email": employee.Email,
