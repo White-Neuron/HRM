@@ -59,7 +59,7 @@ class SetIPAddress(APIView):
 
         return Response({'message': 'Địa chỉ IP đã được lưu mới'}, status=status.HTTP_201_CREATED)
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def list_timesheet(request):
     page_index = request.GET.get('pageIndex', 1) 
     page_size = request.GET.get('pageSize', 10) 
@@ -637,7 +637,7 @@ def timesheet_info(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def list_timesheettask_manage(request):
     from_date = request.query_params.get('from', datetime.now().date())
     to_date = request.query_params.get('to', datetime.now().date())

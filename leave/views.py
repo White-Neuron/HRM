@@ -5,7 +5,7 @@ from base.models import Employee
 from .models import LeaveRequest
 from .serializers import LeaveSerializer,EmployeeWithLeaveSerializer,LeaveWithEmployeeSerializer
 from rest_framework import permissions
-from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly,IsHrAdminManager
+from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly,IsHrAdminManager,IsHrAdmin
 from base.views import obj_update
 from django.core.paginator import Paginator,EmptyPage
 from leave_type.models import LeaveType
@@ -14,7 +14,7 @@ from datetime import datetime, timedelta,date
 
 
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])  
+@permission_classes([IsHrAdmin])  
 def list_leave(request):
     page_index = request.GET.get('pageIndex', 1)
     page_size = request.GET.get('pageSize', 10)
@@ -400,7 +400,7 @@ from django.http import FileResponse
 from calendar import monthrange
 import calendar
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def leave_infor(request):
     from_date = request.GET.get('from')
     to_date = request.GET.get('to')

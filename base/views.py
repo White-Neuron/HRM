@@ -10,7 +10,7 @@ from role.models import Role
 from department.models import Department
 from timesheet.models import TimeSheet
 from leave.models import LeaveRequest
-from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly
+from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly,IsHrAdmin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import check_password
 import re,json
@@ -719,7 +719,7 @@ def find_employee(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def query_employee(request):
     search_query = request.GET.get('query', '')
     employees = Employee.objects.filter(
@@ -738,7 +738,7 @@ def query_employee(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def list_employee(request):
     page_index = request.GET.get('pageIndex', 1)
     page_size = request.GET.get('pageSize', 10)

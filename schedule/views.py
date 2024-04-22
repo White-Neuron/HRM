@@ -56,7 +56,7 @@ class BaseAPIView(viewsets.ModelViewSet):
 
 class WorkShiftAPIView(BaseAPIView):
     queryset = WorkShift.objects.all()
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAuthenticated]
     serializer_class = WorkShiftSerializer
 
 
