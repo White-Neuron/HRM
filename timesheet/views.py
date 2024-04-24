@@ -339,12 +339,17 @@ def check_out(request):
         return Response({"error": "You are not subscribed to your calendar today",
                          "status": status.HTTP_404_NOT_FOUND},
                         status=status.HTTP_404_NOT_FOUND)
-
+    
+        
     starttime = check.WorkShift.StartTime
+    starttimehour=starttime.hour
+    starttimeminute=starttime.minute
     endtime = check.WorkShift.EndTime
+    if timein.time() == time(14,0):
+        timein = timein.replace(hour=starttimehour, minute=starttimeminute, second=0)
     if timein.hour <starttime.hour:
-        if starttime.hour==2:
-            timein = timein.replace(hour=14, minute=0, second=0)
+        if starttime.hour>12:
+            timein = timein.replace(hour=starttimehour, minute=starttimeminute, second=0)
     existing_timesheet.TimeOut = checkout_time
     timeout = checkout_time 
     

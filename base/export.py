@@ -13,8 +13,8 @@ import calendar
 from timesheet.models import TimeSheet
 from django.http import FileResponse
 class ExportForm(forms.Form):
-    from_date = forms.DateField()
-    to_date = forms.DateField()
+    from_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    to_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
 def export_leave_info_view(request):
     if request.method == 'POST':
         form = ExportForm(request.POST)
@@ -47,8 +47,8 @@ def export_leave_info_view(request):
 
 
 class ScheduleForm(forms.Form):
-    from_date = forms.DateField()
-    to_date = forms.DateField()
+    from_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    to_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     EmpID = forms.CharField(max_length=100, required=False)
 from base.models import Employee
 def export_schedule_info_view(request):
@@ -108,8 +108,8 @@ def export_schedule_info_view(request):
     return render(request, 'admin/export_schedule_info.html', {'form': form})
 
 class TimesheetForm(forms.Form):
-    from_date = forms.DateField()
-    to_date = forms.DateField()
+    from_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    to_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     EmpID = forms.CharField(required=False)
 
 def timesheet_info_view(request):
