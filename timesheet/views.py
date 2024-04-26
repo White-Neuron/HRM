@@ -562,6 +562,13 @@ from django.http import FileResponse
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
 def timesheet_info(request):
+    user = request.user
+    # print(user)
+    if user.is_authenticated:
+        if user.is_system_admin(request) or user.is_hr_admin(request):
+            pass
+    else:
+        return Response("You are not authorized to download this data.")
     from_date = request.GET.get('from')
     to_date = request.GET.get('to')
     emp_name = request.GET.get('EmpName')

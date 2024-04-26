@@ -119,7 +119,7 @@ def timesheet_info_view(request):
             from_date = form.cleaned_data['from_date']
             to_date = form.cleaned_data['to_date']
             emp_id = form.cleaned_data['EmpID']
-
+            
             if from_date and to_date:
                 if emp_id:
                     timesheets = TimeSheet.objects.filter(EmpID=emp_id, TimeIn__date__range=[from_date, to_date])

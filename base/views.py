@@ -980,9 +980,18 @@ class EmployeeDetail(APIView):
 # mã, tên, email, hình thức, số tài khoản, ngân hàng xuất excel
 import pandas as pd
 from django.http import HttpResponse
+#import cache
+from django.core.cache import cache
 @api_view(["GET"])
-@permission_classes([AllowAny])
+# @permission_classes([IsAdminOrReadOnly])
 def export_employee(request):
+    user = request.user
+    # print(user)
+    if user.is_authenticated:
+        if user.is_system_admin(request) or user.is_hr_admin(request):
+            pass
+    else:
+        return Response("You are not authorized to download this data.")
     employees = Employee.objects.all()
     data = []
     for employee in employees:
