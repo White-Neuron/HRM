@@ -147,7 +147,7 @@ DATABASES = {
         # 'PORT': '5432', 
     }}
 
-# #database sqlite3
+# # #database sqlite3
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',

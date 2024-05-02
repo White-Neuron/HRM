@@ -179,14 +179,17 @@ import pandas as pd
 from django.http import FileResponse
 from calendar import monthrange
 import calendar
+from rest_framework_simplejwt.tokens import AccessToken
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
 def schedule_info(request):
-    user = request.user
-    # print(user)
-    if user.is_authenticated:
-        if user.is_system_admin(request) or user.is_hr_admin(request):
-            pass
+    token = request.COOKIES.get('token')
+    if not token:
+        return Response("You are not authorized to download this data.")
+    token_obj = AccessToken(token)
+    user = token_obj.user
+    if user.is_system_admin(request) or user.is_hr_admin(request):
+        pass
     else:
         return Response("You are not authorized to download this data.")
     from_date = request.GET.get('from')

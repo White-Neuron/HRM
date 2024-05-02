@@ -248,7 +248,11 @@ def user_login_view(request):
                     },
                     "status": status.HTTP_200_OK,
                 }
-                return Response(response_data, status=status.HTTP_200_OK)
+                response = Response(response_data, status=status.HTTP_200_OK)
+
+                # Set the token in the cookie
+                response.set_cookie('token', access_token, httponly=True, samesite='Lax')
+                return response
             else:
                 return Response(
                     {'error': 'Invalid username or password', "status": status.HTTP_401_UNAUTHORIZED},
