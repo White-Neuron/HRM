@@ -180,6 +180,7 @@ from django.http import FileResponse
 from calendar import monthrange
 import calendar
 from rest_framework_simplejwt.tokens import AccessToken
+from base.models import UserAccount
 @api_view(["GET"])
 @permission_classes([IsAdminOrReadOnly])
 def schedule_info(request):
@@ -187,8 +188,9 @@ def schedule_info(request):
     if not token:
         return Response("You are not authorized to download this data.")
     token_obj = AccessToken(token)
-    user = token_obj.user
-    if user.is_system_admin(request) or user.is_hr_admin(request):
+    user_id = token_obj['user_id']
+    user = UserAccount.objects.get(UserID=user_id)
+    if user.is_system_admin(request) or user.is_hr_admin_manager(request):
         pass
     else:
         return Response("You are not authorized to download this data.")

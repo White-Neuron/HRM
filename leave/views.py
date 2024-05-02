@@ -399,14 +399,19 @@ import pandas as pd
 from django.http import FileResponse
 from calendar import monthrange
 import calendar
+from rest_framework_simplejwt.tokens import AccessToken
+from base.models import UserAccount
 @api_view(["GET"])
 # @permission_classes([IsHrAdmin])
 def leave_infor(request):
-    user = request.user
-    # print(user)
-    if user.is_authenticated:
-        if user.is_system_admin(request) or user.is_hr_admin(request):
-            pass
+    token = request.COOKIES.get('token')
+    if not token:
+        return Response("You are not authorized to download this data.")
+    token_obj = AccessToken(token)
+    user_id = token_obj['user_id']
+    user = UserAccount.objects.get(UserID=user_id)
+    if user.is_system_admin(request) or user.is_hr_admin_manager(request):
+        pass
     else:
         return Response("You are not authorized to download this data.")
     from_date = request.GET.get('from')

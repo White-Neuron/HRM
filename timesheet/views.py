@@ -558,15 +558,18 @@ from django.db.models import Min, Max
 import pandas as pd
 import calendar
 from django.http import FileResponse
-
+from rest_framework_simplejwt.tokens import AccessToken
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+# @permission_classes([IsAdminOrReadOnly])
 def timesheet_info(request):
-    user = request.user
-    # print(user)
-    if user.is_authenticated:
-        if user.is_system_admin(request) or user.is_hr_admin(request):
-            pass
+    token = request.COOKIES.get('token')
+    if not token:
+        return Response("You are not authorized to download this data.")
+    token_obj = AccessToken(token)
+    user_id = token_obj['user_id']
+    user = UserAccount.objects.get(UserID=user_id)
+    if user.is_system_admin(request) or user.is_hr_admin_manager(request):
+        pass
     else:
         return Response("You are not authorized to download this data.")
     from_date = request.GET.get('from')

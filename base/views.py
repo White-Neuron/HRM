@@ -986,14 +986,18 @@ import pandas as pd
 from django.http import HttpResponse
 #import cache
 from django.core.cache import cache
+from rest_framework_simplejwt.tokens import AccessToken
 @api_view(["GET"])
 # @permission_classes([IsAdminOrReadOnly])
 def export_employee(request):
-    user = request.user
-    # print(user)
-    if user.is_authenticated:
-        if user.is_system_admin(request) or user.is_hr_admin(request):
-            pass
+    token = request.COOKIES.get('token')
+    if not token:
+        return Response("You are not authorized to download this data.")
+    token_obj = AccessToken(token)
+    user_id = token_obj['user_id']
+    user = UserAccount.objects.get(UserID=user_id)
+    if user.is_system_admin(request) or user.is_hr_admin_manager(request):
+        pass
     else:
         return Response("You are not authorized to download this data.")
     employees = Employee.objects.all()
