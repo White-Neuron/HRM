@@ -251,7 +251,7 @@ def user_login_view(request):
                 response = Response(response_data, status=status.HTTP_200_OK)
 
                 # Set the token in the cookie
-                response.set_cookie('token', access_token, httponly=True, samesite='None',secure=True)
+                response.set_cookie('token', access_token, httponly=True, samesite='None',secure=True,domain=settings.CORS_ALLOWED_ORIGINS[0].split('//')[1],path='/')
                 return response
             else:
                 return Response(
