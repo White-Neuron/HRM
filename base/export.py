@@ -12,6 +12,7 @@ from datetime import datetime
 import calendar
 from timesheet.models import TimeSheet
 from django.http import FileResponse
+from .models import UserAccount
 class ExportForm(forms.Form):
     from_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     to_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
@@ -25,14 +26,16 @@ def export_leave_info_view(request):
 
             leave_data = []
             for leave in leaves:
+                user_account = UserAccount.objects.get(EmpID=leave.EmpID)
                 leave_data.append({
+                    "UserID": user_account.UserID,
                     'Employee ID': leave.EmpID,
                     'LeaveStartDate': (leave.LeaveStartDate.replace(tzinfo=None) + timedelta(hours=7)).strftime('%Y-%m-%d %H:%M:%S'),
                     'LeaveEndDate': (leave.LeaveEndDate.replace(tzinfo=None) + timedelta(hours=7)).strftime('%Y-%m-%d %H:%M:%S'),
                     'Status': leave.LeaveStatus,
                     'Duration': str(leave.Duration),
                 })
-
+            leave_data.sort(key=lambda x: x['UserID'])
             df = pd.DataFrame(leave_data)
             excel_file = BytesIO()
             df.to_excel(excel_file, index=False)
@@ -75,7 +78,8 @@ def export_schedule_info_view(request):
 
             schedule_data = defaultdict(list)
             for schedule in schedules:
-                schedule_data[(schedule.EmpID.EmpID, schedule.EmpID.EmpName)].append({
+                user_account = UserAccount.objects.get(EmpID=schedule.EmpID)
+                schedule_data[(schedule.EmpID.EmpID, schedule.EmpID.EmpName, user_account.UserID)].append({
                     'date': schedule.Date,
                     'ca': schedule.WorkShift.WorkShiftName
                 })
@@ -92,6 +96,7 @@ def export_schedule_info_view(request):
                         employee_data.at[0, date_str] = records
                 employee_data.insert(0, 'Employee ID', key[0])
                 employee_data.insert(1, 'Employee Name', key[1])
+                employee_data.insert(2, 'UserID', key[2])
                 frames.append(employee_data)
 
             df = pd.concat(frames, ignore_index=True)
@@ -133,12 +138,12 @@ def timesheet_info_view(request):
 
             timesheet_data = defaultdict(list)
             for item in timesheets.values('EmpID', 'EmpID__EmpName', 'TimeIn', 'TimeOut').order_by('TimeIn'):
-                timesheet_data[(item['EmpID'], item['EmpID__EmpName'])].append({
+                user_account = UserAccount.objects.get(EmpID=item['EmpID'])
+                timesheet_data[(item['EmpID'], item['EmpID__EmpName'], user_account.UserID)].append({
                     'date': item['TimeIn'].date(),
                     'checkin': (item['TimeIn'] + timedelta(hours=7)).strftime('%H:%M:%S'),
                     'checkout': (item['TimeOut'] + timedelta(hours=7)).strftime('%H:%M:%S') if item['TimeOut'] else '0'
                 })
-
             date_range = pd.date_range(start=from_date, end=to_date)
             date_columns = [date.strftime('%Y-%m-%d') for date in date_range]
             frames = []
@@ -151,6 +156,7 @@ def timesheet_info_view(request):
                         employee_data.at[0, date_str] = records
                 employee_data.insert(0, 'Employee ID', key[0])
                 employee_data.insert(1, 'Employee Name', key[1])
+                employee_data.insert(2, 'UserID', key[2])
                 frames.append(employee_data)
 
             df = pd.concat(frames, ignore_index=True)
