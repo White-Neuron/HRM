@@ -88,7 +88,7 @@ def list_leave_nv(request):
     order_by = request.GET.get('sort_by', 'LeaveRequestID')
     asc = request.GET.get('asc', 'true').lower() == 'true'  
     order_by = f"{'' if asc else '-'}{order_by}"
-    
+    cookie = request.COOKIES.get('token')
     try:
         page_size = int(page_size)
     except ValueError:
@@ -155,7 +155,8 @@ def list_leave_nv(request):
         "current_page": int(page_index),
         "data": serialized_data,
         "remaining_leave_days": remaining_leave_days,  
-        "status": status.HTTP_200_OK
+        "status": status.HTTP_200_OK,
+        "cookie token": cookie
     }, status=status.HTTP_200_OK)
 
 
