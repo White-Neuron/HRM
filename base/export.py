@@ -154,9 +154,9 @@ def timesheet_info_view(request):
                     records = "; ".join([f"{value['checkin']} - {value['checkout']}" for value in values if value['date'].strftime('%Y-%m-%d') == date_str])
                     if records:
                         employee_data.at[0, date_str] = records
-                employee_data.insert(0, 'Employee ID', key[0])
-                employee_data.insert(1, 'Employee Name', key[1])
-                employee_data.insert(2, 'UserID', key[2])
+                employee_data.insert(0, 'UserID', key[2])
+                employee_data.insert(1, 'Employee ID', key[0])
+                employee_data.insert(2, 'Employee Name', key[1])
                 frames.append(employee_data)
 
             df = pd.concat(frames, ignore_index=True)
