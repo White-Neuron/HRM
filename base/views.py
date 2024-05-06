@@ -251,8 +251,18 @@ def user_login_view(request):
                 response = Response(response_data, status=status.HTTP_200_OK)
 
                 # Set the token in the cookie
-                response.set_cookie('token', access_token, httponly=True, samesite='None',secure=True,domain=settings.CORS_ALLOWED_ORIGINS[0].split('//')[1],path='/')
-                response.set_cookie('token', access_token, httponly=True, samesite='None', secure=True, domain='api-hrm.whiteneurons.com', path='/')
+                try:
+                    response.set_cookie('token', access_token, httponly=True, samesite='None', secure=True, domain=settings.CORS_ALLOWED_ORIGINS[0].split('//')[1], path='/')
+                    response.data['message'] = 'Đã set cookie thành công cho domain api-hrm.whiteneurons.com'
+                except Exception as e:
+                    response.data['message'] = str(e)
+
+                try:
+                    response.set_cookie('token', access_token, httponly=True, samesite='None', secure=True, domain='api-hrm.whiteneurons.com', path='/')
+                    response.data['message'] = 'Đã set cookie thành công cho domain api-hrm.whiteneurons.com'
+                except Exception as e:
+                    response.data['message'] = str(e)
+
                 return response
             else:
                 return Response(
