@@ -32,6 +32,8 @@ from django.core.files.base import ContentFile
 from django.utils import timezone
 import random,string
 from base.permissions import IsMe,IsHrAdminManager
+from .set_cookie import set_cookie
+
 def random_password(length=8):
     char=string.ascii_letters+ string.digits
     return "".join(random.choice(char)for i in range(length))
@@ -252,7 +254,7 @@ def user_login_view(request):
 
 
                 try:
-                    response.set_cookie(key='token', value=access_token, httponly=True, samesite='None', secure=True, domain='.whiteneurons.com', path='/',max_age=60*60*24*3)
+                    set_cookie(response, 'token', access_token, request.get_host(), days_expire=3)
                     response.data['message'] = 'Đã set cookie thành công cho domain .whiteneurons.com'
                     response.data['token_'] = access_token
                 except Exception as e:

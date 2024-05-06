@@ -160,6 +160,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True 
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -276,3 +277,18 @@ ALLOW_EDIT_BY_ADMIN_ONLY = True
 #     },
 # }
 # CELERY_IMPORTS=("base.tasks",)
+
+
+REST_AUTH = {
+    'USE_JWT': True,
+    'JWT_AUTH_COOKIE': 'auth',
+    'JWT_AUTH_REFRESH_COOKIE': 'refresh-token',
+    'JWT_AUTH_HTTPONLY': True,
+    # "ROTATE_REFRESH_TOKENS": True,
+    'JWT_AUTH_RETURN_EXPIRATION': True,
+    # "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    # 'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
+    # 'JWTSerializer': 'authentication.serializers.TokenSerializer',
+    'USER_DETAILS_SERIALIZER': 'authentication.serializers.UserDetailsSerializer',
+    'REGISTER_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+}

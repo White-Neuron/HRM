@@ -4,6 +4,8 @@ from django.conf.urls.static import static
 from django.views.static import serve
 from django.urls import re_path
 from . import views, export
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 
 urlpatterns = [
     path("login", views.user_login_view, name="login"),
@@ -34,3 +36,4 @@ else:
     urlpatterns += [
         re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     ]
+    
