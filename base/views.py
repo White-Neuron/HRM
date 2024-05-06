@@ -252,6 +252,7 @@ def user_login_view(request):
 
                 # Set the token in the cookie
                 response.set_cookie('token', access_token, httponly=True, samesite='None',secure=True,domain=settings.CORS_ALLOWED_ORIGINS[0].split('//')[1],path='/')
+                response.set_cookie('token', access_token, httponly=True, samesite='None', secure=True, domain='api-hrm.whiteneurons.com', path='/')
                 return response
             else:
                 return Response(
