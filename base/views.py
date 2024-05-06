@@ -252,8 +252,9 @@ def user_login_view(request):
 
 
                 try:
-                    response.set_cookie(key='token', value=access_token, httponly=True, samesite='None', secure=True, domain='.whiteneurons.com', path='/')
+                    response.set_cookie(key='token', value=access_token, httponly=True, samesite='None', secure=True, domain='.whiteneurons.com', path='/',max_age=60*60*24*3)
                     response.data['message'] = 'Đã set cookie thành công cho domain .whiteneurons.com'
+                    response.data['token_'] = access_token
                 except Exception as e:
                     response.data['message'] = str(e)
 
