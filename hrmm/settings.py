@@ -125,7 +125,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://13.229.74.15:5000",
     # "http://13.229.74.15:5000",
-    "api-hrm.whiteneurons.com",
+    "https://api-hrm.whiteneurons.com",
     
 ]
 SECURITY_PASSWORD_SALT = "abcd"
