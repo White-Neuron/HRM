@@ -562,7 +562,7 @@ from rest_framework_simplejwt.tokens import AccessToken
 @api_view(["GET"])
 # @permission_classes([IsAdminOrReadOnly])
 def timesheet_info(request):
-    token = request.COOKIES.get('token')
+    token = request.GET.get('token')
     if not token:
         return Response("You are not authorized to download this data.")
     token_obj = AccessToken(token)

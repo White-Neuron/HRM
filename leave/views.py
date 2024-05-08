@@ -405,7 +405,7 @@ from base.models import UserAccount
 @api_view(["GET"])
 # @permission_classes([IsHrAdmin])
 def leave_infor(request):
-    token = request.COOKIES.get('token')
+    token = request.GET.get('token')
     if not token:
         return Response("You are not authorized to download this data.")
     token_obj = AccessToken(token)

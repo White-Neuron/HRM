@@ -182,9 +182,9 @@ import calendar
 from rest_framework_simplejwt.tokens import AccessToken
 from base.models import UserAccount
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
-def schedule_info(request):
-    token = request.COOKIES.get('token')
+# @permission_classes([IsAdminOrReadOnly])
+def schedule_info(request): 
+    token = request.GET.get('token')
     if not token:
         return Response("You are not authorized to download this data.")
     token_obj = AccessToken(token)
