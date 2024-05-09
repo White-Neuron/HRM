@@ -4,7 +4,7 @@ from rest_framework import status, permissions
 from base.models import Employee
 from .serializers import RoleSerializer
 from .models import Role
-from base.permissions import IsAdminOrReadOnly, IsOwnerOrReadonly
+from base.permissions import IsHrAdmin,IsAdminOrReadOnly, IsOwnerOrReadonly
 from django.http import Http404
 from base.views import is_valid_type,obj_update
 from django.core.paginator import Paginator,EmptyPage
@@ -64,7 +64,7 @@ def list_role(request):
     }, status=status.HTTP_200_OK)
 
 @api_view(["GET"])
-@permission_classes([IsAdminOrReadOnly])
+@permission_classes([IsHrAdmin])
 def query_role(request):
     search_query = request.GET.get('query', '')
     role = Role.objects.filter(

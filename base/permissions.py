@@ -1,9 +1,13 @@
 from rest_framework import permissions
 class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
+        if request.method in permissions.SAFE_METHODS:
+            return True
         return request.user and request.user.has_permission(request)
 
     def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
         return request.user and request.user.has_permission()
 class IsHrAdminManager(permissions.BasePermission):
     def has_permission(self, request, view):

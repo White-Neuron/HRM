@@ -81,11 +81,11 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         # Kiểm tra nếu user có quyền là admin
         return self.EmpID.RoleID.RoleName== 'Admin'
     def is_admin(self,request):
-        return self.EmpID.RoleID.RoleName== 'Admin'
+        return self.EmpID.RoleID.RoleName== 'Admin' or self.EmpID.RoleID.RoleName== 'CEO'
     def is_hr_admin_manager(self,request):
-        return self.EmpID.RoleID.RoleName== 'Admin' or self.EmpID.RoleID.RoleName== 'Hr' or self.EmpID.RoleID.RoleName== 'Manager'
+        return self.EmpID.RoleID.RoleName== 'Admin' or self.EmpID.RoleID.RoleName== 'Hr' or self.EmpID.RoleID.RoleName== 'Manager' or self.EmpID.RoleID.RoleName== 'CEO'
     def is_hr_or_admin(self,request):
-        return self.EmpID.RoleID.RoleName== 'Admin' or self.EmpID.RoleID.RoleName== 'Hr' 
+        return self.EmpID.RoleID.RoleName== 'Admin' or self.EmpID.RoleID.RoleName== 'Hr' or self.EmpID.RoleID.RoleName== 'CEO'
     def is_system_admin(self,request):
         return self.EmpID.RoleID.RoleName== 'CEO'
 
