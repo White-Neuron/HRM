@@ -1,13 +1,9 @@
 from rest_framework import permissions
 class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
-        if request.method in permissions.SAFE_METHODS:
-            return True
         return request.user and request.user.has_permission(request)
 
     def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
         return request.user and request.user.has_permission()
 class IsHrAdminManager(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -21,20 +17,14 @@ class IsMe(permissions.BasePermission):
 
 class IsHrAdmin(permissions.BasePermission):
     def has_permission(self, request, view):
-        if request.method in permissions.SAFE_METHODS:
-            return True
         return request.user and request.user.is_hr_or_admin(request)
 
     def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
         return request.user and request.user.is_hr_or_admin(request)
 
 
 class IsOwnerOrReadonly(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
         return obj.author == request.user
 
 
