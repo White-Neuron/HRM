@@ -1004,7 +1004,7 @@ def export_employee(request):
     token_obj = AccessToken(token)
     user_id = token_obj['user_id']
     user = UserAccount.objects.get(UserID=user_id)
-    if user.is_system_admin(request) or user.is_hr_admin_manager(request):
+    if user.EmpID.RoleID.RoleName in ['Admin', 'HR', 'Manager']:
         pass
     else:
         return Response("You are not authorized to download this data.")

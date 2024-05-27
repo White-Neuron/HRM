@@ -75,19 +75,19 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     def get_password(self):
         return self.password[21:30]
     def has_permission(self, request):
-        # if request.method in permissions.SAFE_METHODS:
-        #     # Cho phép tất cả các request GET, HEAD, hoặc OPTIONS
-        #     return request.user and request.user.is_staff
-        # Kiểm tra nếu user có quyền là admin
-        return self.EmpID.RoleID.RoleName== 'Admin'
-    def is_admin(self,request):
-        return self.EmpID.RoleID.RoleName== 'Admin' or self.EmpID.RoleID.RoleName== 'CEO'
-    def is_hr_admin_manager(self,request):
-        return self.EmpID.RoleID.RoleName== 'Admin' or self.EmpID.RoleID.RoleName== 'Hr' or self.EmpID.RoleID.RoleName== 'Manager' or self.EmpID.RoleID.RoleName== 'CEO'
-    def is_hr_or_admin(self,request):
-        return self.EmpID.RoleID.RoleName== 'Admin' or self.EmpID.RoleID.RoleName== 'Hr' or self.EmpID.RoleID.RoleName== 'CEO'
-    def is_system_admin(self,request):
-        return self.EmpID.RoleID.RoleName== 'CEO'
+        return self.EmpID.RoleID.RoleName == ['Admin', 'CEO']
+
+    def is_admin(self, request):
+        return self.EmpID.RoleID.RoleName in ['Admin', 'CEO']
+
+    def is_hr_admin_manager(self, request):
+        return self.EmpID.RoleID.RoleName in ['Admin', 'Hr', 'Manager', 'CEO'] 
+
+    def is_hr_or_admin(self, request):
+        return self.EmpID.RoleID.RoleName in ['Admin', 'Hr', 'CEO']
+
+    def is_system_admin(self, request):
+        return self.EmpID.RoleID.RoleName == ['Admin', 'CEO']
 
 class Project(models.Model): 
     proj_id = models.AutoField(primary_key=True)
