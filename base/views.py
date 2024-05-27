@@ -750,7 +750,7 @@ def query_employee(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsHrAdmin])
+@permission_classes([IsHrAdmin, IsMe, IsHrAdminManager])
 def list_employee(request):
     page_index = request.GET.get('pageIndex', 1)
     page_size = request.GET.get('pageSize', 10)
