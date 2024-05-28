@@ -407,9 +407,8 @@ from base.models import UserAccount
 def leave_infor(request):
     token = request.GET.get('token')
     if not token:
-        return Response("You are not authorized to download this data hehehe.")
+        return Response("You are not authorized to download this data.")
     token_obj = AccessToken(token)
-    # print(token_obj["user_id"])
     user_id = token_obj['user_id']
     user = UserAccount.objects.get(UserID=user_id)
     if user.is_system_admin(request) or user.is_hr_admin_manager(request):
