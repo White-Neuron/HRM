@@ -88,7 +88,7 @@ def list_job(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsHrAdmin])
+@permission_classes([IsHrAdmin, permissions.IsAuthenticatedOrReadOnly])
 def query_job(request):
     search_query = request.GET.get('query', '')
     dep_name = request.GET.get('DepName', '')  

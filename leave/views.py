@@ -414,7 +414,7 @@ def leave_infor(request):
     if user.is_system_admin(request) or user.is_hr_admin_manager(request):
         pass
     else:
-        return Response("You are not authorized to download this data.")
+        return Response("You don't have permission to download this data.")
     from_date = request.GET.get('from')
     to_date = request.GET.get('to')
     emp_id = request.GET.get('EmpID')

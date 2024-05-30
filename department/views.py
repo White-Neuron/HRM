@@ -73,7 +73,7 @@ def list_department(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsHrAdmin])
+@permission_classes([IsHrAdmin, permissions.IsAuthenticatedOrReadOnly])
 def query_department(request):
     search_query = request.GET.get('query', '')
     departments = Department.objects.filter(
