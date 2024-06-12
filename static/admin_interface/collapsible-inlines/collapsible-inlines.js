@@ -20,10 +20,7 @@ if (typeof(django) !== 'undefined' && typeof(django.jQuery) !== 'undefined')
                 var collapseToggleText = (fieldsetCollapsed ? gettext('Show') : gettext('Hide'));
                 var collapseToggleHTML = ' (<a class="collapse-toggle" href="#">' + collapseToggleText + '</a>)';
                 var headerEl = fieldsetEl.find('> h2,> h3');
-                if (headerEl.find(".collapse-toggle").length === 0) {
-                    // don't add collapse toggle button if already present
-                    headerEl.append(collapseToggleHTML);
-                }
+                headerEl.append(collapseToggleHTML);
             }
 
             var stackedInlinesOptionSel = '.admin-interface.collapsible-stacked-inlines';

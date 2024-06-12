@@ -7,5 +7,4 @@ urlpatterns=[
     path('leavetype/update-leave-type/<int:pk>', views.update_leavetype, name='update-leavetype'),
     path('leavetype/delete-leave-type/<int:pk>', views.delete_leavetype, name='delete-leavetype'),
     path("query/leavetype",views.query_leavetype,name="query-leavetype"),
-
 ]

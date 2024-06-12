@@ -115,29 +115,6 @@ class JobAdmin(admin.ModelAdmin):
     list_display = ["JobID", "JobName"]
     raw_id_fields = ["DepID"]
 
-class LeaveAdmin(admin.ModelAdmin):
-    list_display = ["get_name", "LeaveStatus", "LeaveTypeID", "LeaveStartDate", "LeaveEndDate", "Duration"]
-    raw_id_fields = ["LeaveTypeID"]
-    def get_urls(self):
-        urls = super().get_urls()
-        my_urls = [
-            path('export_leave_info/', self.admin_site.admin_view(export_leave_info_view), name='export_leave_info'),
-        ]
-        return my_urls + urls
-    def export_leave_info(self, request,_):
-        return HttpResponseRedirect(reverse('admin:export_leave_info'))
-    actions = [export_leave_info]
-    def get_name(self, obj):
-        return obj.EmpID.EmpName if obj.EmpID else ''
-
-    def save_model(self, request, obj, form, change):
-        if obj.LeaveStartDate and obj.LeaveEndDate:
-            duration = (obj.LeaveEndDate - obj.LeaveStartDate).days + 1
-            obj.Duration = duration
-        super().save_model(request, obj, form, change)
-
-    get_name.short_description = 'Employee Name'
-
 class TimeAdmin(admin.ModelAdmin):
     list_display = ["get_name", "TimeIn", "TimeOut"]
     raw_id_fields = ["EmpID"]
@@ -159,13 +136,11 @@ class TimeAdmin(admin.ModelAdmin):
 
 # Register models with admin classes
 admin.site.register(Role)
-admin.site.register(LeaveType)
 admin.site.register(Employee, EmployeeAdmin)
 admin.site.register(Department, DepartmentAdmin)
 admin.site.register(Job, JobAdmin)
 admin.site.register(UserAccount, UserAccountAdmin)
 admin.site.register(Schedule, ScheduleAdmin)
-admin.site.register(LeaveRequest, LeaveAdmin)
 admin.site.register(TimeSheet, TimeAdmin)
 admin.site.register(WorkShift)
 admin.site.register(TimesheetTask)

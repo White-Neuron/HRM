@@ -131,28 +131,14 @@
     max-height: var(--admin-interface-logo-max-height);
 }
 
-.admin-interface #header #user-tools a,
-.admin-interface #header #user-tools #logout-form button {
+.admin-interface #header #user-tools a {
     color: var(--admin-interface-header-link-color);
 }
 
 .admin-interface #header #user-tools a:hover,
-.admin-interface #header #user-tools a:active,
-.admin-interface #header #user-tools #logout-form button:hover,
-.admin-interface #header #user-tools #logout-form button:active {
+.admin-interface #header #user-tools a:active {
     color: var(--admin-interface-header-link-hover-color);
     border-bottom-color: rgba(255, 255, 255, 0.5);
-}
-
-.admin-interface #header #user-tools button.theme-toggle svg {
-    color: transparent;
-    fill: var(--admin-interface-header-link-color);
-}
-
-.admin-interface #header #user-tools button.theme-toggle:hover svg,
-.admin-interface #header #user-tools button.theme-toggle:active svg {
-    color: transparent;
-    fill: var(--admin-interface-header-link-hover-color);
 }
 
 .admin-interface #nav-sidebar .current-app .section:link,

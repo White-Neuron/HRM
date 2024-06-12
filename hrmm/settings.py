@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jdpf2v1-4x!m&v)f!x%2z0u22)^si=i4h7t21vivl^^2%3#w0%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     # '192.168.1.18',
@@ -150,12 +150,13 @@ DATABASES = {
     }}
 
 #database sqlite3
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-      
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }}
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+        
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 # SESSION_COOKIE_SECURE = True
@@ -180,13 +181,19 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'vi'
 
-TIME_ZONE = 'Asia/Bangkok'
+TIME_ZONE = 'Asia/Ho_Chi_Minh'
 
 USE_I18N = True
 
 USE_TZ = True
+
+LANGUAGES = [
+    ('vi', 'Vietnamese'),
+    ('en', 'English'),
+    # Thêm các ngôn ngữ khác nếu cần
+]
 
 
 # Static files (CSS, JavaScript, Images)
@@ -194,7 +201,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

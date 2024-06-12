@@ -19,7 +19,12 @@ else:
         re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
     ]
 
+from django.shortcuts import redirect
+def home(request):
+    return redirect('/admin')
+
 urlpatterns += [
+    path('',home),
     path('admin/', admin.site.urls),
     # path('auth/',include('djoser.urls')),
     # path('auth/',include('djoser.urls.jwt')),

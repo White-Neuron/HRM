@@ -14,8 +14,15 @@ from timesheet.models import TimeSheet
 from django.http import FileResponse
 from .models import UserAccount
 class ExportForm(forms.Form):
-    from_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    to_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    from_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required= True,
+        label='Ngày bắt đầu',
+        )
+    to_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), 
+                              required= True,
+                              label='Ngày kết thúc',
+                              )
 def export_leave_info_view(request):
     if request.method == 'POST':
         form = ExportForm(request.POST)
@@ -52,7 +59,7 @@ def export_leave_info_view(request):
 class ScheduleForm(forms.Form):
     from_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     to_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    EmpID = forms.CharField(max_length=100, required=False)
+    # EmpID = forms.CharField(max_length=100, required=False)
 from base.models import Employee
 def export_schedule_info_view(request):
     if request.method == 'GET':
@@ -115,7 +122,7 @@ def export_schedule_info_view(request):
 class TimesheetForm(forms.Form):
     from_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     to_date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
-    EmpID = forms.CharField(required=False)
+    # EmpID = forms.CharField(required=False)
 
 def timesheet_info_view(request):
     if request.method == 'GET':
