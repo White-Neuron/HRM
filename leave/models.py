@@ -41,7 +41,7 @@ class LeaveRequest(models.Model):
 
     class Meta:
         verbose_name = 'Đơn xin nghỉ phép'
-        verbose_name_plural = '1. Đơn xin nghỉ phép'
+        verbose_name_plural = 'Đơn xin nghỉ phép'
         ordering = ['LeaveRequestID']
 
 from leave_type.models import LeaveType
@@ -49,10 +49,10 @@ class LeaveType(LeaveType):
     class Meta:
         proxy = True
         verbose_name = 'Loại nghỉ phép'
-        verbose_name_plural = '2. Loại nghỉ phép'
+        verbose_name_plural = 'Loại nghỉ phép'
 
 class LeaveExport(models.Model):
     class Meta:
         verbose_name = 'Xuất thông tin nghỉ phép'
-        verbose_name_plural = '3. Xuất thông tin nghỉ phép'
+        verbose_name_plural = 'Xuất thông tin nghỉ phép'
         
