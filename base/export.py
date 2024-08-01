@@ -130,18 +130,11 @@ def timesheet_info_view(request):
         if form.is_valid():
             from_date = form.cleaned_data['from_date']
             to_date = form.cleaned_data['to_date']
-            emp_id = form.cleaned_data['EmpID']
             
             if from_date and to_date:
-                if emp_id:
-                    timesheets = TimeSheet.objects.filter(EmpID=emp_id, TimeIn__date__range=[from_date, to_date])
-                else:
-                    timesheets = TimeSheet.objects.filter(TimeIn__date__range=[from_date, to_date])
+                timesheets = TimeSheet.objects.filter(TimeIn__date__range=[from_date, to_date])
             else:
-                if emp_id:
-                    timesheets = TimeSheet.objects.filter(EmpID=emp_id)
-                else:
-                    timesheets = TimeSheet.objects.all()
+                timesheets = TimeSheet.objects.all()
 
             timesheet_data = defaultdict(list)
             for item in timesheets.values('EmpID', 'EmpID__EmpName', 'TimeIn', 'TimeOut').order_by('TimeIn'):
